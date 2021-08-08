@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+$icon-size: 18px;
+
+.socials {
+  color: #fff;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+  svg {
+    width: $icon-size;
+    height: $icon-size;
+    transition: transform 250ms ease-out;
+  }
+  svg:hover {
+    transform: scale(1.2);
+    transition: transform 250ms ease-out;
+  }
+}
+
+.copyright {
+  color: #fff;
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+}

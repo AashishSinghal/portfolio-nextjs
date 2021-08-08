@@ -1,0 +1,114 @@
+$breakpoint-tablet: 768px;
+
+.header {
+  background-color: #252525;
+  width: fit-content;
+  height: 100vh;
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    // width: fit-content;
+    width: 110px;
+    height: 100%;
+
+    .navitem {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 20px;
+      line-height: 0;
+      font-size: 45px;
+      font-weight: 600;
+      font-family: "Nunito", sans-serif;
+      border-bottom: 1px solid black;
+      transition: color, border 250ms ease-out;
+
+      span {
+        margin-top: 10px;
+        font-size: 24px;
+      }
+    }
+
+    .navitem:hover {
+      color: #dc474f;
+      border-bottom: 1px solid #dc474f;
+      transition: color, border 250ms ease-out;
+    }
+
+    .logo {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-family: "Nunito", sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      background-color: #dc474f;
+
+      .profile_pic {
+        width: 110px;
+        height: auto;
+        margin-bottom: 5px;
+      }
+    }
+    // .home {
+
+    // }
+    .socials {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #dc474f;
+      height: fit-content;
+      width: inherit;
+      margin-top: auto;
+      padding: 5px;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .header {
+    background-color: #252525;
+    height: fit-content;
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      height: fit-content;
+      width: 100%;
+      max-width: none;
+      min-width: none;
+      .navitem {
+        font-size: 50px;
+        border-bottom: none;
+        span {
+          display: none;
+        }
+      }
+      .logo {
+        display: none;
+        width: fit-content;
+      }
+      .profile_pic {
+        width: 100px;
+        height: 100px;
+      }
+      .socials {
+        display: none;
+      }
+    }
+  }
+}

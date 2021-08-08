@@ -1,0 +1,35 @@
+$breakpoint-tablet: 768px;
+
+.layout {
+  display: flex;
+  flex-direction: row;
+
+  main {
+    background-image: url(/Assets/images/pacman-bg.jpg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 100vh;
+    overflow: scroll;
+    color: white;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .layout {
+    main {
+      justify-content: flex-start;
+      flex: none;
+      width: 100vw;
+      padding-bottom: 90px;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}
