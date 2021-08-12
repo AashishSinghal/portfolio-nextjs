@@ -1,0 +1,20 @@
+.tool {
+  display: flex;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  flex-direction: column;
+  -moz-box-align: center;
+  align-items: center;
+  background-color: #252525;
+  padding: 10px;
+  width: 125px;
+  border-radius: 10px;
+  height: 125px;
+  margin: 10px;
+  -moz-box-pack: center;
+  justify-content: center;
+
+  span {
+    margin-top: 5px;
+  }
+}

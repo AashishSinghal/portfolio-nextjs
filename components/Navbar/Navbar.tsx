@@ -17,34 +17,37 @@ const Navbar = () => {
       <nav>
         <Link href="/">
           <div className={styles.logo}>
-            <img
-              src="/Assets/images/profile_pic2.jpg"
-              className={styles.profile_pic}
-            />
+            <div className={styles.profile_pic}>
+              <img src="/Assets/images/profile_pic3.jpg" />
+            </div>
             Aashish Singhal
           </div>
         </Link>
         <Link href="/">
           <div className={`${styles.home} ${styles.navitem}`}>
-            <Home fontSize="inherit" />
+            {/* <Home fontSize="inherit" /> */}
+            <i className="fi-rr-home"></i>
             <span>Home</span>
           </div>
         </Link>
         <Link href="/Work">
           <div className={`${styles.work} ${styles.navitem}`}>
-            <Storage fontSize="inherit" />
+            {/* <Storage fontSize="inherit" /> */}
+            <i className="fi-rr-database"></i>
             <span>Work</span>
           </div>
         </Link>
         <Link href="/Tools">
           <div className={`${styles.tools} ${styles.navitem}`}>
-            <Build fontSize="inherit" />
+            {/* <Build fontSize="inherit" /> */}
+            <i className="fi-rr-magic-wand"></i>
             <span>Tools</span>
           </div>
         </Link>
         <Link href="/About">
           <div className={`${styles.about} ${styles.navitem}`}>
-            <Info fontSize="inherit" />
+            {/* <Info fontSize="inherit" /> */}
+            <i className="fi-rr-form"></i>
             <span>About</span>
           </div>
         </Link>

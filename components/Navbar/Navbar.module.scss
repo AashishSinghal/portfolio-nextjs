@@ -20,29 +20,41 @@ $breakpoint-tablet: 768px;
       justify-content: center;
       align-items: center;
       width: 100%;
-      padding: 20px;
+      padding: 0 30px;
+      margin: auto;
       line-height: 0;
-      font-size: 45px;
+      font-size: 30px;
       font-weight: 600;
       font-family: "Nunito", sans-serif;
-      border-bottom: 1px solid black;
-      transition: color, border 250ms ease-out;
+      // border-bottom: 1px solid black;
+      border-bottom: none;
+      transition: color, transform 250ms ease-out;
 
       span {
-        margin-top: 10px;
-        font-size: 24px;
+        display: none;
+        margin: 0;
+        margin-top: 15px;
+        font-size: 0px;
+        transition: font-size 250ms ease-out;
       }
     }
 
     .navitem:hover {
       color: #dc474f;
-      border-bottom: 1px solid #dc474f;
-      transition: color, border 250ms ease-out;
+      // border-bottom: 1px solid #dc474f;
+      transform: scale(1.2);
+      transition: color, transform 250ms ease-out;
+      span {
+        display: block;
+        font-size: 16px;
+        transition: height 250ms ease-out;
+      }
     }
 
     .logo {
       width: fit-content;
       height: fit-content;
+      margin-bottom: auto;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -55,8 +67,17 @@ $breakpoint-tablet: 768px;
 
       .profile_pic {
         width: 110px;
-        height: auto;
+        height: 147px;
+        background-color: #fff;
         margin-bottom: 5px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 90px;
+          height: auto;
+        }
       }
     }
     // .home {
@@ -83,6 +104,7 @@ $breakpoint-tablet: 768px;
     width: 100vw;
     position: fixed;
     bottom: 0;
+    z-index: 10;
     nav {
       display: flex;
       flex-direction: row;
@@ -92,8 +114,14 @@ $breakpoint-tablet: 768px;
       max-width: none;
       min-width: none;
       .navitem {
-        font-size: 50px;
+        font-size: 30px;
         border-bottom: none;
+        padding: 20px 0;
+        span {
+          display: none;
+        }
+      }
+      .navitem:hover {
         span {
           display: none;
         }

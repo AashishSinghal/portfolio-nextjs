@@ -5,6 +5,7 @@ $breakpoint-tablet: 768px;
   flex-direction: row;
 
   main {
+    position: relative;
     background-image: url(/Assets/images/pacman-bg.jpg);
     display: flex;
     flex-direction: column;

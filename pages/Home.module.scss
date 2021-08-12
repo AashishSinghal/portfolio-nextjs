@@ -4,9 +4,9 @@ $breakpoint-tablet: 768px;
   // border: 1px solid red;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  height: 100%;
+  height: fit-content;
   width: 100%;
   padding: 15px;
 
@@ -32,6 +32,20 @@ $breakpoint-tablet: 768px;
   }
 }
 
+.indicator {
+  display: flex;
+  position: absolute;
+  top: 35px;
+  left: 10px;
+  color: #dc474f;
+  font-size: 20px;
+  font-family: "Nanum Pen Script", cursive;
+
+  svg {
+    transform: scaleX(-1) rotate(-20deg);
+  }
+}
+
 @media (max-width: $breakpoint-tablet) {
   .home {
     flex: none;
@@ -43,5 +57,11 @@ $breakpoint-tablet: 768px;
       display: block;
       width: 35%;
     }
+  }
+  .indicator {
+    display: flex;
+    top: 125px;
+    left: auto;
+    right: 10px;
   }
 }
