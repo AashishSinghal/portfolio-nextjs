@@ -39,7 +39,8 @@ $breakpoint-tablet: 768px;
       }
     }
 
-    .navitem:hover {
+    .navitem:hover,
+    .active {
       color: #dc474f;
       // border-bottom: 1px solid #dc474f;
       transform: scale(1.2);
@@ -121,7 +122,8 @@ $breakpoint-tablet: 768px;
           display: none;
         }
       }
-      .navitem:hover {
+      .navitem:hover,
+      .active {
         span {
           display: none;
         }

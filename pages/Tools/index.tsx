@@ -54,9 +54,10 @@ const ToolsPage = () => {
         <div className={styles.frontend}>
           <h3>Front-End</h3>
           <div className={styles.tools__container}>
-            {ToolsData.frontEnd.map((tool) => {
+            {ToolsData.frontEnd.map((tool, i) => {
               return (
                 <Tool
+                  key={i}
                   name={tool.name}
                   imgSrc="/Assets/SVGs/Tools/html5.svg"
                   imgAlt={tool.imgAlt}

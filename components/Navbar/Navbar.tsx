@@ -4,13 +4,20 @@ import Link from "next/link";
 import styles from "./Navbar.module.scss";
 import { Build, Home, Info, Storage } from "@material-ui/icons";
 import Socials from "../Socials/Socials";
+import { NavBarConstants } from "../../utils/Constants";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
-  // React.useEffect(() => {
-  //   $(window).on('load', function(){
-  //     alert("JQuery is Working")
-  //   } )
-  // }, []);
+  const router = useRouter();
+
+  const [navState, changeNavState] = React.useState(NavBarConstants);
+  function toggleActiveStyle(index) {
+    if (router.asPath === index) {
+      return styles.active;
+    } else {
+      return "null";
+    }
+  }
 
   return (
     <header className={styles.header}>
@@ -23,34 +30,21 @@ const Navbar = () => {
             Aashish Singhal
           </div>
         </Link>
-        <Link href="/">
-          <div className={`${styles.home} ${styles.navitem}`}>
-            {/* <Home fontSize="inherit" /> */}
-            <i className="fi-rr-home"></i>
-            <span>Home</span>
-          </div>
-        </Link>
-        <Link href="/Work">
-          <div className={`${styles.work} ${styles.navitem}`}>
-            {/* <Storage fontSize="inherit" /> */}
-            <i className="fi-rr-database"></i>
-            <span>Work</span>
-          </div>
-        </Link>
-        <Link href="/Tools">
-          <div className={`${styles.tools} ${styles.navitem}`}>
-            {/* <Build fontSize="inherit" /> */}
-            <i className="fi-rr-magic-wand"></i>
-            <span>Tools</span>
-          </div>
-        </Link>
-        <Link href="/About">
-          <div className={`${styles.about} ${styles.navitem}`}>
-            {/* <Info fontSize="inherit" /> */}
-            <i className="fi-rr-form"></i>
-            <span>About</span>
-          </div>
-        </Link>
+
+        {navState.navItemsArray.map((nav, i) => (
+          <Link key={i} href={nav.to}>
+            <div
+              className={`${nav.style} ${styles.navitem} ${toggleActiveStyle(
+                nav.to
+              )}`}
+            >
+              {/* <Home fontSize="inherit" /> */}
+              {nav.icon}
+              <span>{nav.span}</span>
+            </div>
+          </Link>
+        ))}
+
         <div className={`${styles.socials}`}>
           <Socials />
         </div>
