@@ -5,16 +5,23 @@ const Project = () => {
   return (
     <div className={styles.project}>
       <img src="/Assets/images/holder.png" alt="Project Holder" />
-      <br />
+      {/* <br /> */}
       <div className={styles.metaData}>
         <div>
-          <p>
+          <span>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit
             voluptatum vero facere nihil ducimus unde!
-          </p>
-          <div className={styles.tag}></div>
+          </span>
+          <div className={styles.tag}>
+            <span>HTML</span>
+            <span>JS</span>
+            <span>CSS</span>
+          </div>
         </div>
-        <div className={styles.cta}></div>
+        <div className={styles.cta}>
+          <button>Demo</button>
+          <button>Source</button>
+        </div>
       </div>
     </div>
   );

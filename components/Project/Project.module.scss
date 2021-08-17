@@ -7,8 +7,22 @@
   padding: 10px;
   margin: 15px auto;
   border-radius: 5px;
-}
 
-.metaData {
-  display: flex;
+  img {
+    margin-bottom: 10px;
+  }
+
+  .metaData {
+    display: flex;
+
+    > span {
+      font-size: 16px;
+    }
+    .tag {
+    }
+    .cta {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }
