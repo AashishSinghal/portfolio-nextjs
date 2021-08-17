@@ -1,0 +1,17 @@
+.work {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: fit-content;
+  width: 100%;
+  padding: 15px;
+
+  h1 {
+    color: white;
+    font-family: "Lobster", cursive;
+    font-size: 5vw;
+    // margin: 0;
+    // margin-bottom: 5px;
+  }
+}

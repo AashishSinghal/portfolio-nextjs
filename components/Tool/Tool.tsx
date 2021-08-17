@@ -1,14 +1,8 @@
 import * as React from "react";
+import { TypeTool } from "../../interfaces";
 import styles from "./Tool.module.scss";
 
-interface IProps {
-  name: string;
-  imgSrc: string;
-  imgAlt?: string;
-}
-
-const Tool = (props: IProps) => {
-  const { imgSrc, name, imgAlt } = props;
+const Tool = ({ imgSrc, name, imgAlt }: TypeTool) => {
   return (
     <div className={styles.tool}>
       <img src={imgSrc} alt={imgAlt || "tools icon"} />
