@@ -1,13 +1,21 @@
 import * as React from "react";
 import styles from "./Project.module.scss";
+import { TypeProject } from "../../interfaces";
+import Link from "next/link";
 
-const Project = () => {
+const Project = ({ animationName, delay, duration }: TypeProject) => {
   return (
-    <div className={styles.project}>
+    <div
+      className={styles.project}
+      data-aos={animationName}
+      data-aos-duration={`${duration}`}
+      data-aos-delay={`${delay}`}
+    >
+      <p>Project Name</p>
       <img src="/Assets/images/holder.png" alt="Project Holder" />
       {/* <br /> */}
       <div className={styles.metaData}>
-        <div>
+        <div className={styles.details}>
           <span>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit
             voluptatum vero facere nihil ducimus unde!
@@ -19,8 +27,14 @@ const Project = () => {
           </div>
         </div>
         <div className={styles.cta}>
-          <button>Demo</button>
-          <button>Source</button>
+          <Link href="#">
+            <button>
+              Demo<i className="fi-rr-arrow-small-right"></i>
+            </button>
+          </Link>
+          <button>
+            Source<i className="fi-rr-arrow-small-right"></i>
+          </button>
         </div>
       </div>
     </div>

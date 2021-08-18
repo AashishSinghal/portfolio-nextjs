@@ -13,7 +13,9 @@ const ToolsPage = () => {
           This is my Arsenal...
         </h1>
         <div className={styles.frontend}>
-          <h3>Front-End</h3>
+          <h3 data-aos="fade-up" data-aos-delay="1300" data-aos-duration="3000">
+            Front-End
+          </h3>
           <div className={styles.tools__container}>
             {ToolsData.frontEnd.map((tool, i) => {
               return (

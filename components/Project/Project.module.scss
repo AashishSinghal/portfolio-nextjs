@@ -5,8 +5,13 @@
   height: fit-content;
   background-color: #252525;
   padding: 10px;
-  margin: 15px auto;
+  margin: 15px auto 30px;
   border-radius: 5px;
+
+  > p {
+    margin: 0;
+    margin-bottom: 10px;
+  }
 
   img {
     margin-bottom: 10px;
@@ -15,14 +20,41 @@
   .metaData {
     display: flex;
 
-    > span {
-      font-size: 16px;
-    }
-    .tag {
+    .details {
+      > span {
+        font-size: 15px;
+      }
+      .tag {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        span {
+          border-radius: 5px;
+          padding: 5px 10px;
+          border: 1px solid white;
+          font-size: 12px;
+          margin-right: 15px;
+          margin-top: 5px;
+        }
+      }
     }
     .cta {
       display: flex;
+      justify-content: flex-end;
       flex-direction: column;
+
+      button {
+        margin-top: 15px;
+        border: 1px solid #dc474f;
+        border-radius: 1px;
+        background-color: transparent;
+        color: white;
+        padding: 10px 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 0;
+      }
     }
   }
 }

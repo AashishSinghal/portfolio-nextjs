@@ -29,7 +29,7 @@ const IndexPage = () => (
       <h1 data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1000">
         Hi, I'm Aashish Singhal
       </h1>
-      <h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="3000">
+      <h2 data-aos="fade-up" data-aos-delay="1300" data-aos-duration="3000">
         I'm a<span> Full-Stack Developer</span> & <span>UI Designer</span>,
         constanly working and learning new technologies to stay with the trend.
         I'm open to <span>Freelance</span> or

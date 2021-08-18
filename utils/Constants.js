@@ -141,3 +141,78 @@ export const ToolsData = {
     },
   ],
 };
+
+export const ProjectData = [
+  {
+    name: "Project",
+    description:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
+    demo: "",
+    source: "",
+    tags: [
+      { name: "HTML", url: "" },
+      { name: "JS", url: "" },
+      { name: "CSS", url: "" },
+    ],
+  },
+  {
+    name: "Project",
+    description:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
+    demo: "",
+    source: "",
+    tags: [
+      { name: "HTML", url: "" },
+      { name: "JS", url: "" },
+      { name: "CSS", url: "" },
+    ],
+  },
+  {
+    name: "Project",
+    description:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
+    demo: "",
+    source: "",
+    tags: [
+      { name: "HTML", url: "" },
+      { name: "JS", url: "" },
+      { name: "CSS", url: "" },
+    ],
+  },
+  {
+    name: "Project",
+    description:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
+    demo: "",
+    source: "",
+    tags: [
+      { name: "HTML", url: "" },
+      { name: "JS", url: "" },
+      { name: "CSS", url: "" },
+    ],
+  },
+  {
+    name: "Project",
+    description:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
+    demo: "",
+    source: "",
+    tags: [
+      { name: "HTML", url: "" },
+      { name: "JS", url: "" },
+      { name: "CSS", url: "" },
+    ],
+  },
+  {
+    name: "Project",
+    description:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
+    demo: "",
+    source: "",
+    tags: [
+      { name: "HTML", url: "" },
+      { name: "JS", url: "" },
+      { name: "CSS", url: "" },
+    ],
+  },
+];

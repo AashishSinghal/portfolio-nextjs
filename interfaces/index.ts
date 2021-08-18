@@ -14,3 +14,14 @@ export type TypeTool = {
   imgSrc: string;
   imgAlt?: string;
 };
+
+export type TypeProject = {
+  projectName: string;
+  imgUrl: string;
+  demoUrl: string;
+  sourceUrl: string;
+  description: string;
+  animationName?: string;
+  delay?: any;
+  duration?: any;
+};
