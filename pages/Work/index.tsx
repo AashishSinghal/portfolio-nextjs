@@ -15,7 +15,19 @@ const WorkPage = () => {
         </h1>
         <div className={styles.worklist}>
           {ProjectData.map((item, i) => (
-            <Project key={i} animationName="fade-up" delay={1300+(i*100)} duration="1000" />
+            <Project
+              key={i}
+              animationName="fade-up"
+              delay={1300 + i * 100}
+              duration="1000"
+              projectName={item.name}
+              demoUrl={item.demo}
+              sourceUrl={item.source}
+              description={item.description}
+              imgUrl={item.imgUrl}
+              imgAlt={item.imgAlt}
+              tags={item.tags}
+            />
           ))}
         </div>
       </section>

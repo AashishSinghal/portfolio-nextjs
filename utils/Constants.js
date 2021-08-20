@@ -144,7 +144,9 @@ export const ToolsData = {
 
 export const ProjectData = [
   {
-    name: "Project",
+    name: "Project Name",
+    imgUrl: "/Assets/images/holder.png",
+    imgAlt: "Project Holder",
     description:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
     demo: "",
@@ -156,7 +158,9 @@ export const ProjectData = [
     ],
   },
   {
-    name: "Project",
+    name: "Project Name",
+    imgUrl: "/Assets/images/holder.png",
+    imgAlt: "Project Holder",
     description:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
     demo: "",
@@ -168,7 +172,9 @@ export const ProjectData = [
     ],
   },
   {
-    name: "Project",
+    name: "Project Name",
+    imgUrl: "/Assets/images/holder.png",
+    imgAlt: "Project Holder",
     description:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
     demo: "",
@@ -180,7 +186,9 @@ export const ProjectData = [
     ],
   },
   {
-    name: "Project",
+    name: "Project Name",
+    imgUrl: "/Assets/images/holder.png",
+    imgAlt: "Project Holder",
     description:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
     demo: "",
@@ -192,7 +200,9 @@ export const ProjectData = [
     ],
   },
   {
-    name: "Project",
+    name: "Project Name",
+    imgUrl: "/Assets/images/holder.png",
+    imgAlt: "Project Holder",
     description:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
     demo: "",
@@ -204,7 +214,9 @@ export const ProjectData = [
     ],
   },
   {
-    name: "Project",
+    name: "Project Name",
+    imgUrl: "/Assets/images/holder.png",
+    imgAlt: "Project Holder",
     description:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
     demo: "",

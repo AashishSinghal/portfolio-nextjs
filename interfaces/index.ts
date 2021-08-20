@@ -15,13 +15,20 @@ export type TypeTool = {
   imgAlt?: string;
 };
 
+type T = {
+  name: string;
+  url: string;
+};
+
 export type TypeProject = {
   projectName: string;
   imgUrl: string;
+  imgAlt: string;
   demoUrl: string;
   sourceUrl: string;
   description: string;
-  animationName?: string;
-  delay?: any;
-  duration?: any;
+  animationName: string;
+  delay: any;
+  duration: any;
+  tags: Array<T>;
 };
