@@ -4,15 +4,25 @@
 //
 // import { User } from 'path/to/interfaces';
 
+import { ReactNode } from "react";
+
 export type User = {
   id: number;
   name: string;
+};
+
+export type TypeLayout = {
+  children?: ReactNode;
+  title?: string;
 };
 
 export type TypeTool = {
   name: string;
   imgSrc: string;
   imgAlt?: string;
+  animationName: string;
+  delay: any;
+  duration: any;
 };
 
 type T = {

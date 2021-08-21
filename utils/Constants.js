@@ -1,3 +1,23 @@
+import AOS from "aos";
+
+export function RefreshAOS() {
+  setTimeout(() => {
+    AOS.refresh();
+    console.log("AOS Refreshed");
+  }, 500);
+  let scrollRef = 0;
+
+  window.addEventListener("scroll", function () {
+    // increase value up to 10, then refresh AOS
+    console.log("AOS Refreshed ScrollRef");
+    scrollRef <= 10 ? scrollRef++ : AOS.refresh();
+  });
+}
+
+//
+// NavBar Items Constant
+//
+
 export const NavBarConstants = {
   activeNavItem: {
     id: 1,
@@ -37,6 +57,10 @@ export const NavBarConstants = {
     },
   ],
 };
+
+//
+// ToolsData Items Constant
+//
 
 export const ToolsData = {
   frontEnd: [
@@ -141,6 +165,10 @@ export const ToolsData = {
     },
   ],
 };
+
+//
+// ProjectData Items Constant
+//
 
 export const ProjectData = [
   {

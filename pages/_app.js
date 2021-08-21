@@ -10,9 +10,9 @@ const App = ({ Component, pageProps }) => {
   const [isMounted, setIsMounted] = React.useState(false);
   const darkMode = useDarkMode(true);
   const theme = darkMode.value ? darkTheme : lightTheme;
-
+  let i = 0;
   React.useEffect(() => {
-    AOS.init()
+    AOS.init();
     setIsMounted(true);
   }, []);
 
