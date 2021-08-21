@@ -79,11 +79,11 @@ const ToolsPage = () => {
             })}
           </div>
         </div>
-        <p>
+        {/* <p>
           <Link href="/">
             <a>Go home</a>
           </Link>
-        </p>
+        </p> */}
       </section>
     </Layout>
   );

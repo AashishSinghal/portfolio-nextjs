@@ -1,16 +1,15 @@
-import Link from 'next/link'
-import Layout from '../../components/Layout/Layout'
+import * as React from "react";
+import styles from "./About.module.scss";
+import Layout from "../../components/Layout/Layout";
 
 const AboutPage = () => (
   <Layout title="About | Next.js + TypeScript Example">
-    <h1>About</h1>
-    <p>This is the about page</p>
-    <p>
-      <Link href="/">
-        <a>Go home</a>
-      </Link>
-    </p>
+    <section className={styles.about}>
+      <h1 data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1000">
+        More about me...
+      </h1>
+    </section>
   </Layout>
-)
+);
 
-export default AboutPage
+export default AboutPage;

@@ -1,0 +1,12 @@
+.about {
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    color: white;
+    font-family: "Lobster", cursive;
+    font-size: 5vw;
+    margin: 0.7em 0;
+    // margin-bottom: 5px;
+  }
+}
