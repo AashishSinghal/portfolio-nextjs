@@ -172,29 +172,44 @@ export const ToolsData = {
 
 export const ProjectData = [
   {
+    name: "Dev Resources",
+    imgUrl: "/Assets/images/portfolio/devResources.jpeg",
+    imgAlt: "Project Holder",
+    description:
+      "A simple Portal for managing my dev resources and sharing with my team and other people. The backend is currently in progress so the data is static.",
+    demo: "https://dev-resources-via-bookmarks.netlify.app/",
+    source: "https://github.com/AashishSinghal/dev-resources",
+    tags: [
+      { name: "React & TS", url: "" },
+      { name: "JSON DB", url: "" },
+      { name: "Axios", url: "" },
+    ],
+  },
+  {
     name: "Admin Panel",
     imgUrl: "/Assets/images/portfolio/adminPanel.jpeg",
     imgAlt: "Project Holder",
-    description: "",
-    demo: "https://pedantic-fermi-a606af.netlify.app/",
+    description:
+      "A Admin panel to upload OTT videos to their server with the video Meta Data from the Complex Forms. ",
+    demo: "https://admin-panel-ott.netlify.app/",
     source: "https://github.com/AashishSinghal/admin-panel",
     tags: [
       { name: "React", url: "" },
       { name: "Foms", url: "" },
-      { name: "axios", url: "" },
+      { name: "Axios", url: "" },
     ],
   },
   {
-    name: "Project Name",
-    imgUrl: "/Assets/images/holder.png",
+    name: "Github User Search",
+    imgUrl: "/Assets/images/portfolio/searchUser.jpeg",
     imgAlt: "Project Holder",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
-    demo: "",
-    source: "",
+      "A Github User Search portal made with React, Fusion Charts, Github API to let user a more descriptive view of a Github Profile.",
+    demo: "https://githubusersearch-app.netlify.app/",
+    source: "https://github.com/AashishSinghal/search-users",
     tags: [
-      { name: "HTML", url: "" },
-      { name: "JS", url: "" },
+      { name: "React", url: "" },
+      { name: "Auth0", url: "" },
       { name: "CSS", url: "" },
     ],
   },
@@ -241,17 +256,17 @@ export const ProjectData = [
     ],
   },
   {
-    name: "Project Name",
-    imgUrl: "/Assets/images/holder.png",
+    name: "Animated Preloader",
+    imgUrl: "/Assets/images/portfolio/preloader.jpeg",
     imgAlt: "Project Holder",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
-    demo: "",
-    source: "",
+      "A CSS only Animated Preloader for the Company app where i did a small internship.",
+    demo: "https://innofarms-preloader.netlify.app",
+    source: "https://github.com/AashishSinghal/Innofarms-Preloader",
     tags: [
       { name: "HTML", url: "" },
-      { name: "JS", url: "" },
       { name: "CSS", url: "" },
+      // { name: "CSS", url: "" },
     ],
   },
 ];
