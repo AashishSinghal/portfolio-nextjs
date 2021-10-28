@@ -18,7 +18,7 @@ const WorkPage = () => {
             <Project
               key={i}
               animationName="fade-up"
-              delay={1300 + i * 100}
+              delay={1300 + i * 1}
               duration="1000"
               projectName={item.name}
               demoUrl={item.demo}

@@ -6,13 +6,13 @@ $breakpoint-tablet: 768px;
 
   main {
     position: relative;
-    background-image: url(/Assets/images/pacman-bg.jpg);
+    // background-image: url(/Assets/images/pacman-bg.jpg);
     display: flex;
     flex-direction: column;
     align-items: center;
     flex: 1;
     min-height: 100vh;
-    height: max-content;
+    height: -webkit-fill-available;
     padding-left: 110px;
     color: white;
     &::-webkit-scrollbar {

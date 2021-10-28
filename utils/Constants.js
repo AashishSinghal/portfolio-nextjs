@@ -172,17 +172,16 @@ export const ToolsData = {
 
 export const ProjectData = [
   {
-    name: "Project Name",
-    imgUrl: "/Assets/images/holder.png",
+    name: "Admin Panel",
+    imgUrl: "/Assets/images/portfolio/adminPanel.jpeg",
     imgAlt: "Project Holder",
-    description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
-    demo: "",
-    source: "",
+    description: "",
+    demo: "https://pedantic-fermi-a606af.netlify.app/",
+    source: "https://github.com/AashishSinghal/admin-panel",
     tags: [
-      { name: "HTML", url: "" },
-      { name: "JS", url: "" },
-      { name: "CSS", url: "" },
+      { name: "React", url: "" },
+      { name: "Foms", url: "" },
+      { name: "axios", url: "" },
     ],
   },
   {

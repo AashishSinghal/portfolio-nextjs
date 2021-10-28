@@ -23,7 +23,7 @@ const IndexPage = () => (
         data-aos="fade-down"
         data-aos-duration="1000"
         data-aos-delay="300"
-        src="/Assets/images/profile_pic2.jpg"
+        src="/Assets/images/profile_pic3.jpg"
         className={styles.profile_pic}
       />
       <h1 data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1000">
