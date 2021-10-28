@@ -10,7 +10,7 @@ const WorkPage = () => {
   return (
     <Layout title="Work | Aashish - Portfolio">
       <section className={styles.work}>
-        <h1 data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1000">
+        <h1 data-aos="zoom-in" data-aos-delay="100" data-aos-duration="300">
           Things i have built...
         </h1>
         <div className={styles.worklist}>
@@ -18,8 +18,8 @@ const WorkPage = () => {
             <Project
               key={i}
               animationName="fade-up"
-              delay={1300 + i * 1}
-              duration="1000"
+              delay={300}
+              duration="500"
               projectName={item.name}
               demoUrl={item.demo}
               sourceUrl={item.source}

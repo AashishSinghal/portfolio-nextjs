@@ -11,7 +11,7 @@ const ToolsPage = () => {
   return (
     <Layout title="Tools | Aashish - Portfolio">
       <section className={styles.tools} id="tools">
-        <h1 data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1000">
+        <h1 data-aos="zoom-in" data-aos-delay="100" data-aos-duration="300">
           This is my Arsenal...
         </h1>
         <div
@@ -20,7 +20,7 @@ const ToolsPage = () => {
           data-aos-duration="1000"
           className={styles.frontend}
         >
-          <h2 data-aos="fade-up" data-aos-delay="800" data-aos-duration="1000">
+          <h2 data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">
             Front-End
           </h2>
           <div className={styles.tools__container}>
@@ -29,16 +29,16 @@ const ToolsPage = () => {
                 <Tool
                   key={i}
                   animationName="fade-up"
-                  delay={500 + i * 100}
-                  duration="1000"
+                  delay={300}
+                  duration="500"
                   name={tool.name}
-                  imgSrc="/Assets/SVGs/Tools/html5.svg"
+                  imgSrc={tool.imgSrc}
                   imgAlt={tool.imgAlt}
                 />
               );
             })}
           </div>
-          <h2 data-aos="fade-up" data-aos-delay="800" data-aos-duration="1000">
+          <h2 data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">
             Back-End
           </h2>
           <div className={styles.tools__container}>
@@ -48,34 +48,34 @@ const ToolsPage = () => {
                   <Tool
                     key={i}
                     animationName="fade-up"
-                    delay={1300 + i * 100}
-                    duration="1000"
+                    delay={300}
+                    duration="500"
                     name={tool.name}
-                    imgSrc="/Assets/SVGs/Tools/html5.svg"
+                    imgSrc={tool.imgSrc}
                     imgAlt={tool.imgAlt}
                   />
                 );
               }
             })}
           </div>
-          <h2 data-aos="fade-up" data-aos-delay="800" data-aos-duration="1000">
+          <h2 data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">
             General
           </h2>
           <div className={styles.tools__container}>
             {ToolsData.general.map((tool, i) => {
-              if (i <= 4) {
-                return (
-                  <Tool
-                    key={i}
-                    animationName="fade-up"
-                    delay={1300 + i * 100}
-                    duration="1000"
-                    name={tool.name}
-                    imgSrc="/Assets/SVGs/Tools/html5.svg"
-                    imgAlt={tool.imgAlt}
-                  />
-                );
-              }
+              // if (i <= 4) {
+              return (
+                <Tool
+                  key={i}
+                  animationName="fade-up"
+                  delay={300}
+                  duration="500"
+                  name={tool.name}
+                  imgSrc={tool.imgSrc}
+                  imgAlt={tool.imgAlt}
+                />
+              );
+              // }
             })}
           </div>
         </div>
