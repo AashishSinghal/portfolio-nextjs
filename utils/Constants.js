@@ -177,6 +177,19 @@ export const ToolsData = {
 
 export const ProjectData = [
   {
+    name: "CryptoWatch - App",
+    imgUrl: "/Assets/images/portfolio/cryptoApp.jpeg",
+    imgAlt: "Project Holder",
+    description:
+      "A Cryptocurrency Watching app which is made using React and Redux-toolkit with Rapid API & ANT-Design.",
+    demo: "https://crypto-app-via-rapid-api.netlify.app/",
+    source: "https://github.com/AashishSinghal/crypto-app",
+    tags: [
+      { name: "React & TS", url: "" },
+      { name: "Redux-Toolkit", url: "" },
+    ],
+  },
+  {
     name: "Dev Resources",
     imgUrl: "/Assets/images/portfolio/devResources.jpeg",
     imgAlt: "Project Holder",
@@ -219,48 +232,6 @@ export const ProjectData = [
     ],
   },
   {
-    name: "Project Name",
-    imgUrl: "/Assets/images/holder.png",
-    imgAlt: "Project Holder",
-    description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
-    demo: "",
-    source: "",
-    tags: [
-      { name: "HTML", url: "" },
-      { name: "JS", url: "" },
-      { name: "CSS", url: "" },
-    ],
-  },
-  {
-    name: "Project Name",
-    imgUrl: "/Assets/images/holder.png",
-    imgAlt: "Project Holder",
-    description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
-    demo: "",
-    source: "",
-    tags: [
-      { name: "HTML", url: "" },
-      { name: "JS", url: "" },
-      { name: "CSS", url: "" },
-    ],
-  },
-  {
-    name: "Project Name",
-    imgUrl: "/Assets/images/holder.png",
-    imgAlt: "Project Holder",
-    description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
-    demo: "",
-    source: "",
-    tags: [
-      { name: "HTML", url: "" },
-      { name: "JS", url: "" },
-      { name: "CSS", url: "" },
-    ],
-  },
-  {
     name: "Animated Preloader",
     imgUrl: "/Assets/images/portfolio/preloader.jpeg",
     imgAlt: "Project Holder",
@@ -274,4 +245,32 @@ export const ProjectData = [
       // { name: "CSS", url: "" },
     ],
   },
+  // {
+  //   name: "Animated Preloader",
+  //   imgUrl: "/Assets/images/portfolio/preloader.jpeg",
+  //   imgAlt: "Project Holder",
+  //   description:
+  //     "A CSS only Animated Preloader for the Company app where i did a small internship.",
+  //   demo: "https://innofarms-preloader.netlify.app",
+  //   source: "https://github.com/AashishSinghal/Innofarms-Preloader",
+  //   tags: [
+  //     { name: "HTML", url: "" },
+  //     { name: "CSS", url: "" },
+  //     // { name: "CSS", url: "" },
+  //   ],
+  // },
+  // {
+  //   name: "Project Name",
+  //   imgUrl: "/Assets/images/holder.png",
+  //   imgAlt: "Project Holder",
+  //   description:
+  //     "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates non ducimus architecto ullam id ex?",
+  //   demo: "",
+  //   source: "",
+  //   tags: [
+  //     { name: "HTML", url: "" },
+  //     { name: "JS", url: "" },
+  //     { name: "CSS", url: "" },
+  //   ],
+  // },
 ];
