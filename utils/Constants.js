@@ -232,6 +232,34 @@ export const ProjectData = [
     ],
   },
   {
+    name: "Screen Recorder - ElectronJS",
+    imgUrl: "/Assets/images/portfolio/screen.jpeg",
+    imgAlt: "Project Holder",
+    description:
+      "A ElectronJS, Desktop app for Screen recording. You can test it out by downloading the executable fro demo link.",
+    demo: "https://drive.google.com/file/d/1LmrsgOv_B_xUf2GCGE7ZHf6OSDjZzP60/view?usp=sharing",
+    source: "https://github.com/AashishSinghal/electron-screen-recorder",
+    tags: [
+      { name: "HTML", url: "" },
+      { name: "JS", url: "" },
+      { name: "ElectronJS", url: "" },
+    ],
+  },
+  {
+    name: "File Encryptor - ElectronJS",
+    imgUrl: "/Assets/images/portfolio/fileEncryptor.jpeg",
+    imgAlt: "Project Holder",
+    description:
+      "A ElectronJS, Desktop app for File Encryption Using AES Encryption. You can test it out by downloading the executable fro demo link.",
+    demo: "https://drive.google.com/file/d/1gwp8YrGQ85HXnRWJfP1RHAGB7qmzmyXT/view?usp=sharing",
+    source: "https://github.com/AashishSinghal/file-encryptor",
+    tags: [
+      { name: "AES", url: "" },
+      { name: "JS", url: "" },
+      { name: "ElectronJS", url: "" },
+    ],
+  },
+  {
     name: "Animated Preloader",
     imgUrl: "/Assets/images/portfolio/preloader.jpeg",
     imgAlt: "Project Holder",
@@ -243,6 +271,19 @@ export const ProjectData = [
       { name: "HTML", url: "" },
       { name: "CSS", url: "" },
       // { name: "CSS", url: "" },
+    ],
+  },
+  {
+    name: "Flappy Bird Game",
+    imgUrl: "/Assets/images/portfolio/FlappyBird.png",
+    imgAlt: "Project Holder",
+    description: "Flppy Bird game on web using Vanilla JavaScript.",
+    demo: "https://flabby-bird-using-js.netlify.app/",
+    source: "https://github.com/AashishSinghal/FlappyBird-in-JS",
+    tags: [
+      { name: "HTML", url: "" },
+      { name: "CSS", url: "" },
+      { name: "JS", url: "" },
     ],
   },
   // {
