@@ -19,5 +19,6 @@
   "scope": "/",
   "start_url": "/",
   "display": "standalone",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "splash_pages": null
 }
