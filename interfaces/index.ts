@@ -26,7 +26,7 @@ export type TypeTool = {
   hyperlink: string;
 };
 
-type T = {
+type Tags = {
   name: string;
   url: string;
 };
@@ -41,5 +41,5 @@ export type TypeProject = {
   animationName: string;
   delay: any;
   duration: any;
-  tags: Array<T>;
+  tags: Array<Tags>;
 };
