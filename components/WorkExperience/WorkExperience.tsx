@@ -3,7 +3,6 @@ import { WorkExpData } from "../../utils/Constants";
 import styles from "./WorkExperience.module.scss";
 
 const WorkExperience = () => {
-  console.log("WorkExpData - ", WorkExpData);
   return (
     <div className={styles.workExperience}>
       <h2>My Work Experience.</h2>

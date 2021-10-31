@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "next dev -p 8080",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc"
@@ -13,8 +13,8 @@
     "aos": "^2.3.4",
     "bootstrap": "^5.1.0",
     "jquery": "^3.6.0",
-    "next": "^11.1.0",
-    "next-pwa": "^5.2.24",
+    "next": "latest",
+    "next-pwa": "^3.1.0",
     "popper.js": "^1.16.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -22,12 +22,14 @@
     "styled-components": "^5.3.0",
     "use-dark-mode": "^2.3.1"
   },
+  "license": "MIT",
   "devDependencies": {
+    "@types/aos": "^3.0.4",
     "@types/jquery": "^3.5.6",
-    "@types/node": "^12.12.21",
-    "@types/react": "^17.0.2",
+    "@types/node": "^16.11.6",
+    "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.1",
-    "typescript": "4.3.2"
-  },
-  "license": "MIT"
+    "@types/styled-components": "^5.1.15",
+    "typescript": "^4.4.4"
+  }
 }
