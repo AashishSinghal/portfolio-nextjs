@@ -22,8 +22,12 @@ const BackToTop = () => {
       //   Not using Auto since it is Abrupt
     });
   };
-
-  window.addEventListener("scroll", toggleVisible);
+  React.useEffect(() => {
+    window.addEventListener("scroll", toggleVisible);
+    return () => {
+      window.removeEventListener("scroll", toggleVisible);
+    };
+  }, []);
   if (visible) {
     return (
       <div
