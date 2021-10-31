@@ -1,0 +1,51 @@
+.workExperience {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+
+  h2 {
+    width: fit-content;
+    font-family: "Lobster", cursive;
+  }
+
+  .timelineContainer {
+    display: flex;
+    width: 80%;
+    .timelineBar {
+      border: 1px solid white;
+      //   height: 100%;
+      width: 1px;
+      margin: 0 49.5px;
+    }
+    .timelineItems {
+      display: flex;
+      flex-direction: column;
+      .timelineItem {
+        position: relative;
+        margin-bottom: 25px;
+        &::before {
+          content: "";
+          position: absolute;
+          left: -58px;
+          top: 15px;
+          border-radius: 50%;
+          height: 15px;
+          width: 15px;
+          background-color: #dc474f;
+        }
+        &:last-child {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .workExperience {
+    .timelineContainer {
+      width: 100%;
+    }
+  }
+}
