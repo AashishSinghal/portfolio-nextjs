@@ -23,7 +23,9 @@ const Project = ({
       data-aos-delay={`${delay}`}
     >
       <p>{projectName}</p>
-      <img src={imgUrl} alt={imgAlt} />
+      <div className={styles.imgContainer}>
+        <img src={imgUrl} alt={imgAlt} />
+      </div>
       <div className={styles.metaData}>
         <div className={styles.details}>
           <span>{description}</span>

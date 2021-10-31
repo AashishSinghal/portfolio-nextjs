@@ -11,7 +11,7 @@ const ToolsPage = () => {
   return (
     <Layout title="Tools | Aashish - Portfolio">
       <section className={styles.tools} id="tools">
-        <h1 data-aos="zoom-in" data-aos-delay="100" data-aos-duration="300">
+        <h1 className="pageHeading" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="300">
           This is my Arsenal...
         </h1>
         <div
@@ -34,6 +34,7 @@ const ToolsPage = () => {
                   name={tool.name}
                   imgSrc={tool.imgSrc}
                   imgAlt={tool.imgAlt}
+                  hyperlink={tool.hyperlink}
                 />
               );
             })}
@@ -53,6 +54,7 @@ const ToolsPage = () => {
                     name={tool.name}
                     imgSrc={tool.imgSrc}
                     imgAlt={tool.imgAlt}
+                    hyperlink={tool.hyperlink}
                   />
                 );
               }
@@ -73,6 +75,7 @@ const ToolsPage = () => {
                   name={tool.name}
                   imgSrc={tool.imgSrc}
                   imgAlt={tool.imgAlt}
+                  hyperlink={tool.hyperlink}
                 />
               );
               // }

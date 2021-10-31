@@ -9,16 +9,24 @@ const Tool = ({
   animationName,
   delay,
   duration,
+  hyperlink,
 }: TypeTool) => {
   return (
     <div
-      className={styles.tool}
+      // className={styles.tool}
       data-aos={animationName}
       data-aos-duration={`${duration}`}
       data-aos-delay={`${delay}`}
     >
-      <img src={imgSrc} alt={imgAlt || "tools icon"} />
-      <span>{name}</span>
+      <a
+        href={hyperlink}
+        className={styles.tool}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src={imgSrc} alt={imgAlt || "tools icon"} />
+        <span>{name}</span>
+      </a>
     </div>
   );
 };

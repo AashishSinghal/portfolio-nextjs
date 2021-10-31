@@ -23,6 +23,7 @@ export type TypeTool = {
   animationName: string;
   delay: any;
   duration: any;
+  hyperlink: string;
 };
 
 type T = {

@@ -17,10 +17,13 @@
   img {
     width: 55%;
     height: auto;
+    margin: auto;
     // max-height: 50%;
   }
 
   span {
-    margin-top: 5px;
+    margin-top: auto;
+    margin-bottom: 15px;
+    height: fit-content;
   }
 }

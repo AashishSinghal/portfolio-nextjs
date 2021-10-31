@@ -13,14 +13,22 @@
     margin-bottom: 10px;
   }
 
-  img {
+  .imgContainer {
+    width: 100%;
+    aspect-ratio: 1280/591;
+    overflow: hidden;
     margin-bottom: 10px;
+    img {
+      width: 100%;
+    }
   }
 
   .metaData {
     display: flex;
 
     .details {
+      display: flex;
+      flex-direction: column;
       > span {
         font-size: 15px;
       }
@@ -28,6 +36,7 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        margin-top: auto;
         span {
           border-radius: 5px;
           padding: 5px 10px;

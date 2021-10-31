@@ -45,3 +45,9 @@ img {
 *::-webkit-scrollbar {
   display: none;
 }
+
+@media (max-width: 768px) {
+  h1.pageHeading {
+    font-size: 10vw !important;
+  }
+}

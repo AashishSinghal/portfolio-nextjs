@@ -4,6 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import styles from "./Layout.module.scss";
 import { TypeLayout } from "../../interfaces";
 import Footer from "../Footer/Footer";
+import BackToTop from "../BackToTop/BackToTop";
 
 const Layout = ({
   children,
@@ -31,6 +32,7 @@ const Layout = ({
       <main>
         {children}
         <Footer />
+        <BackToTop />
       </main>
     </div>
   );
