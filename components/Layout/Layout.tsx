@@ -31,7 +31,9 @@ const Layout = ({
       <Navbar />
       <main>
         {children}
+        <br />
         <Footer />
+        <br />
         <BackToTop />
       </main>
     </div>

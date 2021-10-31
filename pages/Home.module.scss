@@ -36,6 +36,7 @@ $breakpoint-tablet: 768px;
 .indicator {
   display: flex;
   position: absolute;
+  z-index: 5;
   top: 35px;
   left: 110px;
   color: #dc474f;
@@ -53,6 +54,7 @@ $breakpoint-tablet: 768px;
 
     h2 {
       width: 90%;
+      font-size: 1.5rem;
     }
     .profile_pic {
       display: block;
