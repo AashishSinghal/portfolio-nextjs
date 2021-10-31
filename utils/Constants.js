@@ -335,3 +335,97 @@ export const ProjectData = [
   //   ],
   // },
 ];
+
+//
+//Work Experience Constants
+//
+
+export const WorkExpData = [
+  {
+    title: "Work Item Heading",
+    shortDescription:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque minus quidem saepe repellat rerum optio obcaecati! Repudiandae, vero numquam neque eius ea reprehenderit quod! Nam.",
+    longDescription:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus nulla modi odit. Tempore, assumenda quas totam hic velit numquam culpa sequi, obcaecati dicta, excepturi vero accusantium veniam placeat ea impedit ullam laudantium a earum molestiae tenetur provident eos? Ullam asperiores error sunt reiciendis, recusandae harum. Corporis nam tenetur hic minima!",
+    timePeriod: "Time Period",
+    location: "Location",
+    projects: [
+      {
+        title: "Project title 1",
+        description:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore odit ea unde excepturi est reprehenderit!",
+        tech: "React, Redux, TypeScript",
+      },
+      {
+        title: "Project title 1",
+        description:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore odit ea unde excepturi est reprehenderit!",
+        tech: "React, Redux, TypeScript",
+      },
+      {
+        title: "Project title 1",
+        description:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore odit ea unde excepturi est reprehenderit!",
+        tech: "React, Redux, TypeScript",
+      },
+    ],
+  },
+  {
+    title: "Work Item Heading",
+    shortDescription:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque minus quidem saepe repellat rerum optio obcaecati! Repudiandae, vero numquam neque eius ea reprehenderit quod! Nam.",
+    longDescription:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus nulla modi odit. Tempore, assumenda quas totam hic velit numquam culpa sequi, obcaecati dicta, excepturi vero accusantium veniam placeat ea impedit ullam laudantium a earum molestiae tenetur provident eos? Ullam asperiores error sunt reiciendis, recusandae harum. Corporis nam tenetur hic minima!",
+    timePeriod: "Time Period",
+    location: "Location",
+    projects: [
+      {
+        title: "Project title 1",
+        description:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore odit ea unde excepturi est reprehenderit!",
+        tech: "React, Redux, TypeScript",
+      },
+      {
+        title: "Project title 1",
+        description:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore odit ea unde excepturi est reprehenderit!",
+        tech: "React, Redux, TypeScript",
+      },
+      {
+        title: "Project title 1",
+        description:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore odit ea unde excepturi est reprehenderit!",
+        tech: "React, Redux, TypeScript",
+      },
+    ],
+  },
+  {
+    title: "Work Item Heading",
+    shortDescription:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque minus quidem saepe repellat rerum optio obcaecati! Repudiandae, vero numquam neque eius ea reprehenderit quod! Nam.",
+    longDescription:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus nulla modi odit. Tempore, assumenda quas totam hic velit numquam culpa sequi, obcaecati dicta, excepturi vero accusantium veniam placeat ea impedit ullam laudantium a earum molestiae tenetur provident eos? Ullam asperiores error sunt reiciendis, recusandae harum. Corporis nam tenetur hic minima!",
+    timePeriod: "Time Period",
+    location: "Location",
+    projects: [
+      {
+        title: "Project title 1",
+        description:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore odit ea unde excepturi est reprehenderit!",
+        tech: "React, Redux, TypeScript",
+      },
+      {
+        title: "Project title 1",
+        description:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore odit ea unde excepturi est reprehenderit!",
+        tech: "React, Redux, TypeScript",
+      },
+      {
+        title: "Project title 1",
+        description:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore odit ea unde excepturi est reprehenderit!",
+        tech: "React, Redux, TypeScript",
+      },
+    ],
+  },
+];
