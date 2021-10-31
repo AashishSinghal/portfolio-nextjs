@@ -14,30 +14,13 @@ const Layout = ({
     <div className={styles.layout}>
       <Head>
         <title>{title}</title>
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
         <meta charSet="utf-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        {/* <meta name="viewport" content="initial-scale=1.0, width=device-width" /> */}
         <meta
           name="viewport"
-          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
         />
-        <meta name="description" content="Description" />
-        <meta name="keywords" content="Keywords" />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" href="favicon.ico" type="image/x-icon" />
-        {/* <link
-          href="/icons/favicon-16x16.png"
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-        />
-        <link
-          href="/icons/favicon-32x32.png"
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-        /> */}
-        <link rel="apple-touch-icon" href="/apple-icon.png"></link>
-        <meta name="theme-color" content="#317EFB" />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
