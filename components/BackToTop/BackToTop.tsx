@@ -23,7 +23,12 @@ const BackToTop = () => {
     });
   };
 
-  window.addEventListener("scroll", toggleVisible);
+  React.useEffect(() => {
+    window.addEventListener("scroll", toggleVisible);
+    return () => {
+      window.removeEventListener("scroll", toggleVisible);
+    };
+  }, []);
   if (visible) {
     return (
       <div
