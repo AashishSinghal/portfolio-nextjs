@@ -66,6 +66,16 @@
   .workExperience {
     .timelineContainer {
       width: 100%;
+      .timelineBar {
+        margin: 0 25px;
+      }
+      .timelineItems {
+        .timelineItem {
+          &::before {
+            left: -33px;
+          }
+        }
+      }
     }
   }
 }
