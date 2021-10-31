@@ -5,7 +5,7 @@ import Layout from "../../components/Layout/Layout";
 const AboutPage = () => (
   <Layout title="About | Next.js + TypeScript Example">
     <section className={styles.about}>
-      <h1 className="pageHeading" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1000">
+      <h1 className="pageHeading" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="300">
         More about me...
       </h1>
       <h2 data-aos="fade-up" data-aos-delay="1300" data-aos-duration="3000">

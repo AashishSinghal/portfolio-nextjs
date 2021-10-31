@@ -11,13 +11,18 @@ const ToolsPage = () => {
   return (
     <Layout title="Tools | Aashish - Portfolio">
       <section className={styles.tools} id="tools">
-        <h1 className="pageHeading" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="300">
+        <h1
+          className="pageHeading"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+          data-aos-duration="300"
+        >
           This is my Arsenal...
         </h1>
         <div
           data-aos="fade-up"
-          data-aos-delay="500"
-          data-aos-duration="1000"
+          data-aos-delay="300"
+          data-aos-duration="500"
           className={styles.frontend}
         >
           <h2 data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">
