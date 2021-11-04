@@ -20,6 +20,7 @@ $breakpoint-tablet: 768px;
 
     .navitem {
       display: flex;
+      color: #fff;
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -27,7 +28,7 @@ $breakpoint-tablet: 768px;
       padding: 0 30px;
       margin: auto;
       line-height: 0;
-      font-size: 30px;
+      font-size: 25px;
       font-weight: 600;
       font-family: "Nunito", sans-serif;
       // border-bottom: 1px solid black;
@@ -49,7 +50,10 @@ $breakpoint-tablet: 768px;
       // border-bottom: 1px solid #dc474f;
       transform: scale(1.2);
       transition: color, transform 250ms ease-out;
+      position: relative;
       span {
+        position: absolute;
+        bottom: -15px;
         display: block;
         font-size: 16px;
         transition: height 250ms ease-out;
@@ -121,17 +125,28 @@ $breakpoint-tablet: 768px;
       max-width: none;
       min-width: none;
       .navitem {
-        font-size: 30px;
+        font-size: 20px;
         border-bottom: none;
-        padding: 20px 0;
+        padding: 10px 0 25px 0;
         span {
-          display: none;
+          display: block;
+          position: relative;
+          font-size: 10px;
+          margin: 0;
+          bottom: -10px;
         }
       }
-      .navitem:hover,
+
+      .navitem:hover {
+      }
+
       .active {
         span {
-          display: none;
+          display: block;
+          position: relative;
+          font-size: 10px;
+          margin: 0;
+          bottom: -10px;
         }
       }
       .logo {

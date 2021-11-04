@@ -1,6 +1,7 @@
 import * as React from "react";
 import { TypeTool } from "../../interfaces";
 import styles from "./Tool.module.scss";
+import Image from "next/image";
 
 const Tool = ({
   imgSrc,
@@ -25,6 +26,7 @@ const Tool = ({
         rel="noopener noreferrer"
       >
         <img src={imgSrc} alt={imgAlt || "tools icon"} />
+        {/* <Image src={imgSrc} alt={imgAlt || "tools icon"} width={70} height={70}/> */}
         <span>{name}</span>
       </a>
     </div>
