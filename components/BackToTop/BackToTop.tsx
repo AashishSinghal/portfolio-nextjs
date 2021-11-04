@@ -1,4 +1,4 @@
-import { ArrowUpward } from "@material-ui/icons";
+import { ArrowUpward } from "@mui/icons-material";
 import * as React from "react";
 import styles from "./BackToTop.module.scss";
 
