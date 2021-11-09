@@ -4,7 +4,7 @@ import {
   LinkedIn,
   Mail,
   WhatsApp,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import * as React from "react";
 import styles from "./Socials.module.scss";
 

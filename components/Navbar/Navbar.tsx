@@ -1,8 +1,7 @@
 import * as React from "react";
-import $ from "jquery";
 import Link from "next/link";
 import styles from "./Navbar.module.scss";
-import { Build, Home, Info, Storage } from "@material-ui/icons";
+import { Build, Home, Info, Storage } from "@mui/icons-material";
 import Socials from "../Socials/Socials";
 import { NavBarConstants } from "../../utils/Constants";
 import { useRouter } from "next/router";
