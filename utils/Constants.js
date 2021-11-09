@@ -210,6 +210,19 @@ export const ProjectData = [
     ],
   },
   {
+    name: "Blog Website (Test POC)",
+    imgUrl: "/Assets/images/portfolio/blog.jpeg",
+    imgAlt: "Project Holder",
+    description:
+      "A Next.JS, Tailwind, TypeScript GraphQL and GraphCMS based Blogging application prototype POC, which i will modify thorougly and further add into my NextJS Portfolio website..",
+    demo: "https://cms-blog-seven.vercel.app/",
+    source: "https://github.com/AashishSinghal/cms_blog",
+    tags: [
+      { name: "NextJS-TypeScript", url: "" },
+      { name: "TailwindCSS", url: "" },
+    ],
+  },
+  {
     name: "Dev Resources",
     imgUrl: "/Assets/images/portfolio/devResources.jpeg",
     imgAlt: "Project Holder",
