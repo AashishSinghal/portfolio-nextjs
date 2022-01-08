@@ -1,6 +1,9 @@
 import * as React from "react";
 import Link from "next/link";
 import styles from "./Navbar.module.scss";
+import { RiHome6Line, RiInformationLine } from "react-icons/ri";
+import { MdOutlineWorkOutline } from "react-icons/md";
+import { VscTools } from "react-icons/vsc";
 import { Build, Home, Info, Storage } from "@mui/icons-material";
 import Socials from "../Socials/Socials";
 import { NavBarConstants } from "../../utils/Constants";
@@ -17,6 +20,15 @@ const Navbar = () => {
       return "null";
     }
   }
+  // function getIcon(name: any) {
+  //   return <name />;
+  // }
+  const icons = [
+    <RiHome6Line />,
+    <MdOutlineWorkOutline />,
+    <VscTools />,
+    <RiInformationLine />,
+  ];
 
   return (
     <header className={styles.header}>
@@ -37,12 +49,18 @@ const Navbar = () => {
                 nav.to
               )}`}
             >
-              {/* <Home fontSize="inherit" /> */}
-              {nav.icon}
+              {icons[i]}
               <span>{nav.span}</span>
             </div>
           </Link>
         ))}
+
+        {/* <Link href="#">
+          <div className={`${styles.home} ${styles.navitem}`}>
+            <RiHome6Line />
+            <span>Work</span>
+          </div>
+        </Link> */}
 
         <div className={`${styles.socials}`}>
           <Socials />

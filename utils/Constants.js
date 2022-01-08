@@ -31,28 +31,28 @@ export const NavBarConstants = {
       id: 1,
       to: "/",
       style: "styles.home",
-      icon: <i className="fi-rr-home"></i>,
+      icon: () => <RiHome6Line />,
       span: "Home",
     },
     {
       id: 2,
       to: "/Work",
       style: "styles.work",
-      icon: <i className="fi-rr-database"></i>,
+      icon: () => <RiHome6Line />,
       span: "Work",
     },
     {
       id: 3,
       to: "/Tools",
       style: "styles.tools",
-      icon: <i className="fi-rr-magic-wand"></i>,
+      icon: () => <RiHome6Line />,
       span: "Tools",
     },
     {
       id: 4,
       to: "/About",
       style: "styles.about",
-      icon: <i className="fi-rr-form"></i>,
+      icon: () => <RiHome6Line />,
       span: "About",
     },
   ],
@@ -355,7 +355,7 @@ export const ProjectData = [
 
 export const WorkExpData = [
   {
-    title: "Work Item Heading",
+    title: "Full-Stack Developer @ Celebal Technologies",
     shortDescription:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque minus quidem saepe repellat rerum optio obcaecati! Repudiandae, vero numquam neque eius ea reprehenderit quod! Nam.",
     longDescription:
