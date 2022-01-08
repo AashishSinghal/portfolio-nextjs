@@ -38,16 +38,16 @@ const Project = ({
           </div>
         </div>
         <div className={styles.cta}>
-          <Link href={demoUrl}>
+          <a target="_blank" href={demoUrl} rel="noopener noreferrer">
             <button>
               Demo<i className="fi-rr-arrow-small-right"></i>
             </button>
-          </Link>
-          <Link href={sourceUrl}>
+          </a>
+          <a target="_blank" href={sourceUrl} rel="noopener noreferrer">
             <button>
               Source<i className="fi-rr-arrow-small-right"></i>
             </button>
-          </Link>
+          </a>
         </div>
       </div>
     </div>
