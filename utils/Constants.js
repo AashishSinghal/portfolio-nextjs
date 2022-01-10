@@ -197,6 +197,20 @@ export const ToolsData = {
 
 export const ProjectData = [
   {
+    name: "Alpha Exchange - App",
+    imgUrl: "/Assets/images/portfolio/alphaexchange.jpeg",
+    imgAlt: "Alpha Exnchage Platform web img",
+    description:
+      "A Cryptocurrency (Ethereum) Exchange platform which is made using React and Solidity Smart contract using Hardhat with TailwindCSS and Vite.",
+    demo: "https://alpha-exchange.netlify.app/",
+    source: "https://github.com/AashishSinghal/alpha_web3.0",
+    tags: [
+      { name: "React & TS", url: "" },
+      { name: "Tailwind", url: "" },
+      { name: "Solidity", url: "" },
+    ],
+  },
+  {
     name: "CryptoWatch - App",
     imgUrl: "/Assets/images/portfolio/cryptoApp.jpeg",
     imgAlt: "Project Holder",
