@@ -1,6 +1,6 @@
 import type { GetServerSideProps, NextPage } from "next";
 import {
-  // AboutMe,
+  AboutMe,
   // AboutRotW,
   // Achievements,
   // Blog,
@@ -17,7 +17,7 @@ import {
   // Projects,
   // Resume,
   // Skills,
-  // WorkExperience,
+  WorkExperience,
 } from "sections";
 // import { getArticles, getDribbbleShots, getInstagramMedia } from "services";
 import type { Article, DribbbleShot, InstagramMedia } from "types/Sections";
@@ -43,32 +43,32 @@ type Props = {
 const Home: NextPage<Props> = ({ articles, dribbbleShots, instagramMedia }) => (
   <div className="w-5/6 mx-auto md:container grid gap-24">
     <Header />
-    {/* 
+    
     <AboutMe />
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
       <WorkExperience />
-      <Education />
+      {/* <Education /> */}
     </div>
 
-    <Skills />
-    <Projects />
-    <Blog articles={articles} />
-    <Languages />
+    {/* <Skills /> */}
+    {/* <Projects /> */}
+    {/* <Blog articles={articles} /> */}
+    {/* <Languages /> */}
 
     <div className="grid lg:grid-cols-3 gap-12">
-      <Achievements />
-      <Certifications />
-      <Philantrophy />
+      {/* <Achievements /> */}
+      {/* <Certifications /> */}
+      {/* <Philantrophy /> */}
     </div>
 
-    <Photography instagramMedia={instagramMedia} />
-    <Music />
-    <Designs dribbbleShots={dribbbleShots} />
-    <Resume />
-    <Contact />
-    <AboutRotW />
-    <Footer /> */}
+    {/* <Photography instagramMedia={instagramMedia} /> */}
+    {/* <Music /> */}
+    {/* <Designs dribbbleShots={dribbbleShots} /> */}
+    {/* <Resume /> */}
+    {/* <Contact /> */}
+    {/* <AboutRotW /> */}
+    {/* <Footer /> */}
   </div>
 );
 

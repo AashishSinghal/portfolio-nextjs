@@ -35,25 +35,25 @@ const profiles: Profile[] = [
     icon: FaGithubAlt,
     link: links.github,
     className: "bg-[#211f1f]",
-  },
-  {
-    title: "Dribbble",
-    icon: FaDribbble,
-    link: links.dribbble,
-    className: "bg-[#ea4c89]",
-  },
-  {
-    title: "DEV Community",
-    icon: FaDev,
-    link: links.dev,
-    className: "bg-[#0a0a0a]",
-  },
-  {
-    title: "Facebook",
-    icon: FaFacebookF,
-    link: links.facebook,
-    className: "bg-[#3b5998]",
-  },
+  }
+  // {
+  //   title: "Dribbble",
+  //   icon: FaDribbble,
+  //   link: links.dribbble,
+  //   className: "bg-[#ea4c89]",
+  // },
+  // {
+  //   title: "DEV Community",
+  //   icon: FaDev,
+  //   link: links.dev,
+  //   className: "bg-[#0a0a0a]",
+  // },
+  // {
+  //   title: "Facebook",
+  //   icon: FaFacebookF,
+  //   link: links.facebook,
+  //   className: "bg-[#3b5998]",
+  // },
 ];
 
 const Profiles: React.FC = () => (
