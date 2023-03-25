@@ -6,8 +6,8 @@ const links = {
     // dribbble: "https://Singhal.xyz/dribbble",
     // dev: "https://Singhal.xyz/dev",
     // facebook: "https://Singhal.xyz/facebook",
-    // resume: "https://Singhal.xyz/resume-pdf",
-    // repository: "https://github.com/aashishsinghal",
+    resume: "https://drive.google.com/file/d/1mlN4SjARu_9Yo2E48oLdY0m2N4_GC9m-/view?usp=sharing",
+    repository: "https://github.com/aashishsinghal",
   };
   
   export default links;

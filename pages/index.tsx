@@ -1,7 +1,7 @@
 import type { GetServerSideProps, NextPage } from "next";
 import {
   AboutMe,
-  // AboutRotW,
+  AboutRotW,
   // Achievements,
   // Blog,
   // Certifications,
@@ -10,12 +10,12 @@ import {
   Education,
   Footer,
   Header,
-  // Languages,
+  Languages,
   Music,
   // Philantrophy,
   // Photography,
   Projects,
-  // Resume,
+  Resume,
   Skills,
   WorkExperience,
 } from "sections";
@@ -29,7 +29,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const articles = {};
   const dribbbleShots = {};
-  const instagramMedia = {};  
+  const instagramMedia = {};
 
   return { props: { articles, dribbbleShots, instagramMedia } };
 };
@@ -43,7 +43,7 @@ type Props = {
 const Home: NextPage<Props> = ({ articles, dribbbleShots, instagramMedia }) => (
   <div className="w-5/6 mx-auto md:container grid gap-24">
     <Header />
-    
+
     <AboutMe />
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -54,7 +54,7 @@ const Home: NextPage<Props> = ({ articles, dribbbleShots, instagramMedia }) => (
     <Skills />
     <Projects />
     {/* <Blog articles={articles} /> */}
-    {/* <Languages /> */}
+    <Languages />
 
     <div className="grid lg:grid-cols-3 gap-12">
       {/* <Achievements /> */}
@@ -65,9 +65,9 @@ const Home: NextPage<Props> = ({ articles, dribbbleShots, instagramMedia }) => (
     {/* <Photography instagramMedia={instagramMedia} /> */}
     <Music />
     {/* <Designs dribbbleShots={dribbbleShots} /> */}
-    {/* <Resume /> */}
+    <Resume />
     <Contact />
-    {/* <AboutRotW /> */}
+    <AboutRotW />
     <Footer />
   </div>
 );
