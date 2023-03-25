@@ -1,4 +1,5 @@
 import Button from "components/Button";
+import Image from "next/image";
 import { FaSpotify } from "react-icons/fa";
 import { Section } from "types/Sections";
 import { getSectionHeading, openURLInNewTab } from "utils";
@@ -20,6 +21,14 @@ const Music = () => (
           A dynamic playlist of what&apos;s on my daily roster of music.
         </p>
 
+        <p className="font-bold">You can also scan the spotify code for <br/> the playlist using the spotify app!</p>
+
+        <div
+          className="flex flex-col gap-2 w-[210px] h-[260px] relative"
+          >
+          <Image src="/images/music/spotify.png" fill style={{objectFit: "cover", margin: 0}} alt="spotify scan code" />
+        </div>
+
         <Button
           icon={FaSpotify}
           className="mt-8 text-sm"
@@ -32,9 +41,9 @@ const Music = () => (
       <iframe
         src="https://open.spotify.com/embed/playlist/60PFTTXPaygaH9H2QitCbv"
         width="100%"
-        height="512"
+        height="675"
         allow="encrypted-media"
-        className="hidden md:block rounded col-span-2"
+        className="md:block rounded col-span-2"
       />
     </div>
   </div>
