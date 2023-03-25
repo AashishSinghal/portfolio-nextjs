@@ -5,13 +5,13 @@ import {
   // Achievements,
   // Blog,
   // Certifications,
-  // Contact,
+  Contact,
   // Designs,
   Education,
-  // Footer,
+  Footer,
   Header,
   // Languages,
-  // Music,
+  Music,
   // Philantrophy,
   // Photography,
   Projects,
@@ -63,12 +63,12 @@ const Home: NextPage<Props> = ({ articles, dribbbleShots, instagramMedia }) => (
     </div>
 
     {/* <Photography instagramMedia={instagramMedia} /> */}
-    {/* <Music /> */}
+    <Music />
     {/* <Designs dribbbleShots={dribbbleShots} /> */}
     {/* <Resume /> */}
-    {/* <Contact /> */}
+    <Contact />
     {/* <AboutRotW /> */}
-    {/* <Footer /> */}
+    <Footer />
   </div>
 );
 
