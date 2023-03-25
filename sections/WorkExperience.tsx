@@ -23,7 +23,7 @@ type WorkExperience = {
 const workExperiences: WorkExperience[] = [
   {
     id: 1,
-    logo: "/images/work-experience/nutanix.svg",
+    logo: "/images/work-experience/nutanix.png",
     name: "Nutanix Technologies Pvt. Ltd.",
     period: { start: "Jan 22", end: "Present" },
     position: "Full-Stack Developer (Contract)",
