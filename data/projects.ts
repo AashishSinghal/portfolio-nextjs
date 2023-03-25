@@ -13,44 +13,56 @@ const projectsList: Project[] = [
       github: "https://github.com/AashishSinghal/alpha_web3.0",
     },
   },
+  {
+    id: 2,
+    image: "/images/projects/cryptoApp.png",
+    name: "CryptoWatch - App",
+    summary:
+    "A Cryptocurrency Watching app which is made using React and Redux-toolkit with Rapid API & ANT-Design.",
+    tags: ["opensource", "react", "typescript", "tailwindcss", "redux-toolkit"],
+    link: {
+      web: "https://crypto-app-via-rapid-api.netlify.app",
+      github: "https://github.com/AashishSinghal/crypto-app",
+    },
+  },
+  {
+    id: 3,
+    image: "/images/projects/blog.png",
+    name: "Blog Website (POC)",
+    summary:
+    "A Next.JS, Tailwind, TypeScript GraphQL and GraphCMS based Blogging application prototype POC, which i will modify thorougly and further add into my NextJS Portfolio website..",
+    tags: ["opensource", "nextjs", "typescript", "tailwindcss", "graph", "cms"],
+    link: {
+      web: "https://cms-blog-seven.vercel.app",
+      github: "https://github.com/AashishSinghal/cms_blog",
+    },
+  },
+  {
+    id: 4,
+    image: "/images/projects/tla.png",
+    name: "TaxLawAdvisers",
+    summary:
+    "A Next.JS, Tailwind, TypeScript, Sanity and SanityCMS based Blogging application, which i will modify thorougly and further add into my NextJS Portfolio website..",
+    tags: ["opensource", "nextjs", "typescript", "tailwindcss", "sanity", "sanitycms"],
+    link: {
+      web: "https://taxlawadvisers.vercel.app",
+      github: "https://github.com/AashishSinghal/taxlawadvisers",
+    },
+  },
+  {
+    id: 5,
+    image: "/images/projects/searchUser.png",
+    name: "Github User Search",
+    summary:
+    "A Github User Search portal made with React, Fusion Charts, Github API to let user a more descriptive view of a Github Profile.",
+    tags: ["opensource", "webdev", "rapidapi", "react", "tailwindcss"],
+    link: {
+      web: "https://githubusersearch-app.netlify.app",
+      github: "https://github.com/AashishSinghal/search-users",
+    },
+  },
   // {
-  //   id: 2,
-  //   image: "/images/projects/time-enna.jpg",
-  //   name: "Time Enna",
-  //   summary:
-  //     "A fun experiement to understand the ache that is handling Dates and Time Zones on the frontend. Allows you to check the current time of multiple timezones at once, with a unique UI experience.",
-  //   tags: ["opensource", "react", "dayjs", "tailwindcss"],
-  //   link: {
-  //     web: "https://timeenna.com",
-  //     github: "https://github.com/AmruthPillai/Time-Enna",
-  //   },
-  // },
-  // {
-  //   id: 3,
-  //   image: "/images/projects/be-thrifty-today.jpg",
-  //   name: "Be Thrifty Today",
-  //   summary:
-  //     "Be Thrifty Today is a simple and secure money management app that helps you track your incomes and expenses.",
-  //   tags: ["opensource", "appdev", "flutter", "firebase", "android"],
-  //   link: {
-  //     web: "https://play.google.com/store/apps/details?id=today.bethrifty.app",
-  //     github: "https://github.com/AmruthPillai/BeThriftyToday",
-  //   },
-  // },
-  // {
-  //   id: 4,
-  //   image: "/images/projects/all-the-words-that-i-know.jpg",
-  //   name: "All The Words That I Know",
-  //   summary:
-  //     "A simple game to test your vocabulary and your memory, with a little bit of fun. Let's see what are all the words that you know?",
-  //   tags: ["opensource", "webdev", "gamedev", "react", "tailwindcss"],
-  //   link: {
-  //     web: "https://ap-all-the-words-that-i-know.web.app/",
-  //     github: "https://github.com/AmruthPillai/All-The-Words-That-I-Know",
-  //   },
-  // },
-  // {
-  //   id: 5,
+  //   id: 6,
   //   image: "/images/projects/mutual-fund-calculator.jpg",
   //   name: "Mutual Fund Calculator",
   //   summary:
@@ -61,7 +73,7 @@ const projectsList: Project[] = [
   //   },
   // },
   // {
-  //   id: 6,
+  //   id: 7,
   //   image: "/images/projects/madrasi-bride.jpg",
   //   name: "Madrasi Bride",
   //   summary:
