@@ -14,7 +14,7 @@ import {
   // Music,
   // Philantrophy,
   // Photography,
-  // Projects,
+  Projects,
   // Resume,
   Skills,
   WorkExperience,
@@ -52,7 +52,7 @@ const Home: NextPage<Props> = ({ articles, dribbbleShots, instagramMedia }) => (
     </div>
 
     <Skills />
-    {/* <Projects /> */}
+    <Projects />
     {/* <Blog articles={articles} /> */}
     {/* <Languages /> */}
 
