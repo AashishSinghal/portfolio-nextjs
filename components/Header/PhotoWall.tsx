@@ -36,10 +36,10 @@ const PhotoWall: React.FC<Props> = ({ size = 512 }) => {
           <Image
             priority
             src={photo}
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: "cover" }}
             className={clsx({ "rounded-l": index === 0, "rounded-r": index === photos.length - 1 })}
-            alt="Amruth Pillai"
+            alt="Aashish Singhal"
           />
         </div>
       ))}
