@@ -7,7 +7,7 @@ import {
   // Certifications,
   // Contact,
   // Designs,
-  // Education,
+  Education,
   // Footer,
   Header,
   // Languages,
@@ -16,7 +16,7 @@ import {
   // Photography,
   // Projects,
   // Resume,
-  // Skills,
+  Skills,
   WorkExperience,
 } from "sections";
 // import { getArticles, getDribbbleShots, getInstagramMedia } from "services";
@@ -48,10 +48,10 @@ const Home: NextPage<Props> = ({ articles, dribbbleShots, instagramMedia }) => (
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
       <WorkExperience />
-      {/* <Education /> */}
+      <Education />
     </div>
 
-    {/* <Skills /> */}
+    <Skills />
     {/* <Projects /> */}
     {/* <Blog articles={articles} /> */}
     {/* <Languages /> */}

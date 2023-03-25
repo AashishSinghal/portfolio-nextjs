@@ -13,6 +13,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <>
       <Head>
         <title>Aashish Singhal - Developer | Designer | Explorer</title>
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
 
       <ThemeProvider>

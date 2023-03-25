@@ -8,7 +8,7 @@ const AboutMe = () => (
 
     <div className="grid md:grid-cols-4 gap-12">
       <div className="relative col-span-1 hidden md:block">
-        <Image src="/images/about-me/selfie-boy.svg" layout="fill" alt="Selfie Boy" />
+        <Image src="/images/about-me/selfie-boy.svg" fill alt="Selfie Boy" />
       </div>
 
       <div className="col-span-3 max-w-full prose prose-sm md:prose-base prose-neutral dark:prose-invert">
@@ -16,27 +16,17 @@ const AboutMe = () => (
 
         <p>
           I&apos;m aashish singhal, and as you might have already read, I&apos;m a designer, developer, sometimes a Photographer and a
-          Wonderer. This website was made to showcase all of what I can do and plan to do. Don&apos;t judge my writing
-          based on this section though, this is by far my shoddiest work yet.
+          Wonderer. This website was made to showcase all of what I can do and plan to do.
         </p>
 
         <p>
-          I got into design because I consider myself a pseudo-perfectionist, if that&apos;s even a word? As in, I hate
-          to see things &apos;not look good&apos;. So I set out on a journey to make products that people use that
-          &apos;look great&apos;, and I&apos;m forever on that path.
+          I got into design because I used to sketch and draw as a kid, and used to creat handi crafts. So I started to learn digital design and illustration to broaden my capabilities.
         </p>
 
         <p>
           I got into development because computers have always fascinated me.<code>int i = 10;</code> creates an integer
           of value 10? LIKE, WOW! But seriously, just seeing code getting converted to things we use regularly, like
           Facebook or Amazon, was no less than magic to me and that&apos;s where my quest to invent began.
-        </p>
-
-        <p>
-          I got into photography for a very philosophical reason and a very weird one at that. To me, photography is no
-          less than time-travel. When I look at a photo, I am instantly transported to that moment in time when I shot
-          it, that memory takes over. It&apos;s a beautiful art form to express creativity as well, and it&apos;s been a
-          passion of mine since my childhood.
         </p>
 
         <p>

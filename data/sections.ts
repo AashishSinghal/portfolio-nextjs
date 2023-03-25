@@ -25,38 +25,38 @@ const sectionsList: SectionMap = {
     icon: FaDev,
     title: "Projects",
   },
-  [Section.Blog]: {
-    icon: MdBook,
-    title: "Blog",
-  },
+  // [Section.Blog]: {
+  //   icon: MdBook,
+  //   title: "Blog",
+  // },
   [Section.Languages]: {
     icon: FaSignLanguage,
     title: "Languages",
   },
-  [Section.Achievements]: {
-    icon: FaAward,
-    title: "Achievements",
-  },
-  [Section.Certifications]: {
-    icon: AiFillSafetyCertificate,
-    title: "Certifications",
-  },
-  [Section.Philantrophy]: {
-    icon: BiDonateHeart,
-    title: "Philantrophy",
-  },
-  [Section.Photography]: {
-    icon: MdCamera,
-    title: "Photography",
-  },
+  // [Section.Achievements]: {
+  //   icon: FaAward,
+  //   title: "Achievements",
+  // },
+  // [Section.Certifications]: {
+  //   icon: AiFillSafetyCertificate,
+  //   title: "Certifications",
+  // },
+  // [Section.Philantrophy]: {
+  //   icon: BiDonateHeart,
+  //   title: "Philantrophy",
+  // },
+  // [Section.Photography]: {
+  //   icon: MdCamera,
+  //   title: "Photography",
+  // },
   [Section.Music]: {
     icon: MdMusicNote,
     title: "Music",
   },
-  [Section.Designs]: {
-    icon: FaPaintBrush,
-    title: "Designs",
-  },
+  // [Section.Designs]: {
+  //   icon: FaPaintBrush,
+  //   title: "Designs",
+  // },
   [Section.Resume]: {
     icon: FaFilePdf,
     title: "Resume",

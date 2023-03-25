@@ -7,7 +7,7 @@ import { MdMoreHoriz } from "react-icons/md";
 import { Section } from "types/Sections";
 import { getSectionHeading } from "utils";
 
-const DISPLAY_COUNT = 3;
+const DISPLAY_COUNT = 4;
 
 type WorkExperience = {
   id: number;
@@ -23,40 +23,40 @@ type WorkExperience = {
 const workExperiences: WorkExperience[] = [
   {
     id: 1,
-    logo: "/images/work-experience/elara.svg",
-    name: "Elara Digital GmbH",
-    period: { start: "Jul 22", end: "Present" },
-    position: "Senior Frontend Developer",
-    location: "Berlin, Germany",
+    logo: "/images/work-experience/nutanix.svg",
+    name: "Nutanix Technologies Pvt. Ltd.",
+    period: { start: "Jan 22", end: "Present" },
+    position: "Full-Stack Developer (Contract)",
+    location: "Bangalore, Karnataka, India (Hybrid)",
     summary: "",
-    keyFocus: ["React", "Tailwind CSS", "GraphQL (Hasura)", "Building Reusable Design Components"],
+    keyFocus: ["React", "NodeJs", "GraphQL (Apollo)", "JAVA Sprint Boot", "Building Reusable Components", "Building Features and Cosuming APIs",],
   },
   {
     id: 2,
-    logo: "/images/work-experience/twilio.svg",
-    name: "Twilio Inc.",
-    period: { start: "Jan 22", end: "Jun 22" },
-    position: "Senior Frontend Developer",
-    location: "Berlin, Germany",
+    logo: "/images/work-experience/celebal.png",
+    name: "Celebal Technologies Pvt. Ltd.",
+    period: { start: "Jan 2021", end: "Dec 2021" },
+    position: "Associate Full-Stack Developer",
+    location: "Jaipur, Rajasthan, India (Hybrid)",
     summary:
-      "As part of the IoT Console team, my roles and responsibilities were to build, test and maintain the console dashboard for IoT Devices that are purchased/rented from Twilio.",
-    keyFocus: ["React", "Cypress (Automation Testing)", "Scala", "Process Management", "In-Depth Documentation"],
+      "As part of the Web Development team, i used to create Full stack application using MERN stack with Typescript and develop business applications for MS Teams. I used to mentor interns and create a learning regime for them to follow. used to conduct interview for React interns.",
+    keyFocus: ["React", "JS & TS", "NodeJs", "Mentoring", "MS Teams UI Library"],
   },
   {
     id: 3,
-    logo: "/images/work-experience/grover.svg",
-    name: "Grover Group GmbH",
-    period: { start: "Apr 21", end: "Jan 22" },
-    position: "Frontend Developer",
-    location: "Berlin, Germany",
+    logo: "/images/work-experience/sfity.png",
+    name: "SFITY INDIA LLP",
+    period: { start: "Dec 2020", end: "Jan 2021" },
+    position: "ReactJS Developer (Intern)",
+    location: "Jaipur, Rajasthan, India (Remote)",
     summary:
-      "As part of the Dashboard Squad, I was tasked to build user engagement features, tackle user support issues and incidents faced across the e-commerce platform, and design/build pages that were used for marketing new and exciting product launches.",
+      "As part of the development team, i was charged with developing the web pages based on the provided UI designs and incorporate animations, also design some views based on the client requirements",
     keyFocus: [
-      "React/React Native",
-      "NestJS",
-      "GSAP Animation Library",
-      "Agile Sprint Planning",
-      "Incident Management",
+      "React",
+      "NextJS",
+      "JavaScript",
+      "HTML & CSS",
+      "AOS Library",
     ],
   },
   {
@@ -92,7 +92,7 @@ const WorkExperience: React.FC<Props> = ({ data, isFirst, isLast }) => (
 
     <div className="mt-5 ml-8 grid gap-2 pb-2">
       <div className="relative w-[100px] h-[40px]">
-        <Image src={data.logo} layout="fill" objectFit="contain" alt={data.name} />
+        <Image src={data.logo} fill style={{ objectFit: "contain" }} alt={data.name} />
       </div>
 
       <div>

@@ -16,7 +16,7 @@ const Ingredients = () => (
           .typeString("<span class='pl-5'></span>")
           .typeString("<span class='text-red-500'>Designer</span>, ")
           .typeString("<span class='text-red-500'>Developer</span>, ")
-          .typeString("<span class='text-red-500'>Photographer</span>, ")
+          .typeString("<span class='text-red-500'>Photographer-ish</span>, ")
           .typeString("<span class='text-red-500'>Writer</span>,<br>")
           .typeString("<span class='pl-5'></span>")
           .typeString("<span class='text-red-500'>Sugar</span>, ")
