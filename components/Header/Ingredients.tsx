@@ -8,7 +8,7 @@ const Ingredients = () => (
         typewriter
           .pauseFor(2000)
           .typeString("<span class='text-blue-500'>const </span>")
-          .typeString("amruth: Array<")
+          .typeString("aashish: Array<")
           .typeString("<span class='text-green-500'>Ingredient</span>")
           .typeString("> ")
           .typeString("<span class='text-blue-500'>= </span>")

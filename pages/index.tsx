@@ -19,13 +19,17 @@ import {
   // Skills,
   // WorkExperience,
 } from "sections";
-import { getArticles, getDribbbleShots, getInstagramMedia } from "services";
+// import { getArticles, getDribbbleShots, getInstagramMedia } from "services";
 import type { Article, DribbbleShot, InstagramMedia } from "types/Sections";
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const articles = await getArticles();
-  const dribbbleShots = await getDribbbleShots();
-  const instagramMedia = await getInstagramMedia();
+  // const articles = await getArticles();
+  // const dribbbleShots = await getDribbbleShots();
+  // const instagramMedia = await getInstagramMedia();
+
+  const articles = {};
+  const dribbbleShots = {};
+  const instagramMedia = {};  
 
   return { props: { articles, dribbbleShots, instagramMedia } };
 };
