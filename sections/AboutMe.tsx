@@ -20,7 +20,7 @@ const AboutMe = () => (
         </p>
 
         <p>
-          I got into design because I used to sketch and draw as a kid, and used to creat handi crafts. So I started to learn digital design and illustration to broaden my capabilities.
+          I got into design because I used to sketch and draw as a kid, and used to create handi-crafts in school. So I started to learn digital design and illustration to broaden my capabilities.
         </p>
 
         <p>

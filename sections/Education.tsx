@@ -36,7 +36,7 @@ const education: Education[] = [
     degree: "High School",
     study: "CBSE",
     location: "Kota, Rajasthan, India",
-    period: { start: "20011", end: "2016" },
+    period: { start: "2011", end: "2016" },
   },
   {
     id: 4,
