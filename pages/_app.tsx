@@ -4,7 +4,7 @@ import "styles/globals.css";
 
 import Navigation from "components/Navigation";
 import NoSSR from "components/NoSSR";
-import ThemeProvider from "contexts/ThemeProvider"
+import ThemeProvider from "contexts/ThemeProvider";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 
@@ -14,6 +14,13 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Head>
         <title>Aashish Singhal - Developer | Designer | Explorer</title>
         <link rel="shortcut icon" href="/favicon.ico" />
+        <meta property="og:title" content="Aashish Singhal - Portfolio" />
+        <meta property="og:image" content="/meta-ss.png" />
+        <meta
+          property="og:description"
+          content="This is a portfolio website developed by Aashish, to showcase projects, interests etc."
+        />
+        <meta property="og:url" content="https://aashishsinghal.com/" />
       </Head>
 
       <ThemeProvider>
