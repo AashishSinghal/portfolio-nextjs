@@ -16,9 +16,7 @@ const Music = () => (
         </p>
 
         <p>
-          Also, I&apos;ve been known for my good taste in music and I&apos;ve always wanted to share the latest and
-          greatest hits through an easy medium, so here&apos;s a Spotify Playlist I&apos;ve created:
-          A dynamic playlist of what&apos;s on my daily roster of music.
+          Also, I&apos;ve been known for my good taste in music and I&apos;ve always wanted to share the music i like through an easy medium, so here&apos;s a Spotify Playlist I&apos;ve created...
         </p>
 
         <p className="font-bold">You can also scan the spotify code for <br/> the playlist using the spotify app!</p>
