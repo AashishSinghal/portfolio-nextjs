@@ -2,6 +2,18 @@ import type { Project } from "types/Sections";
 
 const projectsList: Project[] = [
   {
+    id: 10,
+    image: "/images/projects/aiDetect.png",
+    name: "AI Detect",
+    summary:
+      "A Cryptocurrency (Ethereum) Exchange platform which is made using React and Solidity Smart contract using Hardhat with TailwindCSS and Vite.",
+    tags: ["tensorflowjs", "ai", "ml", "opensource", "fullstack", "react", "nextjs", "tailwindcss"],
+    link: {
+      web: "https://ai-detect.aashishsinghal.com",
+      github: "https://github.com/AashishSinghal/ai-detect",
+    },
+  },
+  {
     id: 1,
     image: "/images/projects/alphaexchange.png",
     name: "Alpha Exchange - App",
@@ -99,8 +111,7 @@ const projectsList: Project[] = [
     id: 9,
     image: "/images/projects/FlappyBird.png",
     name: "Flappy Bird Game",
-    summary:
-    "Flppy Bird game on web using Vanilla JavaScript.",
+    summary: "Flppy Bird game on web using Vanilla JavaScript.",
     tags: ["opensource", "html", "css", "javascript", "games"],
     link: {
       web: "https://flabby-bird-using-js.netlify.app/",
