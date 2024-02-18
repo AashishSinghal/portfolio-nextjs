@@ -6,7 +6,7 @@ const projectsList: Project[] = [
     image: "/images/projects/aiDetect.png",
     name: "AI Detect",
     summary:
-      "A Cryptocurrency (Ethereum) Exchange platform which is made using React and Solidity Smart contract using Hardhat with TailwindCSS and Vite.",
+      "An AI platform which can detect what's on the video feed and let's user record video clips or screenshots, made with TensorFlowJS",
     tags: ["tensorflowjs", "ai", "ml", "opensource", "fullstack", "react", "nextjs", "tailwindcss"],
     link: {
       web: "https://ai-detect.aashishsinghal.com",
