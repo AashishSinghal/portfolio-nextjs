@@ -1,9 +1,9 @@
-import type { Project } from "types/Sections";
+import type { Project } from "@/types/sections"
 
 const projectsList: Project[] = [
   {
     id: 10,
-    image: "/images/projects/aiDetect.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/aiDetect.png-zU5TcaxBUCAgbHi8zJviaOATHUk60u.jpeg",
     name: "AI Detect",
     summary:
       "An AI platform which can detect what's on the video feed and let's user record video clips or screenshots, made with TensorFlowJS",
@@ -15,7 +15,7 @@ const projectsList: Project[] = [
   },
   {
     id: 1,
-    image: "/images/projects/alphaexchange.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/alphaexchange-Q0LS6M1okIgaN6UMan0wcIuUePARY1.png",
     name: "Alpha Exchange - App",
     summary:
       "A Cryptocurrency (Ethereum) Exchange platform which is made using React and Solidity Smart contract using Hardhat with TailwindCSS and Vite.",
@@ -27,7 +27,7 @@ const projectsList: Project[] = [
   },
   {
     id: 2,
-    image: "/images/projects/cryptoApp.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cryptoApp-fiOBG8FqtE1SLcbbfHYcLq8AhUZs9h.png",
     name: "CryptoWatch - App",
     summary: "A Cryptocurrency Watching app which is made using React and Redux-toolkit with Rapid API & ANT-Design.",
     tags: ["opensource", "react", "typescript", "tailwindcss", "redux-toolkit"],
@@ -38,7 +38,7 @@ const projectsList: Project[] = [
   },
   {
     id: 3,
-    image: "/images/projects/blog.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/blog-4Kl5pfuF3VXL2p19Lq6WvJAVj2kcyu.png",
     name: "Blog Website (POC)",
     summary:
       "A Next.JS, Tailwind, TypeScript GraphQL and GraphCMS based Blogging application prototype POC, which i will modify thorougly and further add into my NextJS Portfolio website..",
@@ -50,8 +50,8 @@ const projectsList: Project[] = [
   },
   {
     id: 4,
-    image: "/images/projects/tla.png",
-    name: "TaxLawAdvisers",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/devResources-nCe372TY1dOs7n0VGkDWUTUJgLPmyK.png",
+    name: "Dev Resources",
     summary:
       "A Next.JS, Tailwind, TypeScript, Sanity and SanityCMS based Blogging application, which i will modify thorougly and further add into my NextJS Portfolio website..",
     tags: ["opensource", "nextjs", "typescript", "tailwindcss", "sanity", "sanitycms"],
@@ -62,8 +62,8 @@ const projectsList: Project[] = [
   },
   {
     id: 5,
-    image: "/images/projects/searchUser.png",
-    name: "Github User Search",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Expense-Tracker-lQrtcMYAcarKeOkgI4lPswNUyhioz9.png",
+    name: "Expense Tracker",
     summary:
       "A Github User Search portal made with React, Fusion Charts, Github API to let user a more descriptive view of a Github Profile.",
     tags: ["opensource", "webdev", "rapidapi", "react", "tailwindcss"],
@@ -74,19 +74,19 @@ const projectsList: Project[] = [
   },
   {
     id: 6,
-    image: "/images/projects/screen.png",
-    name: "Screen Recorder - ElectronJS",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fileEncryptor-3dkRFqpqBxKse9LejFm7ufZstTA2xg.png",
+    name: "File Encryptor - ElectronJS",
     summary:
-      "An ElectronJS, Desktop app for Screen recording, it uses react as the front-end . You can test it out by downloading the executable fro demo link.",
-    tags: ["opensource", "webdev", "electron", "react", "desktop-application"],
+      "An ElectronJS, Desktop app for File Encryption Using AES Encryption. You can test it out by downloading the executable fro demo link.",
+    tags: ["opensource", "AES", "javascript", "electronjs", "react"],
     link: {
-      web: "https://drive.google.com/file/d/1LmrsgOv_B_xUf2GCGE7ZHf6OSDjZzP60/view?usp=sharing",
-      github: "https://github.com/AashishSinghal/electron-screen-recorder",
+      web: "https://drive.google.com/file/d/1gwp8YrGQ85HXnRWJfP1RHAGB7qmzmyXT/view?usp=sharing",
+      github: "https://github.com/AashishSinghal/file-encryptor",
     },
   },
   {
     id: 7,
-    image: "/images/projects/preloader.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/preloader-H0EtnnYX6bbeC3NDra5EJ388eK1S67.png",
     name: "Animated Preloader",
     summary: "A CSS only Animated Preloader for the Company app where i did a small internship.",
     tags: ["opensource", "animation", "html", "css"],
@@ -97,19 +97,19 @@ const projectsList: Project[] = [
   },
   {
     id: 8,
-    image: "/images/projects/fileEncryptor.png",
-    name: "File Encryptor - ElectronJS",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/adminPanel-bX4dEKEBcsKr7CfWf39duCuj6k3vbY.png",
+    name: "Admin Panel",
     summary:
-      "A ElectronJS, Desktop app for File Encryption Using AES Encryption. You can test it out by downloading the executable fro demo link.",
-    tags: ["opensource", "AES", "javascript", "electronjs", "react"],
+      "A ElectronJS, Desktop app for Screen recording, it uses react as the front-end . You can test it out by downloading the executable fro demo link.",
+    tags: ["opensource", "webdev", "electron", "react", "desktop-application"],
     link: {
-      web: "https://drive.google.com/file/d/1gwp8YrGQ85HXnRWJfP1RHAGB7qmzmyXT/view?usp=sharing",
-      github: "https://github.com/AashishSinghal/file-encryptor",
+      web: "https://drive.google.com/file/d/1LmrsgOv_B_xUf2GCGE7ZHf6OSDjZzP60/view?usp=sharing",
+      github: "https://github.com/AashishSinghal/electron-screen-recorder",
     },
   },
   {
     id: 9,
-    image: "/images/projects/FlappyBird.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FlappyBird-7lFXc5iGfUPhKym0Eu0EwPd4MJoolt.png",
     name: "Flappy Bird Game",
     summary: "Flppy Bird game on web using Vanilla JavaScript.",
     tags: ["opensource", "html", "css", "javascript", "games"],
@@ -118,25 +118,63 @@ const projectsList: Project[] = [
       github: "https://github.com/AashishSinghal/FlappyBird-in-JS",
     },
   },
-  // {
-  //   id: 6,
-  //   image: "/images/projects/mutual-fund-calculator.jpg",
-  //   name: "Mutual Fund Calculator",
-  //   summary:
-  //     "A mutual fund investment calculator which allows you to track your SIP and Lumpsum investments and using real historical NAV data from AMFI.",
-  //   tags: ["opensource", "fintech", "scraping", "python", "angular"],
-  //   link: {
-  //     github: "https://github.com/AmruthPillai/MutualFund-Investment-Calculator",
-  //   },
-  // },
-  // {
-  //   id: 7,
-  //   image: "/images/projects/madrasi-bride.jpg",
-  //   name: "Madrasi Bride",
-  //   summary:
-  //     "A wedding blog/magazine focused on making the bride and groom's day as memorable as possible by sourcing the best of content.",
-  //   tags: ["wordpress", "webdev", "php", "mysql", "seo"],
-  // },
-];
+  {
+    id: 11,
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp-Clone-5IxHxdm8lnZVawJXx995xSmia0CzqF.png",
+    name: "WhatsApp Clone",
+    summary:
+      "A WhatsApp Web clone built with modern web technologies featuring real-time chat functionality and user authentication.",
+    tags: ["react", "firebase", "real-time", "chat", "authentication"],
+    link: {
+      web: "https://whatsapp-clone.aashishsinghal.com",
+      github: "https://github.com/AashishSinghal/whatsapp-clone",
+    },
+  },
+  {
+    id: 12,
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Telegram-Clone-TjMz6fAcxAwhjY7FbuUJNvVD42LwlF.png",
+    name: "Telegram Clone",
+    summary: "A Telegram Web clone implementing core messaging features and the iconic Telegram design.",
+    tags: ["react", "typescript", "websockets", "ui/ux", "authentication"],
+    link: {
+      web: "https://telegram-clone.aashishsinghal.com",
+      github: "https://github.com/AashishSinghal/telegram-clone",
+    },
+  },
+  {
+    id: 13,
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/searchUser-Um4Slf8iAccPOF49Jk6iunnR74lKkr.png",
+    name: "GitHub User Search",
+    summary: "An advanced GitHub user search application with detailed profile analytics and repository insights.",
+    tags: ["react", "github-api", "data-visualization", "typescript"],
+    link: {
+      web: "https://github-user-search.aashishsinghal.com",
+      github: "https://github.com/AashishSinghal/github-user-search",
+    },
+  },
+  {
+    id: 14,
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tla-SHmMtrU5ImkuuhQN0JomnWzdGnhqrR.png",
+    name: "TaxLawAdvisers Blog",
+    summary: "A professional blog platform for tax law advisers built with modern JAMstack architecture.",
+    tags: ["nextjs", "sanity-cms", "typescript", "tailwindcss"],
+    link: {
+      web: "https://taxlawadvisers.vercel.app",
+      github: "https://github.com/AashishSinghal/taxlawadvisers",
+    },
+  },
+  {
+    id: 15,
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/screen-9E3EymhAAOL19vKNWYHJDwXhYyzFgY.png",
+    name: "Screen Recorder",
+    summary: "A desktop screen recording application built with Electron and vanilla JavaScript.",
+    tags: ["electron", "javascript", "desktop-app", "screen-capture"],
+    link: {
+      web: "https://drive.google.com/file/d/1LmrsgOv_B_xUf2GCGE7ZHf6OSDjZzP60/view",
+      github: "https://github.com/AashishSinghal/screen-recorder",
+    },
+  },
+]
 
-export default projectsList;
+export default projectsList
+

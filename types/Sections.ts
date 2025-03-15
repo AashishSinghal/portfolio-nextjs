@@ -1,92 +1,87 @@
-import type { IconType } from "react-icons";
+import type { IconType } from "react-icons"
 
+// Define the Section enum
 export enum Section {
-  "AboutMe" = "about-me",
-  // "Achievements" = "achievements",
-  // "Blog" = "blog",
-  // "Certifications" = "certifications",
-  "Education" = "education",
-  "Languages" = "languages",
-  // "Philantrophy" = "philantrophy",
-  "Projects" = "projects",
-  "Skills" = "skills",
-  "WorkExperience" = "work-experience",
-  // "Photography" = "photography",
-  "Music" = "music",
-  // "Designs" = "designs",
-  "Resume" = "resume",
-  "Contact" = "contact",
-  "AboutRotW" = "aboutrotw",
+  AboutMe = "about-me",
+  WorkExperience = "work-experience",
+  Education = "education",
+  Skills = "skills",
+  Projects = "projects",
+  Blog = "blog",
+  Languages = "languages",
+  Achievements = "achievements",
+  Certifications = "certifications",
+  Philantrophy = "philanthropy",
+  Photography = "photography",
+  Music = "music",
+  Designs = "designs",
+  Resume = "resume",
+  Contact = "contact",
+  AboutRotW = "about-rotw",
 }
 
-export type SectionMap = Record<Section, { icon: IconType; title: string }>;
+// Define the SectionInfo type
+export type SectionInfo = {
+  icon: IconType
+  title: string
+}
 
-export type SectionArray = {
-  id: Section;
-  title: string;
-  icon: IconType;
-}[];
+// Define the SectionMap type
+export type SectionMap = {
+  [key in Section]: SectionInfo
+}
 
-export type Article = {
-  id: number;
-  title: string;
-  description: string;
-  url: string;
-  public_reactions_count: number;
-  social_image: string;
-  published_at: string;
-  tag_list: string[];
-};
+// Define the SectionArray type
+export type SectionArray = Array<{
+  id: Section
+  icon: IconType
+  title: string
+}>
 
-export type Language = {
-  id: number;
-  text: string;
-  language: string;
-  translation?: string;
-};
-
+// Define the Project type
 export type Project = {
-  id: number;
-  image: string;
-  name: string;
-  summary: string;
-  tags: string[];
-  link?: {
-    web?: string;
-    github?: string;
-  };
-};
+  id: number
+  image: string
+  name: string
+  summary: string
+  tags: string[]
+  link: {
+    web?: string
+    github?: string
+  }
+}
 
-export type Achievement = {
-  id: number;
-  title: string;
-  subtitle: string;
-};
+// Define the Language type
+export type Language = {
+  id: number
+  language: string
+  text: string
+  translation?: string
+}
 
-export type Certification = {
-  id: number;
-  title: string;
-  subtitle: string;
-};
-
-export type Philantrophy = {
-  id: number;
-  title: string;
-  description: string;
-};
-
-export type InstagramMedia = {
-  id: string;
-  media_url: string;
-  permalink: string;
-  media_type: "IMAGE" | "VIDEO" | "CAROUSEL_ALBUM" | "REELS";
-};
+// Define other types from the original file
+export type Article = {
+  id: string
+  title: string
+  description: string
+  url: string
+  publishedAt: string
+}
 
 export type DribbbleShot = {
-  id: number;
-  title: string;
-  html_url: string;
+  id: string
+  title: string
+  description: string
   images: {
-    hidpi: string;
-  };
-};
+    normal: string
+  }
+  html_url: string
+}
+
+export type InstagramMedia = {
+  id: string
+  media_url: string
+  permalink: string
+  caption: string
+}
+
