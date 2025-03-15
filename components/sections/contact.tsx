@@ -6,7 +6,7 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { FaPaperPlane } from "react-icons/fa"
 import { Section } from "@/types/sections"
-import { getSectionHeading } from "@/lib/utils/sections"
+import { getSectionHeading } from "@/lib/utils/heading"
 
 type FormData = {
   name: string

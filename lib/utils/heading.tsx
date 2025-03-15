@@ -1,42 +1,74 @@
-import Heading from "@/components/heading"
 import { Section } from "@/types/sections"
+import Heading from "@/components/heading"
+import type { IconType } from "react-icons"
 import {
-  FaUser,
-  FaBriefcase,
-  FaGraduationCap,
-  FaCode,
-  FaProjectDiagram,
-  FaBlog,
-  FaLanguage,
-  FaTrophy,
-  FaCertificate,
-  FaHandsHelping,
-  FaCamera,
-  FaMusic,
-  FaPalette,
-  FaFileAlt,
-  FaEnvelope,
-  FaInfoCircle,
-} from "react-icons/fa"
+  MdPerson,
+  MdWork,
+  MdSchool,
+  MdCode,
+  MdLanguage,
+  MdContactMail,
+  MdDescription,
+  MdInfo,
+  MdMusicNote,
+} from "react-icons/md"
+import { FaGithub } from "react-icons/fa"
 
-// Map section IDs to their icons and titles
-const sectionMap = {
-  [Section.AboutMe]: { icon: FaUser, title: "About Me" },
-  [Section.WorkExperience]: { icon: FaBriefcase, title: "Work Experience" },
-  [Section.Education]: { icon: FaGraduationCap, title: "Education" },
-  [Section.Skills]: { icon: FaCode, title: "Skills" },
-  [Section.Projects]: { icon: FaProjectDiagram, title: "Projects" },
-  [Section.Blog]: { icon: FaBlog, title: "Blog" },
-  [Section.Languages]: { icon: FaLanguage, title: "Languages" },
-  [Section.Achievements]: { icon: FaTrophy, title: "Achievements" },
-  [Section.Certifications]: { icon: FaCertificate, title: "Certifications" },
-  [Section.Philantrophy]: { icon: FaHandsHelping, title: "Philanthropy" },
-  [Section.Photography]: { icon: FaCamera, title: "Photography" },
-  [Section.Music]: { icon: FaMusic, title: "Music" },
-  [Section.Designs]: { icon: FaPalette, title: "Designs" },
-  [Section.Resume]: { icon: FaFileAlt, title: "Resume" },
-  [Section.Contact]: { icon: FaEnvelope, title: "Contact" },
-  [Section.AboutRotW]: { icon: FaInfoCircle, title: "About RotW" },
+// Map of sections to their icons and titles
+interface SectionMapItem {
+  icon: IconType
+  title: string
+}
+
+const sectionMap: Record<Section, SectionMapItem> = {
+  [Section.Header]: {
+    icon: MdPerson,
+    title: "Header",
+  },
+  [Section.AboutMe]: {
+    icon: MdPerson,
+    title: "About Me",
+  },
+  [Section.AboutRotW]: {
+    icon: MdInfo,
+    title: "About This Website",
+  },
+  [Section.Skills]: {
+    icon: MdCode,
+    title: "Skills",
+  },
+  [Section.Projects]: {
+    icon: FaGithub,
+    title: "Projects",
+  },
+  [Section.WorkExperience]: {
+    icon: MdWork,
+    title: "Work Experience",
+  },
+  [Section.Education]: {
+    icon: MdSchool,
+    title: "Education",
+  },
+  [Section.Languages]: {
+    icon: MdLanguage,
+    title: "Languages",
+  },
+  [Section.Contact]: {
+    icon: MdContactMail,
+    title: "Contact",
+  },
+  [Section.Resume]: {
+    icon: MdDescription,
+    title: "Resume",
+  },
+  [Section.Footer]: {
+    icon: MdInfo,
+    title: "Footer",
+  },
+  [Section.Music]: {
+    icon: MdMusicNote,
+    title: "Music",
+  },
 }
 
 // Function to get a section heading component
@@ -45,6 +77,11 @@ export function getSectionHeading(section: Section) {
   return <Heading icon={icon}>{title}</Heading>
 }
 
+// Function to open URL in new tab
+export function openURLInNewTab(url: string) {
+  window.open(url, "_blank", "noopener,noreferrer")
+}
+
 // Export the section map for other uses
-export { sectionMap }
+export default sectionMap
 

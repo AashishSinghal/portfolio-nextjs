@@ -2,22 +2,18 @@ import type { IconType } from "react-icons"
 
 // Define the Section enum
 export enum Section {
+  Header = "header",
   AboutMe = "about-me",
-  WorkExperience = "work-experience",
-  Education = "education",
+  AboutRotW = "about-rotw",
   Skills = "skills",
   Projects = "projects",
-  Blog = "blog",
+  WorkExperience = "work-experience",
+  Education = "education",
   Languages = "languages",
-  Achievements = "achievements",
-  Certifications = "certifications",
-  Philantrophy = "philanthropy",
-  Photography = "photography",
-  Music = "music",
-  Designs = "designs",
-  Resume = "resume",
   Contact = "contact",
-  AboutRotW = "about-rotw",
+  Resume = "resume",
+  Footer = "footer",
+  Music = "music",
 }
 
 // Define the SectionInfo type

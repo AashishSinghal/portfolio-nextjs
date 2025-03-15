@@ -7,6 +7,7 @@ import ThemeProvider from "@/contexts/theme-provider"
 import AnimatedBackground from "@/components/animated-background"
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
   title: "Aashish Singhal - Developer | Designer | Explorer",
   description: "This is a portfolio website developed by Aashish, to showcase projects, interests etc.",
   keywords: ["portfolio", "developer", "designer", "explorer"],

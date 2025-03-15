@@ -5,7 +5,12 @@ import links from "@/data/links"
 import { MdStar } from "react-icons/md"
 import { FiExternalLink } from "react-icons/fi"
 import { Section } from "@/types/sections"
-import { getSectionHeading, openURLInNewTab } from "@/lib/utils/sections"
+import { getSectionHeading } from "@/lib/utils/heading"
+
+// Function to open URL in new tab
+const openURLInNewTab = (url: string) => {
+  window.open(url, "_blank", "noopener,noreferrer")
+}
 
 const AboutRotW = () => (
   <div id={Section.AboutRotW}>
