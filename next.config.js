@@ -1,31 +1,82 @@
-// @ts-check
-
-
+const path = require('path');
 
 /** @type {import('next').NextConfig} */
-// import withPWA from "next-pwa";
-
-// const nextConfig = withPWA({
-//   reactStrictMode: true,
-//   pwa: {
-//     dest: "public",
-//     register: true,
-//     skipWaiting: true,
-//   },
-//   images: {
-//     domains: ["dev.to", "res.cloudinary.com", "cdn.dribbble.com", "scontent.cdninstagram.com"],
-//   },
-// });
 const nextConfig = {
-    reactStrictMode: true,
-    // pwa: {
-    //   dest: "public",
-    //   register: true,
-    //   skipWaiting: true,
-    // },
-    images: {
-      domains: ["dev.to", "res.cloudinary.com", "cdn.dribbble.com", "scontent.cdninstagram.com"],
-    },
-  };
+  reactStrictMode: true,
+  swcMinify: true, // Uses SWC for minification (faster than Terser)
 
-module.exports = nextConfig;
+  // Add metadata configuration
+  env: {
+    NEXT_PUBLIC_BASE_URL: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://aashishsinghal.com/",
+  },
+
+  webpack: (config) => {
+    config.resolve.alias['@'] = path.resolve(__dirname);
+    return config;
+  },
+
+  // Configure image domains for next/image
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "github.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "**.githubusercontent.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "source.unsplash.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "**.amazonaws.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "**.vercel.app",
+        pathname: "**",
+      },
+      // Add Vercel Blob Storage domain
+      {
+        protocol: "https",
+        hostname: "**.public.blob.vercel-storage.com",
+        pathname: "**",
+      },
+    ],
+  },
+}
+
+module.exports = nextConfig
+

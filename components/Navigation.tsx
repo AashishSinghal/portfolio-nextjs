@@ -1,21 +1,33 @@
-import Tippy from "@tippyjs/react";
-import { ThemeContext } from "contexts/ThemeProvider";
-import { sectionsArray } from "data/sections";
-import useWindowDimensions, { Breakpoints } from "hooks/useWindowDimensions";
-import Image from "next/image";
-import { useContext } from "react";
-import { FaMoon, FaSun } from "react-icons/fa";
-import { FiMenu } from "react-icons/fi";
-import { animateScroll, scroller } from "react-scroll";
-import { Section } from "types/Sections";
+"use client"
 
+import Tippy from "@tippyjs/react"
+import { ThemeContext } from "@/contexts/theme-provider"
+import { sectionsArray } from "@/data/sections"
+import useWindowDimensions, { Breakpoints } from "@/hooks/use-window-dimensions"
+import Image from "next/image"
+import { useContext } from "react"
+import { FaMoon, FaSun } from "react-icons/fa"
+import { FiMenu } from "react-icons/fi"
+import { animateScroll, scroller } from "react-scroll"
+import type { Section } from "@/types/sections"
+
+/**
+ * Navigation Component
+ *
+ * MODIFICATIONS:
+ * 1. Added "use client" directive for client-side rendering
+ * 2. Updated import paths to use absolute imports with @/ prefix
+ * 3. Updated types to match the new project structure
+ * 4. Updated to use the new data files from data/ folder
+ * 5. Ensured compatibility with Next.js 15 and App Router
+ */
 const Navigation = () => {
-  const { width } = useWindowDimensions();
-  const isDesktop = width > Breakpoints.lg;
+  const { width } = useWindowDimensions()
+  const isDesktop = width > Breakpoints.lg
 
-  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext)
 
-  const goToSection = (section: Section) => scroller.scrollTo(section, { duration: 500, smooth: true });
+  const goToSection = (section: Section) => scroller.scrollTo(section, { duration: 500, smooth: true })
 
   if (!isDesktop) {
     return (
@@ -25,7 +37,13 @@ const Navigation = () => {
             onClick={animateScroll.scrollToTop}
             className="p-1 flex cursor-pointer grayscale hover:grayscale-0 transition-[filter]"
           >
-            <Image src="/images/icon.png" alt="Aashish Singhal" width={32} height={32} />
+            <Image
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icon-yQdkdJanIm6s6Ycm8pFnKxBf5WoIvG.png"
+              alt="Aashish Singhal"
+              width={32}
+              height={32}
+              className="object-contain"
+            />
           </div>
         </Tippy>
 
@@ -35,7 +53,7 @@ const Navigation = () => {
           </div>
         </Tippy>
       </div>
-    );
+    )
   }
 
   return (
@@ -45,7 +63,13 @@ const Navigation = () => {
           onClick={animateScroll.scrollToTop}
           className="p-1 flex cursor-pointer grayscale hover:grayscale-0 transition-[filter]"
         >
-          <Image src="/images/icon.png" alt="Aashish Singhal" width={32} height={32} />
+          <Image
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icon-yQdkdJanIm6s6Ycm8pFnKxBf5WoIvG.png"
+            alt="Aashish Singhal"
+            width={32}
+            height={32}
+            className="object-contain"
+          />
         </div>
       </Tippy>
 
@@ -71,7 +95,8 @@ const Navigation = () => {
         </div>
       </Tippy>
     </div>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation
+

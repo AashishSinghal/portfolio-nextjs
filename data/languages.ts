@@ -1,4 +1,15 @@
-import type { Language } from "types/Sections";
+import type { Language } from "@/types/sections"
+
+/**
+ * Languages Data
+ *
+ * This file contains information about the languages known by the portfolio owner.
+ *
+ * MODIFICATIONS:
+ * 1. Updated from the original languages.ts file
+ * 2. Ensured compatibility with the Language type
+ * 3. Added comments for better readability
+ */
 
 const languagesList: Language[] = [
   {
@@ -18,6 +29,7 @@ const languagesList: Language[] = [
     text: "Genzai Duolingo de nihongo o benkyō shite imasu.",
     translation: "I am currently learning Japanese on Duolingo.",
   },
-];
+]
 
-export default languagesList;
+export default languagesList
+
