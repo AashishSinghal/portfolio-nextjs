@@ -37,7 +37,7 @@
     "baseUrl": "." /* Base directory to resolve non-absolute module names */,
     "paths": {
       "@/*": [
-        "*"
+        "./*"
       ] /* Root level imports */,
       "@/components/*": [
         "components/*"
