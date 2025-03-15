@@ -4,9 +4,7 @@ const nextConfig = {
 
   // Add metadata configuration
   env: {
-    NEXT_PUBLIC_BASE_URL: process.env.VERCEL_URL 
-      ? `https://${process.env.VERCEL_URL}`
-      : 'http://localhost:3000',
+    NEXT_PUBLIC_BASE_URL: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://aashishsinghal.com/",
   },
 
   // Configure image domains for next/image
@@ -68,8 +66,9 @@ const nextConfig = {
         hostname: "**.public.blob.vercel-storage.com",
         pathname: "**",
       },
-    ]
+    ],
   },
 }
 
 module.exports = nextConfig
+

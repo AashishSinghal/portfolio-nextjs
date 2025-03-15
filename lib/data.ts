@@ -620,7 +620,7 @@ class Employee extends Person {
   }
   
   greet(): string {
-    return \`${super.greet()} I work in \${this.department}.\`;
+    return \`\${super.greet()} I work in \${this.department}.\`;
   }
 }
 

@@ -22,7 +22,7 @@ const Ingredients = () => {
     }, 40)
 
     return () => clearInterval(typing)
-  }, [])
+  }, [fullText])
 
   // Apply syntax highlighting manually
   const highlightedText = text

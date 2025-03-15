@@ -42,52 +42,85 @@ const scanFileForReferences = (filePath) => {
 
   if (!fileExtensionsToScan.includes(fileExtension)) return
 
-  // Look for import statements
-  const importRegex =
-    /import\s+(?:(?:\{[^}]*\}|\*\s+as\s+[^,]+|[^,{}]+)(?:\s*,\s*(?:\{[^}]*\}|\*\s+as\s+[^,]+|[^,{}]+))*\s+from\s+)?['"]([^'"]+)['"]/g
-  let match
+  // Enhanced import detection
+  const patterns = [
+    // Standard imports
+    /import\s+(?:(?:\{[^}]*\}|\*\s+as\s+[^,]+|[^,{}]+)(?:\s*,\s*(?:\{[^}]*\}|\*\s+as\s+[^,]+|[^,{}]+))*\s+from\s+)?['"]([^'"]+)['"]/g,
+    // Dynamic imports
+    /import\(['"]([^'"]+)['"]\)/g,
+    // Require statements
+    /require\(['"]([^'"]+)['"]\)/g,
+  ]
 
-  while ((match = importRegex.exec(content)) !== null) {
-    const importPath = match[1]
-
-    // Handle relative imports
-    if (importPath.startsWith(".")) {
-      const dirName = path.dirname(filePath)
-      const resolvedPath = path.resolve(dirName, importPath)
-
-      // Try different extensions if no extension in import
-      if (!path.extname(resolvedPath)) {
-        for (const ext of [".tsx", ".ts", ".jsx", ".js"]) {
-          const pathWithExt = `${resolvedPath}${ext}`
-          if (fs.existsSync(pathWithExt)) {
-            referencedFiles.add(pathWithExt)
-            break
-          }
-
-          // Check for index files
-          const indexPath = path.join(resolvedPath, `index${ext}`)
-          if (fs.existsSync(indexPath)) {
-            referencedFiles.add(indexPath)
-            break
-          }
-        }
-      } else if (fs.existsSync(resolvedPath)) {
-        referencedFiles.add(resolvedPath)
-      }
+  patterns.forEach(pattern => {
+    let match
+    while ((match = pattern.exec(content)) !== null) {
+      const importPath = match[1]
+      resolveAndAddReference(importPath, filePath)
     }
+  })
+
+  // Enhanced component usage detection
+  const componentRegex = /<([A-Z][A-Za-z0-9]*)/g
+  const jsxImportRegex = /import\s+{?\s*([A-Z][A-Za-z0-9]*)\s*}?\s+from/g
+  
+  // Track component names from imports
+  const importedComponents = new Set()
+  let jsxMatch
+  while ((jsxMatch = jsxImportRegex.exec(content)) !== null) {
+    importedComponents.add(jsxMatch[1])
   }
 
-  // Look for component usage (simplified, may need enhancement)
-  const componentRegex = /<([A-Z][A-Za-z0-9]*)/g
+  // Check component usage
   while ((match = componentRegex.exec(content)) !== null) {
     const componentName = match[1]
+    if (importedComponents.has(componentName)) {
+      // Only look for files if the component was actually imported
+      allTsxFiles.forEach((tsxFile) => {
+        const baseName = path.basename(tsxFile, ".tsx")
+        if (baseName === componentName || baseName === `${componentName}.index`) {
+          referencedFiles.add(tsxFile)
+        }
+      })
+    }
+  }
+}
 
-    // Search for files that export this component
-    allTsxFiles.forEach((tsxFile) => {
-      if (path.basename(tsxFile, ".tsx") === componentName) {
-        referencedFiles.add(tsxFile)
+// Helper function to resolve and add file references
+const resolveAndAddReference = (importPath, sourceFile) => {
+  if (importPath.startsWith(".")) {
+    const dirName = path.dirname(sourceFile)
+    let resolvedPath = path.resolve(dirName, importPath)
+
+    // Try different extensions and index files
+    const extensions = [".tsx", ".ts", ".jsx", ".js"]
+    let found = false
+
+    // First try with the exact path
+    if (fs.existsSync(resolvedPath)) {
+      referencedFiles.add(resolvedPath)
+      found = true
+    }
+
+    // Try with extensions
+    if (!found) {
+      for (const ext of extensions) {
+        const pathWithExt = `${resolvedPath}${ext}`
+        if (fs.existsSync(pathWithExt)) {
+          referencedFiles.add(pathWithExt)
+          found = true
+          break
+        }
+
+        // Check for index files
+        const indexPath = path.join(resolvedPath, `index${ext}`)
+        if (fs.existsSync(indexPath)) {
+          referencedFiles.add(indexPath)
+          found = true
+          break
+        }
       }
-    })
+    }
   }
 }
 
@@ -102,7 +135,7 @@ const scanAllFilesForReferences = (dir) => {
 
     if (file.isDirectory()) {
       scanAllFilesForReferences(fullPath)
-    } else {
+    } else if (fileExtensionsToScan.includes(path.extname(file.name))) {
       scanFileForReferences(fullPath)
     }
   }
@@ -110,26 +143,22 @@ const scanAllFilesForReferences = (dir) => {
 
 // Find unused .tsx files
 const findUnusedTsxFiles = () => {
+  const specialPaths = [
+    "/app/",
+    "/pages/",
+    "/components/",
+    "layout.tsx",
+    "page.tsx",
+    "loading.tsx",
+    "error.tsx",
+    "not-found.tsx",
+    "template.tsx",
+  ]
+
   allTsxFiles.forEach((file) => {
-    if (!referencedFiles.has(file)) {
-      // Special case: Check if it's a page or layout file in the app directory
-      if (
-        file.includes("/app/") &&
-        (file.endsWith("/page.tsx") ||
-          file.endsWith("/layout.tsx") ||
-          file.endsWith("/loading.tsx") ||
-          file.endsWith("/error.tsx"))
-      ) {
-        console.log(`Keeping Next.js app file: ${file}`)
-        return
-      }
-
-      // Special case: Check if it's a page file in the pages directory
-      if (file.includes("/pages/")) {
-        console.log(`Keeping Next.js pages file: ${file}`)
-        return
-      }
-
+    const isSpecialFile = specialPaths.some(path => file.includes(path))
+    
+    if (!referencedFiles.has(file) && !isSpecialFile) {
       unusedFiles.add(file)
     }
   })
@@ -142,41 +171,35 @@ const generateReport = () => {
   report += `## Summary\n\n`
   report += `- Total TSX files: ${allTsxFiles.size}\n`
   report += `- Referenced TSX files: ${referencedFiles.size}\n`
-  report += `- Unused TSX files: ${unusedFiles.size}\n\n`
+  report += `- Potentially unused TSX files: ${unusedFiles.size}\n\n`
 
   if (unusedFiles.size > 0) {
-    report += `## Unused Files\n\n`
+    report += `## Potentially Unused Files\n\n`
 
-    // Group by directory for better organization
     const filesByDir = {}
     unusedFiles.forEach((file) => {
       const relativePath = path.relative(rootDir, file)
       const dir = path.dirname(relativePath)
-
-      if (!filesByDir[dir]) {
-        filesByDir[dir] = []
-      }
-
+      if (!filesByDir[dir]) filesByDir[dir] = []
       filesByDir[dir].push(path.basename(file))
     })
 
-    Object.keys(filesByDir)
-      .sort()
-      .forEach((dir) => {
-        report += `### ${dir}/\n\n`
-        filesByDir[dir].sort().forEach((file) => {
-          report += `- \`${file}\`\n`
-        })
-        report += `\n`
+    Object.keys(filesByDir).sort().forEach((dir) => {
+      report += `### ${dir}/\n\n`
+      filesByDir[dir].sort().forEach((file) => {
+        report += `- \`${file}\`\n`
       })
+      report += `\n`
+    })
   }
 
-  report += `## Recommendation\n\n`
-  report += `The files listed above are not directly imported or referenced in the codebase. However, please consider the following before removal:\n\n`
-  report += `1. Files might be dynamically imported using variable paths, which this analysis cannot detect.\n`
-  report += `2. Components might be referenced using string literals or in ways not detected by the analysis.\n`
-  report += `3. Some files might be entry points for specific build configurations.\n\n`
-  report += `It's recommended to review each file manually before removal. You can use the script \`remove-unused-tsx.js\` to safely remove these files with a backup.\n`
+  report += `## Important Notes\n\n`
+  report += `1. This analysis may have false positives for:\n`
+  report += `   - Components loaded dynamically using string templates\n`
+  report += `   - Files referenced through non-standard imports\n`
+  report += `   - Components used in MDX files\n`
+  report += `2. Please verify each file manually before removal\n`
+  report += `3. Use \`remove-unused-tsx.js\` to safely remove files with backup\n`
 
   return report
 }
@@ -190,16 +213,11 @@ scanAllFilesForReferences(rootDir)
 console.log(`Found ${referencedFiles.size} referenced files.`)
 
 findUnusedTsxFiles()
-console.log(`Found ${unusedFiles.size} unused TSX files.`)
+console.log(`Found ${unusedFiles.size} potentially unused TSX files.`)
 
 const report = generateReport()
-console.log("Analysis complete!")
+fs.writeFileSync(path.join(rootDir, "unused-tsx-analysis.md"), report)
+console.log(`Report generated at: ${path.join(rootDir, "unused-tsx-analysis.md")}`)
 
-// Output the report
-const reportPath = path.join(rootDir, "unused-tsx-analysis.md")
-fs.writeFileSync(reportPath, report)
-console.log(`Report generated at: ${reportPath}`)
-
-// Return the report for display
-return report;
+return report
 

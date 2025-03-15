@@ -1,11 +1,11 @@
 "use client"
 
-import { useTheme } from "next-themes"
-import { useEffect, useState, useRef } from "react"
+import { useContext, useEffect, useState, useRef } from "react"
+import { ThemeContext } from "@/contexts/theme-provider"
 import { cn } from "@/lib/utils"
 
 export default function AnimatedBackground() {
-  const { resolvedTheme } = useTheme()
+  const { isDarkMode } = useContext(ThemeContext)
   const [mounted, setMounted] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -37,7 +37,7 @@ export default function AnimatedBackground() {
 
   if (!mounted) return null
 
-  const isDark = resolvedTheme === "dark"
+  const isDark = isDarkMode
 
   return (
     <div ref={containerRef} className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">

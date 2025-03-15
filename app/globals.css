@@ -8,6 +8,7 @@
 
 @layer base {
   :root {
+    --font-sans: var(--font-albert-sans), system-ui, sans-serif;
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
@@ -50,6 +51,13 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    @apply text-neutral-900 bg-neutral-50 dark:text-neutral-50 dark:bg-neutral-900;
+    @apply text-xs sm:text-sm;
+    @apply border-border;
   }
 }
 
@@ -115,5 +123,26 @@ body {
   .photo-item:hover {
     width: calc(var(--size, 512px) / 2) !important;
   }
+}
+
+/* Background patterns */
+.bg-grid-pattern-light,
+.bg-grid-pattern-dark {
+  background-size: 50px 50px;
+}
+
+.bg-dot-pattern-light,
+.bg-dot-pattern-dark {
+  background-size: 30px 30px;
+}
+
+/* Hide scrollbar for elements with hide-scrollbar class */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 

@@ -12,23 +12,32 @@ import useWindowDimensions, { Breakpoints } from "@/hooks/use-window-dimensions"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+// Define a type for the navigation items
+type NavItemType = Section | "logo" | "theme" | "projects" | "blog" | "games"
+
 export default function SlimNavigation() {
   const { width } = useWindowDimensions()
   const isMobile = width < Breakpoints.md
   const { isDarkMode, toggleTheme } = useContext(ThemeContext)
   const [activeSection, setActiveSection] = useState<Section | null>(null)
-  const [hoveredItem, setHoveredItem] = useState<Section | "logo" | "theme" | "projects" | "blog" | "games" | null>(
-    null,
-  )
+  const [hoveredItem, setHoveredItem] = useState<NavItemType | null>(null)
   const pathname = usePathname()
 
   // Handle scrolling to section
   const goToSection = (section: Section) => {
+    const element = document.getElementById(section)
+    if (!element) {
+      console.warn(`Section with ID "${section}" not found`)
+      return
+    }
+
     setActiveSection(section)
     scroller.scrollTo(section, { duration: 500, smooth: true })
   }
 
   // Handle scroll to top
+  // Kept for future keyboard navigation implementation
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleScrollToTop = () => {
     setActiveSection(null)
     animateScroll.scrollToTop({ duration: 500 })
@@ -65,20 +74,20 @@ export default function SlimNavigation() {
 
   // App routes for navigation
   const appRoutes = [
-    { id: "projects", title: "Projects", path: "/projects" },
-    { id: "blog", title: "Blog", path: "/blog" },
-    { id: "games", title: "Games", path: "/games" },
+    { id: "projects" as const, title: "Projects", path: "/projects" },
+    { id: "blog" as const, title: "Blog", path: "/blog" },
+    { id: "games" as const, title: "Games", path: "/games" },
   ]
 
   return (
     <div className="fixed top-0 left-0 right-0 h-12 bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md z-50 transition-all duration-300 border-b border-neutral-200 dark:border-neutral-800">
       <div className="max-w-screen-xl mx-auto h-full flex items-center px-4">
         {/* Logo */}
-        <Link
-          href="/"
+        <div
           className="flex items-center justify-center w-9 h-9 hover:opacity-80 transition-opacity mr-4 relative"
           onMouseEnter={() => setHoveredItem("logo")}
           onMouseLeave={() => setHoveredItem(null)}
+          onClick={handleScrollToTop}
         >
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icon-yQdkdJanIm6s6Ycm8pFnKxBf5WoIvG.png"
@@ -86,13 +95,20 @@ export default function SlimNavigation() {
             width={24}
             height={24}
             className="object-contain grayscale hover:grayscale-0 transition-[filter]"
+            onError={(e) => {
+              // Fallback to a simple text logo if image fails to load
+              e.currentTarget.style.display = "none"
+              if (e.currentTarget.parentElement) {
+                e.currentTarget.parentElement.innerHTML = '<span class="text-lg font-bold">AS</span>'
+              }
+            }}
           />
           {hoveredItem === "logo" && (
             <div className="absolute left-full ml-1 px-2 py-1 bg-white dark:bg-neutral-900 rounded shadow-md text-sm whitespace-nowrap z-10">
               Home
             </div>
           )}
-        </Link>
+        </div>
 
         {/* App Routes - always visible */}
         <div className="flex items-center mr-4 space-x-1">
@@ -107,7 +123,7 @@ export default function SlimNavigation() {
                   ? "text-white bg-teal-500 dark:bg-teal-600"
                   : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800",
               )}
-              onMouseEnter={() => setHoveredItem(route.id as any)}
+              onMouseEnter={() => setHoveredItem(route.id)}
               onMouseLeave={() => setHoveredItem(null)}
             >
               <span className="text-xs font-medium">{route.id.charAt(0).toUpperCase()}</span>

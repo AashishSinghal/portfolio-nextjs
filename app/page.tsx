@@ -16,29 +16,9 @@ import Resume from "@/components/sections/resume"
 import Skills from "@/components/sections/skills"
 import WorkExperienceRedesigned from "@/components/sections/work-experience-redesigned"
 
-// Types that will need to be created
-type Article = any
-type DribbbleShot = any
-type InstagramMedia = any
 
-// This replaces getServerSideProps in App Router
-async function getData() {
-  // These service functions will need to be created
-  // const articles = await getArticles();
-  // const dribbbleShots = await getDribbbleShots();
-  // const instagramMedia = await getInstagramMedia();
-
-  // Using empty objects as placeholders
-  const articles = {}
-  const dribbbleShots = {}
-  const instagramMedia = {}
-
-  return { articles, dribbbleShots, instagramMedia }
-}
 
 export default async function Home() {
-  // Fetch data using React Server Component
-  const { articles, dribbbleShots, instagramMedia } = await getData()
 
   return (
     <div className="w-full px-4 sm:w-5/6 mx-auto md:container grid gap-16 md:gap-24 relative z-10 pt-16 pb-24">

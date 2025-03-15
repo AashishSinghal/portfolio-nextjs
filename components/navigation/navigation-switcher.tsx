@@ -11,7 +11,6 @@ type NavigationVariant = "sidebar" | "topbar" | "bottombar" | "floating"
 
 export default function NavigationSwitcher() {
   const [variant, setVariant] = useState<NavigationVariant>("sidebar")
-  const [showSwitcher, setShowSwitcher] = useState(false)
 
   // Load preference from localStorage if available
   useEffect(() => {

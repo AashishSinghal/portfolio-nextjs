@@ -6,6 +6,13 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 
+// Define the type for the route parameters
+interface BlogPostParams {
+  params: {
+    slug: string
+  }
+}
+
 // Placeholder blog data
 // In a real implementation, this would be fetched from the data/blog directory
 const blogPosts = [
@@ -589,7 +596,7 @@ In future posts, we'll explore more advanced TypeScript features and patterns fo
 ]
 
 // Helper function to format dates
-function formatDate(dateString) {
+function formatDate(dateString: string) {
   const date = new Date(dateString)
   return new Intl.DateTimeFormat("en-US", {
     year: "numeric",
@@ -598,7 +605,7 @@ function formatDate(dateString) {
   }).format(date)
 }
 
-export default function BlogPostPage({ params }) {
+export default function BlogPostPage({ params }: BlogPostParams) {
   const post = blogPosts.find((post) => post.slug === params.slug)
 
   if (!post) {

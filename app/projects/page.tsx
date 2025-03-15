@@ -8,17 +8,37 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github } from "lucide-react"
 
-// Replace the placeholder projects array with an import from the existing data file
+// Import the Project type from lib/data
+import type { Project } from "@/lib/data"
+// Import the Project type from types/sections and rename it to avoid conflicts
+import type { Project as SectionsProject } from "@/types/sections"
+
+// Import projects from data/projects
 import projectsList from "@/data/projects"
 
-// Replace the existing projects array with:
-const projects = projectsList
+// Create an adapter function to convert from SectionsProject to Project
+const adaptProject = (project: SectionsProject): Project => {
+  return {
+    id: project.id.toString(),
+    title: project.name,
+    description: project.summary,
+    longDescription: project.summary, // Use summary as longDescription since it's not available
+    image: project.image,
+    technologies: project.tags,
+    demoUrl: project.link.web,
+    githubUrl: project.link.github,
+    featured: false, // Default to false since it's not available in the original data
+  }
+}
+
+// Convert the projects to the expected format
+const projects: Project[] = projectsList ? projectsList.map(adaptProject) : []
 
 export default function ProjectsPage() {
-  const [selectedProject, setSelectedProject] = useState(null)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const openProjectModal = (project) => {
+  const openProjectModal = (project: Project) => {
     setSelectedProject(project)
     setIsModalOpen(true)
   }
@@ -42,22 +62,24 @@ export default function ProjectsPage() {
             onClick={() => openProjectModal(project)}
           >
             <div className="relative h-48 w-full">
-              <Image src={project.image || "/placeholder.svg"} alt={project.name} fill className="object-cover" />
-              {project.id <= 3 && <Badge className="absolute top-2 right-2">Featured</Badge>}
+              <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
+              {Number.parseInt(project.id) <= 3 && <Badge className="absolute top-2 right-2">Featured</Badge>}
             </div>
             <CardHeader className="p-4">
-              <CardTitle className="line-clamp-1">{project.name}</CardTitle>
+              <CardTitle className="line-clamp-1">{project.title}</CardTitle>
             </CardHeader>
             <CardContent className="p-4 pt-0">
-              <p className="text-muted-foreground line-clamp-2">{project.summary}</p>
+              <p className="text-muted-foreground line-clamp-2">{project.description}</p>
             </CardContent>
             <CardFooter className="p-4 pt-0 flex flex-wrap gap-2">
-              {project.tags.slice(0, 3).map((tag) => (
+              {project.technologies?.slice(0, 3).map((tag) => (
                 <Badge key={tag} variant="outline">
                   {tag}
                 </Badge>
               ))}
-              {project.tags.length > 3 && <Badge variant="outline">+{project.tags.length - 3}</Badge>}
+              {project.technologies && project.technologies.length > 3 && (
+                <Badge variant="outline">+{project.technologies.length - 3}</Badge>
+              )}
             </CardFooter>
           </Card>
         ))}
@@ -67,9 +89,9 @@ export default function ProjectsPage() {
         <Dialog open={isModalOpen} onOpenChange={closeProjectModal}>
           <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
-              <DialogTitle className="text-2xl">{selectedProject.name}</DialogTitle>
+              <DialogTitle className="text-2xl">{selectedProject.title}</DialogTitle>
               <DialogDescription className="flex flex-wrap gap-2 mt-2">
-                {selectedProject.tags.map((tag) => (
+                {selectedProject.technologies?.map((tag) => (
                   <Badge key={tag} variant="secondary">
                     {tag}
                   </Badge>
@@ -80,28 +102,28 @@ export default function ProjectsPage() {
             <div className="relative h-64 sm:h-80 w-full my-4">
               <Image
                 src={selectedProject.image || "/placeholder.svg"}
-                alt={selectedProject.name}
+                alt={selectedProject.title}
                 fill
                 className="object-cover rounded-md"
               />
             </div>
 
             <div className="space-y-4">
-              <p className="text-muted-foreground">{selectedProject.summary}</p>
+              <p className="text-muted-foreground">{selectedProject.longDescription}</p>
 
               <div className="flex flex-wrap gap-4">
-                {selectedProject.link?.web && (
+                {selectedProject.demoUrl && (
                   <Button asChild>
-                    <a href={selectedProject.link.web} target="_blank" rel="noopener noreferrer">
+                    <a href={selectedProject.demoUrl} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="mr-2 h-4 w-4" />
                       Live Demo
                     </a>
                   </Button>
                 )}
 
-                {selectedProject.link?.github && (
+                {selectedProject.githubUrl && (
                   <Button variant="outline" asChild>
-                    <a href={selectedProject.link.github} target="_blank" rel="noopener noreferrer">
+                    <a href={selectedProject.githubUrl} target="_blank" rel="noopener noreferrer">
                       <Github className="mr-2 h-4 w-4" />
                       View Code
                     </a>

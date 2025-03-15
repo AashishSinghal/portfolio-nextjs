@@ -129,7 +129,7 @@ export default function CursorHighlightEffect({
     window.addEventListener("mousemove", handleMouseMove)
 
     return () => {
-      window.removeEventListener("resize", handleMouseMove)
+      window.removeEventListener("mousemove", handleMouseMove)
       if (timeoutId) clearTimeout(timeoutId)
     }
   }, [mounted])

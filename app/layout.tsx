@@ -5,9 +5,17 @@ import NoSSR from "@/components/no-ssr"
 import SlimNavigation from "@/components/navigation/slim-navigation"
 import ThemeProvider from "@/contexts/theme-provider"
 import AnimatedBackground from "@/components/animated-background"
+import { Albert_Sans } from "next/font/google"
+
+const albertSans = Albert_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-albert-sans",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://aashishsinghal.com"),
   title: "Aashish Singhal - Developer | Designer | Explorer",
   description: "This is a portfolio website developed by Aashish, to showcase projects, interests etc.",
   keywords: ["portfolio", "developer", "designer", "explorer"],
@@ -47,15 +55,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={albertSans.variable}>
       <head>
         <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
       </head>
       <body>
         <ThemeProvider>

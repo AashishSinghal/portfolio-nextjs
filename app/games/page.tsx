@@ -1,6 +1,5 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import Link from "next/link"
 import Image from "next/image"
 
 // Placeholder games data
@@ -59,7 +58,7 @@ export default function GamesPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {games.map((game) => (
-          <Link key={game.id} href={`/games/${game.id}`}>
+          <div key={game.id}>
             <Card className="overflow-hidden h-full cursor-pointer hover:shadow-md transition-shadow">
               <div className="relative h-48 w-full">
                 <Image src={game.image || "/placeholder.svg"} alt={game.title} fill className="object-cover" />
@@ -82,7 +81,7 @@ export default function GamesPage() {
                 <Badge variant="outline">Play Now</Badge>
               </CardFooter>
             </Card>
-          </Link>
+          </div>
         ))}
       </div>
     </div>

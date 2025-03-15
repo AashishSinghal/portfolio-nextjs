@@ -1,7 +1,7 @@
 "use client"
 
+// import { getSectionHeading } from "@/lib/utils/sections"
 import { Section } from "@/types/sections"
-import { getSectionHeading } from "@/lib/utils/sections"
 import TimelineSection, { type TimelineItem } from "./timeline-section"
 import { GraduationCap } from "lucide-react"
 
