@@ -39,30 +39,7 @@
       "@/*": [
         "./*"
       ] /* Root level imports */,
-      "@/components/*": [
-        "components/*"
-      ] /* Components imports */,
-      "@/pages/*": [
-        "pages/*"
-      ] /* Pages imports */,
-      "@/styles/*": [
-        "styles/*"
-      ] /* Styles imports */,
-      "@/utils/*": [
-        "utils/*"
-      ] /* Utilities imports */,
-      "@/lib/*": [
-        "lib/*"
-      ] /* Library imports */,
-      "@/hooks/*": [
-        "hooks/*"
-      ] /* Custom hooks imports */,
-      "@/types/*": [
-        "types/*"
-      ] /* Type definitions imports */,
-      "@/public/*": [
-        "public/*"
-      ] /* Public assets imports */
+      
     },
     "noEmit": true,
     "plugins": [
