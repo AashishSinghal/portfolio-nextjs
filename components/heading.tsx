@@ -24,4 +24,3 @@ const Heading = ({ icon: Icon, children }: Props) => (
 )
 
 export default Heading
-
