@@ -1,3 +1,6 @@
+const path = require('path');
+
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true, // Uses SWC for minification (faster than Terser)
@@ -5,6 +8,11 @@ const nextConfig = {
   // Add metadata configuration
   env: {
     NEXT_PUBLIC_BASE_URL: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://aashishsinghal.com/",
+  },
+
+  webpack: (config) => {
+    config.resolve.alias['@'] = path.resolve(__dirname);
+    return config;
   },
 
   // Configure image domains for next/image
