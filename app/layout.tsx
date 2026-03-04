@@ -1,80 +1,67 @@
-import type React from "react"
-import type { Metadata, Viewport } from "next"
-import "./globals.css"
-import NoSSR from "@/components/no-ssr"
-import SlimNavigation from "@/components/navigation/slim-navigation"
-import ThemeProvider from "@/contexts/theme-provider"
-import AnimatedBackground from "@/components/animated-background"
-import GoogleAnalytics from "@/components/google-analytics"
-import { Albert_Sans } from "next/font/google"
+import type { Metadata, Viewport } from "next";
+import { Syne, DM_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
+import { personal } from "@/lib/site-data";
+import { VerticalNav } from "@/components/VerticalNav";
 
-const albertSans = Albert_Sans({
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-albert-sans",
+  weight: ["600", "700", "800"],
   display: "swap",
-})
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://aashishsinghal.com"),
-  title: "Aashish Singhal - Developer | Designer | Explorer",
-  description:
-    "This is a portfolio website developed by Aashish, to showcase projects, interests etc.",
-  keywords: ["portfolio", "developer", "designer", "explorer"],
-  authors: [{ name: "Aashish Singhal" }],
-  creator: "Aashish Singhal",
+  title: `${personal.name} - ${personal.title}`,
+  description: `Portfolio and technical blog. ${personal.tagline}`,
+  keywords: ["portfolio", "software engineer", "developer", "blog"],
+  authors: [{ name: personal.name }],
   openGraph: {
-    type: "website",
-    url: "https://aashishsinghal.com/",
-    title: "Aashish Singhal - Portfolio",
-    description:
-      "This is a portfolio website developed by Aashish, to showcase projects, interests etc.",
-    images: [
-      {
-        url: "/meta-ss.png",
-      },
-    ],
+    title: `${personal.name} - Portfolio`,
+    description: personal.tagline,
+    url: "https://aashishsinghal.com",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aashish Singhal - Portfolio",
-    description:
-      "This is a portfolio website developed by Aashish, to showcase projects, interests etc.",
-    images: ["/meta-ss.png"],
+    title: `${personal.name} - Portfolio`,
   },
-}
+};
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fff" },
-    { media: "(prefers-color-scheme: dark)", color: "#000" },
-  ],
+  themeColor: "#1C1C1C",
   width: "device-width",
   initialScale: 1,
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={albertSans.variable}>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </head>
-      <body>
-        <ThemeProvider>
-          <AnimatedBackground />
-          <NoSSR>
-            <SlimNavigation />
-          </NoSSR>
-          {children}
-          {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-            <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
-          )}
-        </ThemeProvider>
+      <body
+        className={`${syne.variable} ${dmSans.variable} min-h-screen antialiased bg-[var(--background)] text-[var(--foreground)]`}
+      >
+        <div className="layout-spine" aria-hidden />
+        <VerticalNav />
+        <main className="relative z-[1] pl-[calc(4px+5rem)] pr-6 pt-8 pb-24 md:pl-[calc(4px+7rem)]">
+          <div className="mx-auto max-w-3xl">
+            {children}
+          </div>
+        </main>
+        <Analytics />
       </body>
     </html>
-  )
+  );
 }

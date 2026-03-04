@@ -1,116 +1,85 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Import external CSS libraries */
-@import "animate.css";
-@import "tippy.js/dist/tippy.css";
-
-@layer base {
-  :root {
-    --font-sans: var(--font-albert-sans), system-ui, sans-serif;
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-  }
-
-  body {
-    font-family: var(--font-sans);
-    @apply text-neutral-900 bg-neutral-50 dark:text-neutral-50 dark:bg-neutral-900;
-    @apply text-xs sm:text-sm;
-    @apply border-border;
-  }
+:root {
+  --background: #1c1c1c;
+  --foreground: #ededed;
+  --foreground-muted: #a3a3a3;
+  --primary: #a38c6c;
+  --primary-hover: #b89d7d;
+  --primary-foreground: #1c1c1c;
+  --border: #70604e;
+  --border-subtle: rgba(112, 96, 78, 0.25);
+  --card: #252525;
+  --font-display: var(--font-syne), system-ui, sans-serif;
+  --font-body: var(--font-dm-sans), system-ui, sans-serif;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration: 0.3s;
+  --spine-width: 4px;
+  --nav-width: 5rem;
 }
 
-/* Global Styles */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --font-sans: var(--font-body);
+}
+
 body {
-  font-family: "Albert Sans", sans-serif;
-  @apply text-neutral-900 bg-neutral-50 dark:text-neutral-50 dark:bg-neutral-900;
-  @apply text-xs sm:text-sm;
-  @apply border-border;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  position: relative;
 }
 
-/* Custom animations */
-@layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 1s forwards;
-    opacity: 0;
-  }
-
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .hide-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-
-  .line-clamp-1 {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+/* Vertical accent spine (left edge) */
+.layout-spine {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--spine-width);
+  background: var(--primary);
+  z-index: 10;
+  pointer-events: none;
 }
 
-@keyframes fadeIn {
+/* Faint diagonal to break the frame */
+.layout-spine::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200vmax;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+  opacity: 0.06;
+  transform: rotate(-12deg);
+  transform-origin: left top;
+  pointer-events: none;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse 70% 40% at 80% 20%, rgba(163, 140, 108, 0.06) 0%, transparent 50%);
+}
+
+a {
+  color: var(--primary);
+  transition: color var(--duration) var(--ease-out);
+}
+a:hover {
+  color: var(--primary-hover);
+}
+
+@keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -118,30 +87,52 @@ body {
   }
 }
 
-/* Photo wall hover effect */
-@layer components {
-  .photo-item:hover {
-    width: calc(var(--size, 512px) / 2) !important;
-  }
+.animate-in-up {
+  animation: fade-in-up 0.5s var(--ease-out) backwards;
 }
 
-/* Background patterns */
-.bg-grid-pattern-light,
-.bg-grid-pattern-dark {
-  background-size: 50px 50px;
+/* Section: number + title (unconventional) */
+.section-label {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--primary);
+  text-transform: uppercase;
 }
 
-.bg-dot-pattern-light,
-.bg-dot-pattern-dark {
-  background-size: 30px 30px;
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--foreground);
 }
 
-/* Hide scrollbar for elements with hide-scrollbar class */
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
+/* Card: left border only, no box (bookmark style) */
+.card-spine {
+  border-left: 3px solid var(--border-subtle);
+  padding-left: 1rem;
+  transition: border-color var(--duration) var(--ease-out), padding-left var(--duration) var(--ease-out);
+}
+.card-spine:hover {
+  border-left-color: var(--primary);
+  padding-left: 1.25rem;
 }
 
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+/* Inline link style: underline from left */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width var(--duration) var(--ease-out);
+}
+.link-underline:hover::after {
+  width: 100%;
 }
