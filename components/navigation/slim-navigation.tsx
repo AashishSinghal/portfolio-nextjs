@@ -36,7 +36,7 @@ export default function SlimNavigation() {
     scroller.scrollTo(section, {
       duration: 500,
       smooth: true,
-      offset: -60 // Add offset to account for fixed header
+      offset: -60, // Add offset to account for fixed header
     })
   }
 
