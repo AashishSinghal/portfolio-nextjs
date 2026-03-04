@@ -3,7 +3,13 @@
 import { useState } from "react"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
-import { FaLocationArrow, FaCalendarAlt, FaBriefcase, FaChevronDown, FaChevronUp } from "react-icons/fa"
+import {
+  FaLocationArrow,
+  FaCalendarAlt,
+  FaBriefcase,
+  FaChevronDown,
+  FaChevronUp,
+} from "react-icons/fa"
 import { Section } from "@/types/sections"
 import { getSectionHeading } from "@/lib/utils/sections"
 import { Badge } from "@/components/ui/badge"
@@ -48,7 +54,16 @@ const workExperiences: WorkExperience[] = [
       "Designed and implemented critical features such as User Permission Manager and Bulk Edit functionality to enhance workflows and increase user adoption by 30%",
       "Achieved pixel-perfect UI implementation within record time, allowing more focus on integration refinements",
     ],
-    technologies: ["React", "TypeScript", "Node.js", "GraphQL", "Java", "Spring Boot", "Redux", "Feature Flags"],
+    technologies: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "GraphQL",
+      "Java",
+      "Spring Boot",
+      "Redux",
+      "Feature Flags",
+    ],
   },
   {
     id: 2,
@@ -75,7 +90,16 @@ const workExperiences: WorkExperience[] = [
       "Mentored and upskilled multiple interns, introducing best practices and streamlined workflows that reduced deployment time by 30%",
       "Enabled efficient collaboration through Teams UI Library integration, improving development velocity",
     ],
-    technologies: ["React", "Redux", "TypeScript", "Node.js", "Express", "MongoDB", "Teams UI Library", "REST APIs"],
+    technologies: [
+      "React",
+      "Redux",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Teams UI Library",
+      "REST APIs",
+    ],
   },
   {
     id: 3,
@@ -135,7 +159,7 @@ const WorkExperienceAlternative = () => {
               "border rounded-lg overflow-hidden transition-all duration-300",
               expandedExperience === experience.id
                 ? "border-teal-500 dark:border-teal-400 shadow-md"
-                : "border-neutral-200 dark:border-neutral-800",
+                : "border-neutral-200 dark:border-neutral-800"
             )}
           >
             <div
@@ -143,7 +167,7 @@ const WorkExperienceAlternative = () => {
                 "flex items-center justify-between p-4 cursor-pointer",
                 expandedExperience === experience.id
                   ? "bg-teal-50 dark:bg-teal-900/20"
-                  : "bg-white dark:bg-neutral-900",
+                  : "bg-white dark:bg-neutral-900"
               )}
               onClick={() => toggleExperience(experience.id)}
             >
@@ -190,7 +214,9 @@ const WorkExperienceAlternative = () => {
                 <p className="text-neutral-700 dark:text-neutral-300 mb-4">{experience.summary}</p>
 
                 <div className="mb-4">
-                  <h4 className="font-medium mb-2 text-teal-600 dark:text-teal-400">Key Achievements</h4>
+                  <h4 className="font-medium mb-2 text-teal-600 dark:text-teal-400">
+                    Key Achievements
+                  </h4>
                   <ul className="list-disc pl-5 space-y-2">
                     {experience.achievements.map((achievement, index) => (
                       <li key={index} className="text-sm">
@@ -201,7 +227,9 @@ const WorkExperienceAlternative = () => {
                 </div>
 
                 <div className="mb-4">
-                  <h4 className="font-medium mb-2 text-teal-600 dark:text-teal-400">Technologies Used</h4>
+                  <h4 className="font-medium mb-2 text-teal-600 dark:text-teal-400">
+                    Technologies Used
+                  </h4>
                   <div className="flex flex-wrap gap-2">
                     {experience.technologies.map((tech, index) => (
                       <Badge key={index} variant="outline">
@@ -212,7 +240,9 @@ const WorkExperienceAlternative = () => {
                 </div>
 
                 <div>
-                  <h4 className="font-medium mb-2 text-teal-600 dark:text-teal-400">Key Focus Areas</h4>
+                  <h4 className="font-medium mb-2 text-teal-600 dark:text-teal-400">
+                    Key Focus Areas
+                  </h4>
                   <div className="flex flex-wrap gap-2">
                     {experience.keyFocus.map((focus, index) => (
                       <Badge key={index} variant="secondary">
@@ -231,4 +261,3 @@ const WorkExperienceAlternative = () => {
 }
 
 export default WorkExperienceAlternative
-

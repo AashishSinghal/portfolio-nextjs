@@ -18,14 +18,15 @@ const Music = () => {
       <div className="grid md:grid-cols-3 gap-12">
         <div className="max-w-full prose prose-sm md:prose-base prose-neutral dark:prose-invert">
           <p>
-            If you&apos;ve read about my profile so far and you found it interesting, studies show that knowing what
-            type of music a person listens to would say a lot about them. A fare warning my playlist is as diverse as it
-            can be.
+            If you&apos;ve read about my profile so far and you found it interesting, studies show
+            that knowing what type of music a person listens to would say a lot about them. A fare
+            warning my playlist is as diverse as it can be.
           </p>
 
           <p>
-            Also, I&apos;ve been known for my good taste in music and I&apos;ve always wanted to share the music i like
-            through an easy medium, so here&apos;s a Spotify Playlist I&apos;ve created...
+            Also, I&apos;ve been known for my good taste in music and I&apos;ve always wanted to
+            share the music i like through an easy medium, so here&apos;s a Spotify Playlist
+            I&apos;ve created...
           </p>
 
           <p className="font-bold">
@@ -45,7 +46,9 @@ const Music = () => {
           <Button
             icon={FaSpotify}
             className="mt-8 text-sm"
-            onClick={() => openURLInNewTab("https://open.spotify.com/playlist/60PFTTXPaygaH9H2QitCbv")}
+            onClick={() =>
+              openURLInNewTab("https://open.spotify.com/playlist/60PFTTXPaygaH9H2QitCbv")
+            }
           >
             Listen to My Playlist on Spotify
           </Button>
@@ -64,4 +67,3 @@ const Music = () => {
 }
 
 export default Music
-

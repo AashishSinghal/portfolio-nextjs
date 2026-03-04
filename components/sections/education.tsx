@@ -70,7 +70,12 @@ const EducationItem = ({ data, isFirst, isLast }: EducationItemProps) => (
 
     <div className="mt-5 ml-8 grid gap-2 pb-2">
       <div className="relative w-9 h-9">
-        <Image src={data.logo || "/placeholder.svg"} fill style={{ objectFit: "contain" }} alt={data.institution} />
+        <Image
+          src={data.logo || "/placeholder.svg"}
+          fill
+          style={{ objectFit: "contain" }}
+          alt={data.institution}
+        />
       </div>
 
       <div>
@@ -125,4 +130,3 @@ const EducationTimeline = () => {
 }
 
 export default EducationTimeline
-

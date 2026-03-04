@@ -43,7 +43,10 @@ export default function AnimatedBackground() {
     <div ref={containerRef} className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
       {/* Base grid pattern */}
       <div
-        className={cn("absolute inset-0 opacity-[0.03]", isDark ? "bg-grid-pattern-dark" : "bg-grid-pattern-light")}
+        className={cn(
+          "absolute inset-0 opacity-[0.03]",
+          isDark ? "bg-grid-pattern-dark" : "bg-grid-pattern-light"
+        )}
       />
 
       {/* Gradient overlay */}
@@ -52,7 +55,7 @@ export default function AnimatedBackground() {
           "absolute inset-0 transition-opacity duration-300",
           isDark
             ? "bg-transparent" // No gradient in dark mode
-            : "bg-gradient-radial from-transparent to-background", // Keep gradient only in light mode
+            : "bg-gradient-radial from-transparent to-background" // Keep gradient only in light mode
         )}
         style={{
           // Subtle shift based on mouse position
@@ -67,7 +70,7 @@ export default function AnimatedBackground() {
         <div
           className={cn(
             "absolute inset-0 animate-slide-diagonal",
-            isDark ? "opacity-[0.07]" : "opacity-[0.04]", // Increased opacity in dark mode
+            isDark ? "opacity-[0.07]" : "opacity-[0.04]" // Increased opacity in dark mode
           )}
           style={{
             backgroundImage: `repeating-linear-gradient(
@@ -87,7 +90,7 @@ export default function AnimatedBackground() {
         <div
           className={cn(
             "absolute inset-0 animate-slide-vertical",
-            isDark ? "opacity-[0.06]" : "opacity-[0.03]", // Increased opacity in dark mode
+            isDark ? "opacity-[0.06]" : "opacity-[0.03]" // Increased opacity in dark mode
           )}
           style={{
             backgroundImage: `repeating-linear-gradient(
@@ -107,7 +110,7 @@ export default function AnimatedBackground() {
         <div
           className={cn(
             "absolute inset-0 animate-slide-horizontal",
-            isDark ? "opacity-[0.06]" : "opacity-[0.03]", // Increased opacity in dark mode
+            isDark ? "opacity-[0.06]" : "opacity-[0.03]" // Increased opacity in dark mode
           )}
           style={{
             backgroundImage: `repeating-linear-gradient(
@@ -132,7 +135,10 @@ export default function AnimatedBackground() {
           return (
             <div
               key={`triangle-${i}`}
-              className={cn("absolute opacity-[0.04] animate-float", isDark ? "border-white" : "border-black")}
+              className={cn(
+                "absolute opacity-[0.04] animate-float",
+                isDark ? "border-white" : "border-black"
+              )}
               style={{
                 width: 0,
                 height: 0,
@@ -157,7 +163,10 @@ export default function AnimatedBackground() {
           return (
             <div
               key={`square-${i}`}
-              className={cn("absolute opacity-[0.03] animate-rotate-slow", isDark ? "border-white" : "border-black")}
+              className={cn(
+                "absolute opacity-[0.03] animate-rotate-slow",
+                isDark ? "border-white" : "border-black"
+              )}
               style={{
                 width: `${size}px`,
                 height: `${size}px`,
@@ -178,7 +187,10 @@ export default function AnimatedBackground() {
         {Array.from({ length: 3 }).map((_, i) => (
           <div
             key={`hexagon-${i}`}
-            className={cn("absolute opacity-[0.04] animate-float-rotate", isDark ? "bg-white/5" : "bg-black/5")}
+            className={cn(
+              "absolute opacity-[0.04] animate-float-rotate",
+              isDark ? "bg-white/5" : "bg-black/5"
+            )}
             style={{
               width: `${Math.random() * 80 + 40}px`,
               height: `${Math.random() * 80 + 40}px`,
@@ -206,7 +218,14 @@ export default function AnimatedBackground() {
       >
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="wave-pattern" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+            <pattern
+              id="wave-pattern"
+              x="0"
+              y="0"
+              width="200"
+              height="200"
+              patternUnits="userSpaceOnUse"
+            >
               <path
                 d="M0,100 C40,80 60,120 100,100 C140,80 160,120 200,100 C240,80 260,120 300,100 C340,80 360,120 400,100"
                 fill="none"
@@ -235,7 +254,7 @@ export default function AnimatedBackground() {
       <div
         className={cn(
           "absolute inset-0 animate-pulse-slow",
-          isDark ? "opacity-[0.05]" : "opacity-[0.03]", // Increased opacity in dark mode
+          isDark ? "opacity-[0.05]" : "opacity-[0.03]" // Increased opacity in dark mode
         )}
         style={{
           // Subtle shift based on mouse position
@@ -243,9 +262,10 @@ export default function AnimatedBackground() {
           transition: "transform 1s ease-out",
         }}
       >
-        <div className={cn("h-full w-full", isDark ? "bg-dot-pattern-dark" : "bg-dot-pattern-light")} />
+        <div
+          className={cn("h-full w-full", isDark ? "bg-dot-pattern-dark" : "bg-dot-pattern-light")}
+        />
       </div>
     </div>
   )
 }
-

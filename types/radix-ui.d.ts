@@ -8,4 +8,3 @@ declare module "@radix-ui/react-slot" {
 
   export { Slot }
 }
-

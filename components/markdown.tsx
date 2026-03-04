@@ -9,7 +9,6 @@ interface MarkdownProps {
 }
 
 export default function Markdown({ content }: MarkdownProps) {
-
   return (
     <ReactMarkdown
       components={{
@@ -37,4 +36,3 @@ export default function Markdown({ content }: MarkdownProps) {
     </ReactMarkdown>
   )
 }
-

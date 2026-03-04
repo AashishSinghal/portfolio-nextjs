@@ -73,7 +73,9 @@ const Contact = () => {
           label="Email Address"
           hasError={!!errors.email}
           placeholder="regina@centralperk.com"
-          description={errors.email?.message || "The one where you tell me how I can contact you back"}
+          description={
+            errors.email?.message || "The one where you tell me how I can contact you back"
+          }
           {...register("email", {
             required: { value: true, message: "This is a required field" },
             pattern: { value: /^\S+@\S+\.\S+$/, message: "Please enter a valid email address" },
@@ -85,7 +87,9 @@ const Contact = () => {
           label="Message"
           hasError={!!errors.message}
           placeholder="Type your message here"
-          description={errors.message?.message || "The one where you tell me what I can do to help you"}
+          description={
+            errors.message?.message || "The one where you tell me what I can do to help you"
+          }
           {...register("message", {
             required: { value: true, message: "This is a required field" },
             minLength: { value: 10, message: "Your message must be at least 10 characters long" },
@@ -101,4 +105,3 @@ const Contact = () => {
 }
 
 export default Contact
-

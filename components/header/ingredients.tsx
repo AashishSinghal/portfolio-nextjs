@@ -32,7 +32,7 @@ const Ingredients = () => {
     .replace(/= /g, '<span class="text-blue-500">= </span>')
     .replace(
       /Designer|Developer|Photographer-ish|Writer|Sugar|Spice|\.\.\.everythingNice/g,
-      (match) => `<span class="text-red-500">${match}</span>`,
+      (match) => `<span class="text-red-500">${match}</span>`
     )
 
   return (
@@ -43,4 +43,3 @@ const Ingredients = () => {
 }
 
 export default Ingredients
-

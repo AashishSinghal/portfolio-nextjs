@@ -15,7 +15,13 @@ const educationItems: TimelineItem[] = [
     location: "Jaipur, Rajasthan, India",
     description:
       "Completed a Bachelor's degree in Computer Science & Engineering with a focus on software development and web technologies.",
-    tags: ["Computer Science", "Web Development", "Software Engineering", "Data Structures", "Algorithms"],
+    tags: [
+      "Computer Science",
+      "Web Development",
+      "Software Engineering",
+      "Data Structures",
+      "Algorithms",
+    ],
     achievements: [
       "Head of Web Development for annual college fest AAROHAN 2020",
       "Guided Poornima Alumni Association as Design Head",
@@ -60,4 +66,3 @@ export default function EducationRedesigned() {
     </div>
   )
 }
-

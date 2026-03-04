@@ -23,7 +23,12 @@ export function TimelineNavigation({
   const canGoNext = currentIndex < totalItems - 1
 
   return (
-    <div className={cn("flex items-center gap-4 mt-2", isMobile ? "justify-between" : "justify-start ml-8")}>
+    <div
+      className={cn(
+        "flex items-center gap-4 mt-2",
+        isMobile ? "justify-between" : "justify-start ml-8"
+      )}
+    >
       <Button
         variant="outline"
         size="icon"
@@ -52,4 +57,3 @@ export function TimelineNavigation({
     </div>
   )
 }
-

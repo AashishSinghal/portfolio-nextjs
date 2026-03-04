@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils"
 import useWindowDimensions, { Breakpoints } from "@/hooks/use-window-dimensions"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import VisitorCounter from "@/components/visitor-counter"
 
 // Define a type for the navigation items
 type NavItemType = Section | "logo" | "theme" | "projects" | "blog" | "games"
@@ -32,13 +33,19 @@ export default function SlimNavigation() {
     }
 
     setActiveSection(section)
-    scroller.scrollTo(section, { duration: 500, smooth: true })
+    scroller.scrollTo(section, {
+      duration: 500,
+      smooth: true,
+      offset: -60 // Add offset to account for fixed header
+    })
   }
 
   // Handle scroll to top
-  // Kept for future keyboard navigation implementation
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleScrollToTop = () => {
+    if (pathname !== "/") {
+      window.location.href = "/"
+      return
+    }
     setActiveSection(null)
     animateScroll.scrollToTop({ duration: 500 })
   }
@@ -49,6 +56,7 @@ export default function SlimNavigation() {
 
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100
+      let foundActiveSection = false
 
       // Find the section that is currently in view
       for (const section of sectionsArray) {
@@ -58,19 +66,31 @@ export default function SlimNavigation() {
         const { offsetTop, offsetHeight } = element
         if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
           setActiveSection(section.id)
-          return
+          foundActiveSection = true
+          break
         }
       }
 
-      // If at the top of the page, set active section to null
-      if (scrollPosition < 100) {
+      // If at the top of the page or no section found, set active section to null
+      if (scrollPosition < 100 || !foundActiveSection) {
         setActiveSection(null)
       }
     }
 
     window.addEventListener("scroll", handleScroll)
+    // Call handleScroll immediately to set initial state
+    handleScroll()
     return () => window.removeEventListener("scroll", handleScroll)
   }, [pathname])
+
+  // Separate hover handlers for each type of item
+  const handleMouseEnter = (item: NavItemType) => {
+    setHoveredItem(item)
+  }
+
+  const handleMouseLeave = () => {
+    setHoveredItem(null)
+  }
 
   // App routes for navigation
   const appRoutes = [
@@ -84,7 +104,7 @@ export default function SlimNavigation() {
       <div className="max-w-screen-xl mx-auto h-full flex items-center px-4">
         {/* Logo */}
         <div
-          className="flex items-center justify-center w-9 h-9 hover:opacity-80 transition-opacity mr-4 relative"
+          className="flex items-center justify-center w-9 h-9 hover:opacity-80 transition-opacity mr-4 relative cursor-pointer"
           onMouseEnter={() => setHoveredItem("logo")}
           onMouseLeave={() => setHoveredItem(null)}
           onClick={handleScrollToTop}
@@ -99,12 +119,13 @@ export default function SlimNavigation() {
               // Fallback to a simple text logo if image fails to load
               e.currentTarget.style.display = "none"
               if (e.currentTarget.parentElement) {
-                e.currentTarget.parentElement.innerHTML = '<span class="text-lg font-bold">AS</span>'
+                e.currentTarget.parentElement.innerHTML =
+                  '<span class="text-lg font-bold">AS</span>'
               }
             }}
           />
           {hoveredItem === "logo" && (
-            <div className="absolute left-full ml-1 px-2 py-1 bg-white dark:bg-neutral-900 rounded shadow-md text-sm whitespace-nowrap z-10">
+            <div className="absolute top-full mt-1 px-2 py-1 bg-white dark:bg-neutral-900 rounded shadow-md text-sm whitespace-nowrap z-10 transform -translate-x-1/2 left-1/2">
               Home
             </div>
           )}
@@ -118,17 +139,17 @@ export default function SlimNavigation() {
               href={route.path}
               className={cn(
                 "relative flex items-center justify-center rounded-md transition-all duration-300",
-                "w-9 h-9", // Fixed width and height for consistent spacing
-                pathname.startsWith(route.path)
+                "w-9 h-9",
+                pathname === route.path
                   ? "text-white bg-teal-500 dark:bg-teal-600"
-                  : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800",
+                  : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800"
               )}
-              onMouseEnter={() => setHoveredItem(route.id)}
-              onMouseLeave={() => setHoveredItem(null)}
+              onMouseEnter={() => handleMouseEnter(route.id)}
+              onMouseLeave={handleMouseLeave}
             >
               <span className="text-xs font-medium">{route.id.charAt(0).toUpperCase()}</span>
               {hoveredItem === route.id && (
-                <div className="absolute left-full ml-1 px-2 py-1 bg-white dark:bg-neutral-900 rounded shadow-md text-sm whitespace-nowrap z-10">
+                <div className="absolute top-full mt-1 px-2 py-1 bg-white dark:bg-neutral-900 rounded shadow-md text-sm whitespace-nowrap z-10 transform -translate-x-1/2 left-1/2">
                   {route.title}
                 </div>
               )}
@@ -146,18 +167,18 @@ export default function SlimNavigation() {
                   onClick={() => goToSection(section.id)}
                   className={cn(
                     "relative flex items-center justify-center rounded-md transition-all duration-300",
-                    "w-9 h-9", // Fixed width and height for consistent spacing
+                    "w-9 h-9",
                     activeSection === section.id
                       ? "text-white bg-teal-500 dark:bg-teal-600"
-                      : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800",
+                      : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800"
                   )}
                   title={section.title}
-                  onMouseEnter={() => setHoveredItem(section.id)}
-                  onMouseLeave={() => setHoveredItem(null)}
+                  onMouseEnter={() => handleMouseEnter(section.id)}
+                  onMouseLeave={handleMouseLeave}
                 >
                   <section.icon size={16} className="flex-shrink-0" />
                   {hoveredItem === section.id && (
-                    <div className="absolute left-full ml-1 px-2 py-1 bg-white dark:bg-neutral-900 rounded shadow-md text-sm whitespace-nowrap z-10">
+                    <div className="absolute top-full mt-1 px-2 py-1 bg-white dark:bg-neutral-900 rounded shadow-md text-sm whitespace-nowrap z-10 transform -translate-x-1/2 left-1/2">
                       {section.title}
                     </div>
                   )}
@@ -170,13 +191,20 @@ export default function SlimNavigation() {
         {/* Spacer for mobile */}
         {(isMobile || pathname !== "/") && <div className="flex-1"></div>}
 
+        {/* Visitor Counter - Only show on desktop */}
+        {!isMobile && (
+          <div className="mr-4">
+            <VisitorCounter />
+          </div>
+        )}
+
         {/* Theme toggle */}
         <button
           onClick={toggleTheme}
           className={cn(
-            "flex items-center justify-center rounded-md transition-all duration-300",
+            "relative flex items-center justify-center rounded-md transition-all duration-300",
             "w-9 h-9", // Fixed width and height to match navigation items
-            "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800",
+            "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800"
           )}
           title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
           onMouseEnter={() => setHoveredItem("theme")}
@@ -184,7 +212,7 @@ export default function SlimNavigation() {
         >
           {isDarkMode ? <FaSun size={16} /> : <FaMoon size={16} />}
           {!isMobile && hoveredItem === "theme" && (
-            <div className="absolute right-full mr-1 px-2 py-1 bg-white dark:bg-neutral-900 rounded shadow-md text-sm whitespace-nowrap z-10">
+            <div className="absolute top-full mt-1 px-2 py-1 bg-white dark:bg-neutral-900 rounded shadow-md text-sm whitespace-nowrap z-10 transform -translate-x-1/2 left-1/2">
               {isDarkMode ? "Light Mode" : "Dark Mode"}
             </div>
           )}
@@ -193,4 +221,3 @@ export default function SlimNavigation() {
     </div>
   )
 }
-

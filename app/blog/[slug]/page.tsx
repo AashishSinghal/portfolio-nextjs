@@ -656,4 +656,3 @@ export default function BlogPostPage({ params }: BlogPostParams) {
     </div>
   )
 }
-

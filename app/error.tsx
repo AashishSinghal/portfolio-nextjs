@@ -24,11 +24,11 @@ export default function Error({
         </div>
         <h2 className="text-2xl font-bold">Something went wrong!</h2>
         <p className="text-muted-foreground">
-          An error occurred while rendering this page. Please try again or contact support if the problem persists.
+          An error occurred while rendering this page. Please try again or contact support if the
+          problem persists.
         </p>
         <Button onClick={() => reset()}>Try again</Button>
       </div>
     </div>
   )
 }
-

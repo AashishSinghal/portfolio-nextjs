@@ -80,4 +80,3 @@ export type InstagramMedia = {
   permalink: string
   caption: string
 }
-

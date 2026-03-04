@@ -59,4 +59,3 @@ const ImageLink = ({ src, alt, href = "#", height, dimensions }: Props) => (
 )
 
 export default ImageLink
-

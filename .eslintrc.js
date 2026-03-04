@@ -1,6 +1,11 @@
 module.exports = {
-  extends: ["next/core-web-vitals", "plugin:@typescript-eslint/recommended", "plugin:react-hooks/recommended"],
-  plugins: ["@typescript-eslint", "react"],
+  extends: [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier",
+  ],
+  plugins: ["@typescript-eslint", "react", "prettier"],
   rules: {
     // Prevent unescaped entities
     "react/no-unescaped-entities": ["error", { forbid: [">", '"', "}"] }],
@@ -20,8 +25,18 @@ module.exports = {
 
     // Ensure exhaustive deps
     "react-hooks/exhaustive-deps": "warn",
+
+    // Prettier integration
+    "prettier/prettier": "error",
   },
   parser: "@typescript-eslint/parser",
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
   // Add overrides for specific files if needed
   overrides: [
     {
@@ -33,4 +48,3 @@ module.exports = {
     },
   ],
 }
-

@@ -227,5 +227,4 @@ const report = generateReport()
 console.log("Analysis complete!")
 
 // Return the report for display
-return report;
-
+return report

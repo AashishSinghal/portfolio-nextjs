@@ -84,4 +84,3 @@ export function openURLInNewTab(url: string) {
 
 // Export the section map for other uses
 export default sectionMap
-

@@ -26,7 +26,11 @@ const Languages = () => {
             for (const language of languagesList) {
               typewriter
                 .typeString(`<div class="text-3xl font-bold">${language.text}</div>`)
-                .typeString(language.translation ? `<div class="mt-2 text-base">${language.translation}</div>` : "")
+                .typeString(
+                  language.translation
+                    ? `<div class="mt-2 text-base">${language.translation}</div>`
+                    : ""
+                )
                 .pauseFor(3000)
                 .deleteAll()
             }
@@ -48,4 +52,3 @@ const Languages = () => {
 }
 
 export default Languages
-

@@ -6,4 +6,3 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // Add any other utility functions here
-

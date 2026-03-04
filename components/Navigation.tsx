@@ -27,7 +27,8 @@ const Navigation = () => {
 
   const { isDarkMode, toggleTheme } = useContext(ThemeContext)
 
-  const goToSection = (section: Section) => scroller.scrollTo(section, { duration: 500, smooth: true })
+  const goToSection = (section: Section) =>
+    scroller.scrollTo(section, { duration: 500, smooth: true })
 
   if (!isDesktop) {
     return (
@@ -48,7 +49,10 @@ const Navigation = () => {
         </Tippy>
 
         <Tippy content={<small>Toggle Theme</small>} placement="right">
-          <div onClick={toggleTheme} className="p-1 cursor-pointer hover:text-teal-500 transition-colors">
+          <div
+            onClick={toggleTheme}
+            className="p-1 cursor-pointer hover:text-teal-500 transition-colors"
+          >
             {isDarkMode ? <FaMoon /> : <FaSun />}
           </div>
         </Tippy>
@@ -90,7 +94,10 @@ const Navigation = () => {
       </div>
 
       <Tippy content={<small>Toggle Theme</small>} placement="right">
-        <div onClick={toggleTheme} className="p-1 cursor-pointer hover:text-teal-500 transition-colors">
+        <div
+          onClick={toggleTheme}
+          className="p-1 cursor-pointer hover:text-teal-500 transition-colors"
+        >
           {isDarkMode ? <FaMoon /> : <FaSun />}
         </div>
       </Tippy>
@@ -99,4 +106,3 @@ const Navigation = () => {
 }
 
 export default Navigation
-

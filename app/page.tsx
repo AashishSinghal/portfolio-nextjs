@@ -16,10 +16,7 @@ import Resume from "@/components/sections/resume"
 import Skills from "@/components/sections/skills"
 import WorkExperienceRedesigned from "@/components/sections/work-experience-redesigned"
 
-
-
 export default async function Home() {
-
   return (
     <div className="w-full px-4 sm:w-5/6 mx-auto md:container grid gap-16 md:gap-24 relative z-10 pt-16 pb-24">
       <Suspense fallback={<Loading />}>
@@ -86,4 +83,3 @@ export default async function Home() {
     </div>
   )
 }
-

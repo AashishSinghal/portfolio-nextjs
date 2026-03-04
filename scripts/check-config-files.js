@@ -51,7 +51,9 @@ async function checkConfigFiles() {
 
       for (const { pattern, correctFormat } of CONFIG_PATTERNS) {
         if (pattern.test(fileName)) {
-          console.log(`\x1b[33mWarning:\x1b[0m Found configuration file in non-JavaScript format: ${file}`)
+          console.log(
+            `\x1b[33mWarning:\x1b[0m Found configuration file in non-JavaScript format: ${file}`
+          )
           console.log(`  Please convert to: ${correctFormat}`)
           foundIssues = true
         }
@@ -61,7 +63,9 @@ async function checkConfigFiles() {
     if (!foundIssues) {
       console.log("\x1b[32mSuccess:\x1b[0m All configuration files are in JavaScript (.js) format!")
     } else {
-      console.log("\nPlease convert the above files to JavaScript (.js) format for consistency and compatibility.")
+      console.log(
+        "\nPlease convert the above files to JavaScript (.js) format for consistency and compatibility."
+      )
       process.exit(1)
     }
   } catch (error) {
@@ -71,4 +75,3 @@ async function checkConfigFiles() {
 }
 
 checkConfigFiles()
-

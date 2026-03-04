@@ -14,14 +14,16 @@ const games = [
   {
     id: "2",
     title: "Memory Match",
-    description: "Test your memory by matching pairs of cards. Find all pairs in the fewest moves possible.",
+    description:
+      "Test your memory by matching pairs of cards. Find all pairs in the fewest moves possible.",
     image: "/placeholder.svg?height=300&width=500",
     difficulty: "medium",
   },
   {
     id: "3",
     title: "Snake Game",
-    description: "Control a snake to eat food and grow longer without hitting the walls or yourself.",
+    description:
+      "Control a snake to eat food and grow longer without hitting the walls or yourself.",
     image: "/placeholder.svg?height=300&width=500",
     difficulty: "medium",
   },
@@ -35,14 +37,16 @@ const games = [
   {
     id: "5",
     title: "Word Scramble",
-    description: "Unscramble the letters to form words. Test your vocabulary and word recognition skills.",
+    description:
+      "Unscramble the letters to form words. Test your vocabulary and word recognition skills.",
     image: "/placeholder.svg?height=300&width=500",
     difficulty: "medium",
   },
   {
     id: "6",
     title: "Breakout",
-    description: "Break all the bricks with a bouncing ball. A classic arcade game reimagined for the web.",
+    description:
+      "Break all the bricks with a bouncing ball. A classic arcade game reimagined for the web.",
     image: "/placeholder.svg?height=300&width=500",
     difficulty: "hard",
   },
@@ -61,11 +65,20 @@ export default function GamesPage() {
           <div key={game.id}>
             <Card className="overflow-hidden h-full cursor-pointer hover:shadow-md transition-shadow">
               <div className="relative h-48 w-full">
-                <Image src={game.image || "/placeholder.svg"} alt={game.title} fill className="object-cover" />
+                <Image
+                  src={game.image || "/placeholder.svg"}
+                  alt={game.title}
+                  fill
+                  className="object-cover"
+                />
                 <Badge
                   className="absolute top-2 right-2"
                   variant={
-                    game.difficulty === "easy" ? "default" : game.difficulty === "medium" ? "secondary" : "destructive"
+                    game.difficulty === "easy"
+                      ? "default"
+                      : game.difficulty === "medium"
+                        ? "secondary"
+                        : "destructive"
                   }
                 >
                   {game.difficulty}
@@ -87,4 +100,3 @@ export default function GamesPage() {
     </div>
   )
 }
-

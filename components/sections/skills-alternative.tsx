@@ -142,7 +142,9 @@ const SkillsAlternative = () => {
                 </div>
                 <div>
                   <h3 className="font-medium">{category.name}</h3>
-                  <p className="text-xs text-neutral-500 dark:text-neutral-400">{category.description}</p>
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400">
+                    {category.description}
+                  </p>
                 </div>
               </div>
               <div>
@@ -187,7 +189,7 @@ const SkillsAlternative = () => {
                                     ? "bg-purple-500 dark:bg-purple-400"
                                     : skill.level === 2
                                       ? "bg-orange-500 dark:bg-orange-400"
-                                      : "bg-red-500 dark:bg-red-400",
+                                      : "bg-red-500 dark:bg-red-400"
                             )}
                             style={{ width: `${skill.level * 20}%` }}
                           />
@@ -205,4 +207,3 @@ const SkillsAlternative = () => {
 }
 
 export default SkillsAlternative
-

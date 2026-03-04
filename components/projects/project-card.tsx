@@ -12,9 +12,17 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, onClick }: ProjectCardProps) {
   return (
-    <Card className="overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={onClick}>
+    <Card
+      className="overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
+      onClick={onClick}
+    >
       <div className="relative h-48 w-full">
-        <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
+        <Image
+          src={project.image || "/placeholder.svg"}
+          alt={project.title}
+          fill
+          className="object-cover"
+        />
         {project.featured && <Badge className="absolute top-2 right-2">Featured</Badge>}
       </div>
       <CardHeader className="p-4">
@@ -29,9 +37,10 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
             {tech}
           </Badge>
         ))}
-        {project.technologies.length > 3 && <Badge variant="outline">+{project.technologies.length - 3}</Badge>}
+        {project.technologies.length > 3 && (
+          <Badge variant="outline">+{project.technologies.length - 3}</Badge>
+        )}
       </CardFooter>
     </Card>
   )
 }
-

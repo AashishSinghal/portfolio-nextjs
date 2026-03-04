@@ -44,4 +44,3 @@ const PhotoWall = ({ size = 512 }: Props) => {
 }
 
 export default PhotoWall
-

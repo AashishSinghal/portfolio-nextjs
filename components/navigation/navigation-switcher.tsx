@@ -4,7 +4,12 @@ import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { LayoutDashboard, AlignJustify, ArrowUp, ArrowDown, Settings } from "lucide-react"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import ModernNavigation from "./modern-navigation"
 
 type NavigationVariant = "sidebar" | "topbar" | "bottombar" | "floating"
@@ -35,7 +40,7 @@ export default function NavigationSwitcher() {
       <div
         className={cn(
           "fixed z-[60] transition-all duration-300",
-          variant === "bottombar" ? "bottom-20 right-4" : "bottom-4 right-4",
+          variant === "bottombar" ? "bottom-20 right-4" : "bottom-4 right-4"
         )}
       >
         <DropdownMenu>
@@ -71,4 +76,3 @@ export default function NavigationSwitcher() {
     </>
   )
 }
-

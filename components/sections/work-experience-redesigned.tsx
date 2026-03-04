@@ -15,7 +15,17 @@ const workExperiences: TimelineItem[] = [
     location: "Bangalore, Karnataka, India",
     description:
       "Developing and maintaining high-performance web applications for the Sales Portal, focusing on feature development, UI improvements, and system integrations.",
-    tags: ["React", "TypeScript", "Node.js", "GraphQL", "Java", "Spring Boot", "Redux", "Feature Flags", "UI Library"],
+    tags: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "GraphQL",
+      "Java",
+      "Spring Boot",
+      "Redux",
+      "Feature Flags",
+      "UI Library",
+    ],
     link: "https://www.nutanix.com/",
     achievements: [
       "Delivered two new high-performance projects with three distinct quote types, reducing manual effort by 60% and accelerating quote generation by 40%",
@@ -34,7 +44,16 @@ const workExperiences: TimelineItem[] = [
     location: "Jaipur, Rajasthan, India",
     description:
       "Developed full-stack applications using MERN stack with TypeScript, focusing on Microsoft Teams integrations and mentoring junior developers.",
-    tags: ["React", "Redux", "TypeScript", "Node.js", "Express", "MongoDB", "Teams UI Library", "REST APIs"],
+    tags: [
+      "React",
+      "Redux",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Teams UI Library",
+      "REST APIs",
+    ],
     link: "https://celebaltech.com/",
     achievements: [
       "Architected and deployed a streamlined Order Management Portal on the Teams App Store, automating workflows and reducing order processing time by 35%",
@@ -93,4 +112,3 @@ export default function WorkExperienceRedesigned() {
     </div>
   )
 }
-

@@ -15,7 +15,14 @@ type NavItemProps = {
   variant?: "vertical" | "horizontal" | "compact"
 }
 
-export default function NavItem({ id, icon: Icon, title, isActive, onClick, variant = "vertical" }: NavItemProps) {
+export default function NavItem({
+  id,
+  icon: Icon,
+  title,
+  isActive,
+  onClick,
+  variant = "vertical",
+}: NavItemProps) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -31,7 +38,7 @@ export default function NavItem({ id, icon: Icon, title, isActive, onClick, vari
         onClick={() => onClick(id)}
         className={cn(
           "relative flex items-center gap-2 w-full px-3 py-3 text-left transition-all duration-300",
-          "hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg group",
+          "hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg group"
         )}
       >
         <span
@@ -39,7 +46,7 @@ export default function NavItem({ id, icon: Icon, title, isActive, onClick, vari
             "relative z-10 flex items-center justify-center w-8 h-8",
             isActive
               ? "text-white"
-              : "text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-white",
+              : "text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-white"
           )}
         >
           <Icon size={18} />
@@ -60,7 +67,7 @@ export default function NavItem({ id, icon: Icon, title, isActive, onClick, vari
             "font-medium transition-all duration-300",
             isActive
               ? "text-neutral-900 dark:text-white"
-              : "text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-white",
+              : "text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-white"
           )}
         >
           {title}
@@ -87,13 +94,13 @@ export default function NavItem({ id, icon: Icon, title, isActive, onClick, vari
         onClick={() => onClick(id)}
         className={cn(
           "relative flex flex-col items-center gap-1 px-4 py-2 transition-all duration-300",
-          "hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg",
+          "hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg"
         )}
       >
         <span
           className={cn(
             "relative z-10 flex items-center justify-center w-8 h-8",
-            isActive ? "text-white" : "text-neutral-600 dark:text-neutral-400",
+            isActive ? "text-white" : "text-neutral-600 dark:text-neutral-400"
           )}
         >
           <Icon size={18} />
@@ -112,7 +119,7 @@ export default function NavItem({ id, icon: Icon, title, isActive, onClick, vari
         <span
           className={cn(
             "text-xs font-medium transition-all duration-300",
-            isActive ? "text-neutral-900 dark:text-white" : "text-neutral-600 dark:text-neutral-400",
+            isActive ? "text-neutral-900 dark:text-white" : "text-neutral-600 dark:text-neutral-400"
           )}
         >
           {title}
@@ -138,10 +145,15 @@ export default function NavItem({ id, icon: Icon, title, isActive, onClick, vari
       onClick={() => onClick(id)}
       className={cn(
         "relative flex items-center justify-center w-10 h-10 transition-all duration-300",
-        "hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-full",
+        "hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-full"
       )}
     >
-      <span className={cn("relative z-10", isActive ? "text-white" : "text-neutral-600 dark:text-neutral-400")}>
+      <span
+        className={cn(
+          "relative z-10",
+          isActive ? "text-white" : "text-neutral-600 dark:text-neutral-400"
+        )}
+      >
         <Icon size={18} />
         {isActive && (
           <motion.div
@@ -157,4 +169,3 @@ export default function NavItem({ id, icon: Icon, title, isActive, onClick, vari
     </button>
   )
 }
-

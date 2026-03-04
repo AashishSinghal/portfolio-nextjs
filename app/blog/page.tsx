@@ -58,7 +58,9 @@ export default function BlogPage() {
   return (
     <div className="container mx-auto py-12">
       <h1 className="text-3xl font-bold mb-8">Blog</h1>
-      <p className="text-muted-foreground mb-8">Read my latest thoughts on web development, design, and technology.</p>
+      <p className="text-muted-foreground mb-8">
+        Read my latest thoughts on web development, design, and technology.
+      </p>
 
       <div className="grid gap-6">
         {blogPosts.map((post) => (
@@ -66,7 +68,12 @@ export default function BlogPage() {
             <Card className="overflow-hidden cursor-pointer hover:shadow-md transition-shadow">
               <div className="md:flex">
                 <div className="relative h-48 md:h-auto md:w-1/3">
-                  <Image src={post.coverImage || "/placeholder.svg"} alt={post.title} fill className="object-cover" />
+                  <Image
+                    src={post.coverImage || "/placeholder.svg"}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <div className="flex flex-col flex-1">
                   <CardHeader>
@@ -96,4 +103,3 @@ export default function BlogPage() {
     </div>
   )
 }
-

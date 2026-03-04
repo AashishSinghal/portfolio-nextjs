@@ -29,7 +29,7 @@ export default function Navbar() {
                 href={item.href}
                 className={cn(
                   "transition-colors hover:text-foreground/80",
-                  pathname === item.href ? "text-foreground font-bold" : "text-foreground/60",
+                  pathname === item.href ? "text-foreground font-bold" : "text-foreground/60"
                 )}
               >
                 {item.label}
@@ -45,7 +45,7 @@ export default function Navbar() {
                 href={item.href}
                 className={cn(
                   "px-3 py-2 text-sm font-medium transition-colors hover:text-foreground/80",
-                  pathname === item.href ? "text-foreground font-bold" : "text-foreground/60",
+                  pathname === item.href ? "text-foreground font-bold" : "text-foreground/60"
                 )}
               >
                 {item.label}
@@ -60,4 +60,3 @@ export default function Navbar() {
     </header>
   )
 }
-

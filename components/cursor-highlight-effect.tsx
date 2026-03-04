@@ -20,7 +20,7 @@ function calculateColor(
   distance: number,
   radius: number,
   intensity: number,
-  isDark = false,
+  isDark = false
 ): string {
   // If outside radius, return base color
   if (distance > radius) return baseColor
@@ -156,7 +156,7 @@ export default function CursorHighlightEffect({
           distance,
           radius,
           highlightIntensity,
-          isDark,
+          isDark
         )
 
         return (
@@ -191,7 +191,7 @@ export default function CursorHighlightEffect({
           distance,
           radius,
           highlightIntensity,
-          isDark,
+          isDark
         )
 
         return (
@@ -228,4 +228,3 @@ export default function CursorHighlightEffect({
     </div>
   )
 }
-

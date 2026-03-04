@@ -16,4 +16,3 @@ export { default as Projects } from "./projects"
 export { default as Resume } from "./resume"
 export { default as Skills } from "./skills"
 export { default as WorkExperience } from "./work-experience"
-

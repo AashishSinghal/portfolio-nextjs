@@ -74,7 +74,10 @@ export default function ModernNavigation({ variant = "sidebar" }: NavigationProp
       <div className="fixed left-0 top-0 h-screen w-64 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md border-r border-neutral-200 dark:border-neutral-800 z-50 flex flex-col">
         {/* Logo */}
         <div className="p-4 flex items-center gap-3 border-b border-neutral-200 dark:border-neutral-800">
-          <button onClick={handleScrollToTop} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <button
+            onClick={handleScrollToTop}
+            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+          >
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icon-yQdkdJanIm6s6Ycm8pFnKxBf5WoIvG.png"
               alt="Aashish Singhal"
@@ -131,7 +134,10 @@ export default function ModernNavigation({ variant = "sidebar" }: NavigationProp
     return (
       <div className="fixed top-0 left-0 right-0 h-16 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 z-50 flex items-center justify-between px-4">
         {/* Logo */}
-        <button onClick={handleScrollToTop} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <button
+          onClick={handleScrollToTop}
+          className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+        >
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icon-yQdkdJanIm6s6Ycm8pFnKxBf5WoIvG.png"
             alt="Aashish Singhal"
@@ -162,7 +168,11 @@ export default function ModernNavigation({ variant = "sidebar" }: NavigationProp
           onClick={toggleTheme}
           className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
         >
-          {isDarkMode ? <FaSun className="text-amber-500" /> : <FaMoon className="text-indigo-500" />}
+          {isDarkMode ? (
+            <FaSun className="text-amber-500" />
+          ) : (
+            <FaMoon className="text-indigo-500" />
+          )}
         </button>
       </div>
     )
@@ -178,7 +188,7 @@ export default function ModernNavigation({ variant = "sidebar" }: NavigationProp
             onClick={handleScrollToTop}
             className={cn(
               "flex flex-col items-center gap-1 px-4 py-2 transition-all duration-300",
-              "hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg",
+              "hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg"
             )}
           >
             <span className="relative z-10 flex items-center justify-center w-8 h-8">
@@ -212,7 +222,11 @@ export default function ModernNavigation({ variant = "sidebar" }: NavigationProp
             className="flex flex-col items-center gap-1 px-4 py-2 transition-all duration-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg"
           >
             <span className="relative z-10 flex items-center justify-center w-8 h-8">
-              {isDarkMode ? <FaSun className="text-amber-500" /> : <FaMoon className="text-indigo-500" />}
+              {isDarkMode ? (
+                <FaSun className="text-amber-500" />
+              ) : (
+                <FaMoon className="text-indigo-500" />
+              )}
             </span>
             <span className="text-xs font-medium">Theme</span>
           </button>
@@ -315,4 +329,3 @@ export default function ModernNavigation({ variant = "sidebar" }: NavigationProp
     </>
   )
 }
-

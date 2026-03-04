@@ -1,5 +1,11 @@
 import type { Project } from "@/lib/data"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github } from "lucide-react"
@@ -62,4 +68,3 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
     </Dialog>
   )
 }
-

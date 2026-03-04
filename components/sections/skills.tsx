@@ -111,10 +111,15 @@ const Skills = () => {
             key={skill.id}
             className={cn(
               "px-4 py-3 border border-neutral-900/10 dark:border-neutral-50/10 hover:border-neutral-900/30 dark:hover:border-neutral-50/30 rounded-lg transition-all duration-300 hover:duration-100 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm",
-              expandedSkill === skill.id ? "col-span-1 sm:col-span-2 lg:col-span-3 xl:col-span-4" : "",
+              expandedSkill === skill.id
+                ? "col-span-1 sm:col-span-2 lg:col-span-3 xl:col-span-4"
+                : ""
             )}
           >
-            <div className="flex items-center gap-4 cursor-pointer" onClick={() => toggleSkill(skill.id)}>
+            <div
+              className="flex items-center gap-4 cursor-pointer"
+              onClick={() => toggleSkill(skill.id)}
+            >
               <div className="w-10 h-10 flex-shrink-0 relative">
                 <Image
                   src={skill.icon || "/placeholder.svg"}
@@ -129,7 +134,12 @@ const Skills = () => {
                 <div className="flex items-center justify-between">
                   <strong className="truncate text-sm">{skill.name}</strong>
                   {skill.proficiency && (
-                    <span className={cn("text-xs px-2 py-0.5 rounded-full", getProficiencyColor(skill.proficiency))}>
+                    <span
+                      className={cn(
+                        "text-xs px-2 py-0.5 rounded-full",
+                        getProficiencyColor(skill.proficiency)
+                      )}
+                    >
                       {skill.proficiency}
                     </span>
                   )}
@@ -147,7 +157,10 @@ const Skills = () => {
               <div className="mt-4 pl-14">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
                   {skill.technologies.map((tech, index) => (
-                    <div key={index} className="px-3 py-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-sm">
+                    <div
+                      key={index}
+                      className="px-3 py-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-sm"
+                    >
                       {tech}
                     </div>
                   ))}
@@ -162,4 +175,3 @@ const Skills = () => {
 }
 
 export default Skills
-

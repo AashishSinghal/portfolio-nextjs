@@ -95,7 +95,9 @@ export default function TimelineSection({ title, items, icon }: TimelineSectionP
             </div>
           </div>
           <div className="mt-2 text-center">
-            <h3 className="font-medium text-sm text-teal-600 dark:text-teal-400">{items[activeItem].title}</h3>
+            <h3 className="font-medium text-sm text-teal-600 dark:text-teal-400">
+              {items[activeItem].title}
+            </h3>
             <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
               {items[activeItem].period.start} - {items[activeItem].period.end}
             </p>
@@ -125,13 +127,13 @@ export default function TimelineSection({ title, items, icon }: TimelineSectionP
             key={item.id}
             className={cn(
               "relative min-w-[180px] flex-shrink-0 cursor-pointer z-10",
-              activeItem === index ? "flex-grow" : "",
+              activeItem === index ? "flex-grow" : ""
             )}
           >
             <div
               className={cn(
                 "flex flex-col items-center transition-all duration-300 pt-6",
-                activeItem === index ? "scale-110" : "opacity-70 hover:opacity-100",
+                activeItem === index ? "scale-110" : "opacity-70 hover:opacity-100"
               )}
               onClick={() => {
                 setActiveItem(index)
@@ -143,11 +145,16 @@ export default function TimelineSection({ title, items, icon }: TimelineSectionP
                   "w-16 h-16 rounded-lg border-2 bg-white dark:bg-neutral-900 flex items-center justify-center relative z-10 transition-all duration-300",
                   activeItem === index
                     ? "border-teal-500 dark:border-teal-400 shadow-lg"
-                    : "border-neutral-300 dark:border-neutral-700",
+                    : "border-neutral-300 dark:border-neutral-700"
                 )}
               >
                 <div className="relative w-12 h-12">
-                  <Image src={item.logo || "/placeholder.svg"} alt={item.title} fill className="object-contain p-1" />
+                  <Image
+                    src={item.logo || "/placeholder.svg"}
+                    alt={item.title}
+                    fill
+                    className="object-contain p-1"
+                  />
                 </div>
               </div>
 
@@ -155,7 +162,7 @@ export default function TimelineSection({ title, items, icon }: TimelineSectionP
                 <h3
                   className={cn(
                     "font-medium text-sm transition-all duration-300",
-                    activeItem === index ? "text-teal-600 dark:text-teal-400" : "",
+                    activeItem === index ? "text-teal-600 dark:text-teal-400" : ""
                   )}
                 >
                   {item.title}
@@ -209,7 +216,9 @@ export default function TimelineSection({ title, items, icon }: TimelineSectionP
                 <div className="flex-1">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
                     <div>
-                      <h3 className="text-xl font-bold text-center md:text-left">{items[activeItem].title}</h3>
+                      <h3 className="text-xl font-bold text-center md:text-left">
+                        {items[activeItem].title}
+                      </h3>
                       <p className="text-lg text-neutral-700 dark:text-neutral-300 text-center md:text-left">
                         {items[activeItem].subtitle}
                       </p>
@@ -250,18 +259,21 @@ export default function TimelineSection({ title, items, icon }: TimelineSectionP
                   </div>
 
                   <div className="mt-4">
-                    <p className="text-neutral-700 dark:text-neutral-300">{items[activeItem].description}</p>
+                    <p className="text-neutral-700 dark:text-neutral-300">
+                      {items[activeItem].description}
+                    </p>
 
-                    {items[activeItem].achievements && items[activeItem].achievements.length > 0 && (
-                      <div className="mt-4">
-                        <h4 className="font-medium text-sm mb-2">Key Achievements:</h4>
-                        <ul className="list-disc pl-5 space-y-1 text-sm">
-                          {items[activeItem].achievements.map((achievement, idx) => (
-                            <li key={idx}>{achievement}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                    {items[activeItem].achievements &&
+                      items[activeItem].achievements.length > 0 && (
+                        <div className="mt-4">
+                          <h4 className="font-medium text-sm mb-2">Key Achievements:</h4>
+                          <ul className="list-disc pl-5 space-y-1 text-sm">
+                            {items[activeItem].achievements.map((achievement, idx) => (
+                              <li key={idx}>{achievement}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
 
                     {items[activeItem].tags && items[activeItem].tags.length > 0 && (
                       <div className="flex flex-wrap gap-2 mt-4 justify-center md:justify-start">
@@ -282,4 +294,3 @@ export default function TimelineSection({ title, items, icon }: TimelineSectionP
     </div>
   )
 }
-

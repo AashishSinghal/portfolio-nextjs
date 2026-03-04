@@ -45,7 +45,9 @@ export default function CursorHighlightDemo() {
               value={[radius]}
               onValueChange={(value) => setRadius(value[0])}
             />
-            <p className="text-xs text-muted-foreground">Controls how far from the cursor lines will highlight</p>
+            <p className="text-xs text-muted-foreground">
+              Controls how far from the cursor lines will highlight
+            </p>
           </div>
 
           <div className="space-y-2">
@@ -62,7 +64,9 @@ export default function CursorHighlightDemo() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="intensity-slider">Highlight Intensity: {highlightIntensity.toFixed(1)}</Label>
+            <Label htmlFor="intensity-slider">
+              Highlight Intensity: {highlightIntensity.toFixed(1)}
+            </Label>
             <Slider
               id="intensity-slider"
               min={0.1}
@@ -71,7 +75,9 @@ export default function CursorHighlightDemo() {
               value={[highlightIntensity]}
               onValueChange={(value) => setHighlightIntensity(value[0])}
             />
-            <p className="text-xs text-muted-foreground">Controls how pronounced the highlight effect is</p>
+            <p className="text-xs text-muted-foreground">
+              Controls how pronounced the highlight effect is
+            </p>
           </div>
 
           <div className="flex items-center space-x-2">
@@ -108,12 +114,14 @@ export default function CursorHighlightDemo() {
           <div className="max-w-2xl text-center p-8 bg-background/80 backdrop-blur-sm rounded-lg pointer-events-auto">
             <h2 className="text-3xl font-bold mb-4">Move your cursor around</h2>
             <p className="text-lg text-muted-foreground mb-4">
-              This demo showcases a dynamic line highlighting effect that responds to your cursor position. The lines
-              within the specified radius of your cursor will highlight with a smooth transition.
+              This demo showcases a dynamic line highlighting effect that responds to your cursor
+              position. The lines within the specified radius of your cursor will highlight with a
+              smooth transition.
             </p>
             <p className="text-sm text-muted-foreground">
-              Notice how the lines remain stationary while only their color changes based on proximity to your cursor.
-              The effect creates a subtle interactive experience without distracting from the content.
+              Notice how the lines remain stationary while only their color changes based on
+              proximity to your cursor. The effect creates a subtle interactive experience without
+              distracting from the content.
             </p>
           </div>
         </div>
@@ -121,4 +129,3 @@ export default function CursorHighlightDemo() {
     </div>
   )
 }
-

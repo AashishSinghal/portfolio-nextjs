@@ -701,16 +701,17 @@ export const games: Game[] = [
   {
     id: "2",
     title: "Memory Match",
-    description: "Test your memory by matching pairs of cards. Find all pairs in the fewest moves possible.",
+    description:
+      "Test your memory by matching pairs of cards. Find all pairs in the fewest moves possible.",
     image: "/placeholder.svg?height=300&width=500",
     difficulty: "medium",
   },
   {
     id: "3",
     title: "Snake Game",
-    description: "Control a snake to eat food and grow longer without hitting the walls or yourself.",
+    description:
+      "Control a snake to eat food and grow longer without hitting the walls or yourself.",
     image: "/placeholder.svg?height=300&width=500",
     difficulty: "medium",
   },
 ]
-

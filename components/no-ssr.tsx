@@ -25,4 +25,3 @@ export default function NoSSR({ children }: { children: React.ReactNode }) {
 
   return isClient ? <>{children}</> : null
 }
-

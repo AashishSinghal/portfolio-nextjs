@@ -4,7 +4,13 @@ import { useState } from "react"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github } from "lucide-react"
 
@@ -62,8 +68,15 @@ export default function ProjectsPage() {
             onClick={() => openProjectModal(project)}
           >
             <div className="relative h-48 w-full">
-              <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
-              {Number.parseInt(project.id) <= 3 && <Badge className="absolute top-2 right-2">Featured</Badge>}
+              <Image
+                src={project.image || "/placeholder.svg"}
+                alt={project.title}
+                fill
+                className="object-cover"
+              />
+              {Number.parseInt(project.id) <= 3 && (
+                <Badge className="absolute top-2 right-2">Featured</Badge>
+              )}
             </div>
             <CardHeader className="p-4">
               <CardTitle className="line-clamp-1">{project.title}</CardTitle>
@@ -137,4 +150,3 @@ export default function ProjectsPage() {
     </div>
   )
 }
-

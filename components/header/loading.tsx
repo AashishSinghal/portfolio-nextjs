@@ -11,4 +11,3 @@ const HeaderLoading = () => {
 }
 
 export default HeaderLoading
-

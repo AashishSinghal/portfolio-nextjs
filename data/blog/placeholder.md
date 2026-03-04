@@ -26,3 +26,4 @@ To create a new Next.js project, run the following command:
 ```bash
 npx create-next-app my-next-app
 
+```

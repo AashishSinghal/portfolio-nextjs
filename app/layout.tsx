@@ -5,6 +5,7 @@ import NoSSR from "@/components/no-ssr"
 import SlimNavigation from "@/components/navigation/slim-navigation"
 import ThemeProvider from "@/contexts/theme-provider"
 import AnimatedBackground from "@/components/animated-background"
+import GoogleAnalytics from "@/components/google-analytics"
 import { Albert_Sans } from "next/font/google"
 
 const albertSans = Albert_Sans({
@@ -17,7 +18,8 @@ const albertSans = Albert_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://aashishsinghal.com"),
   title: "Aashish Singhal - Developer | Designer | Explorer",
-  description: "This is a portfolio website developed by Aashish, to showcase projects, interests etc.",
+  description:
+    "This is a portfolio website developed by Aashish, to showcase projects, interests etc.",
   keywords: ["portfolio", "developer", "designer", "explorer"],
   authors: [{ name: "Aashish Singhal" }],
   creator: "Aashish Singhal",
@@ -25,7 +27,8 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://aashishsinghal.com/",
     title: "Aashish Singhal - Portfolio",
-    description: "This is a portfolio website developed by Aashish, to showcase projects, interests etc.",
+    description:
+      "This is a portfolio website developed by Aashish, to showcase projects, interests etc.",
     images: [
       {
         url: "/meta-ss.png",
@@ -35,7 +38,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Aashish Singhal - Portfolio",
-    description: "This is a portfolio website developed by Aashish, to showcase projects, interests etc.",
+    description:
+      "This is a portfolio website developed by Aashish, to showcase projects, interests etc.",
     images: ["/meta-ss.png"],
   },
 }
@@ -66,9 +70,11 @@ export default function RootLayout({
             <SlimNavigation />
           </NoSSR>
           {children}
+          {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+            <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+          )}
         </ThemeProvider>
       </body>
     </html>
   )
 }
-

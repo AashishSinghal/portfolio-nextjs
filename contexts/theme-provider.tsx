@@ -57,6 +57,7 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
     })
   }
 
-  return <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>{children}</ThemeContext.Provider>
+  return (
+    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>{children}</ThemeContext.Provider>
+  )
 }
-

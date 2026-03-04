@@ -5,8 +5,8 @@ export async function ExampleServerComponent() {
   return (
     <div className="space-y-2">
       <p className="text-sm text-muted-foreground">
-        This component fetches data on the server and renders it directly. No client-side JavaScript is sent for this
-        component.
+        This component fetches data on the server and renders it directly. No client-side JavaScript
+        is sent for this component.
       </p>
       <div className="p-3 bg-muted rounded-md">
         <pre className="text-xs overflow-auto">{JSON.stringify(data, null, 2)}</pre>
@@ -32,4 +32,3 @@ async function fetchDataWithCache() {
 
   return res.json()
 }
-

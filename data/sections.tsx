@@ -70,27 +70,62 @@ const sectionsList = {
 
 // Create an array of active sections (uncomment sections as needed)
 export const sectionsArray: SectionArray = [
-  { id: Section.AboutMe, icon: sectionsList[Section.AboutMe].icon, title: sectionsList[Section.AboutMe].title },
+  {
+    id: Section.AboutMe,
+    icon: sectionsList[Section.AboutMe].icon,
+    title: sectionsList[Section.AboutMe].title,
+  },
   {
     id: Section.WorkExperience,
     icon: sectionsList[Section.WorkExperience].icon,
     title: sectionsList[Section.WorkExperience].title,
   },
-  { id: Section.Education, icon: sectionsList[Section.Education].icon, title: sectionsList[Section.Education].title },
-  { id: Section.Skills, icon: sectionsList[Section.Skills].icon, title: sectionsList[Section.Skills].title },
-  { id: Section.Projects, icon: sectionsList[Section.Projects].icon, title: sectionsList[Section.Projects].title },
+  {
+    id: Section.Education,
+    icon: sectionsList[Section.Education].icon,
+    title: sectionsList[Section.Education].title,
+  },
+  {
+    id: Section.Skills,
+    icon: sectionsList[Section.Skills].icon,
+    title: sectionsList[Section.Skills].title,
+  },
+  {
+    id: Section.Projects,
+    icon: sectionsList[Section.Projects].icon,
+    title: sectionsList[Section.Projects].title,
+  },
   // Removed Blog section reference
-  { id: Section.Languages, icon: sectionsList[Section.Languages].icon, title: sectionsList[Section.Languages].title },
+  {
+    id: Section.Languages,
+    icon: sectionsList[Section.Languages].icon,
+    title: sectionsList[Section.Languages].title,
+  },
   // Removed Achievements section reference
   // Removed Certifications section reference
   // Removed Philantrophy section reference
   // Removed Photography section reference
-  { id: Section.Music, icon: sectionsList[Section.Music].icon, title: sectionsList[Section.Music].title },
+  {
+    id: Section.Music,
+    icon: sectionsList[Section.Music].icon,
+    title: sectionsList[Section.Music].title,
+  },
   // Removed Designs section reference
-  { id: Section.Resume, icon: sectionsList[Section.Resume].icon, title: sectionsList[Section.Resume].title },
-  { id: Section.Contact, icon: sectionsList[Section.Contact].icon, title: sectionsList[Section.Contact].title },
-  { id: Section.AboutRotW, icon: sectionsList[Section.AboutRotW].icon, title: sectionsList[Section.AboutRotW].title },
+  {
+    id: Section.Resume,
+    icon: sectionsList[Section.Resume].icon,
+    title: sectionsList[Section.Resume].title,
+  },
+  {
+    id: Section.Contact,
+    icon: sectionsList[Section.Contact].icon,
+    title: sectionsList[Section.Contact].title,
+  },
+  {
+    id: Section.AboutRotW,
+    icon: sectionsList[Section.AboutRotW].icon,
+    title: sectionsList[Section.AboutRotW].title,
+  },
 ]
 
 export default sectionsList
-

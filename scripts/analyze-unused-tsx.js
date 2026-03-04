@@ -52,7 +52,7 @@ const scanFileForReferences = (filePath) => {
     /require\(['"]([^'"]+)['"]\)/g,
   ]
 
-  patterns.forEach(pattern => {
+  patterns.forEach((pattern) => {
     let match
     while ((match = pattern.exec(content)) !== null) {
       const importPath = match[1]
@@ -63,7 +63,7 @@ const scanFileForReferences = (filePath) => {
   // Enhanced component usage detection
   const componentRegex = /<([A-Z][A-Za-z0-9]*)/g
   const jsxImportRegex = /import\s+{?\s*([A-Z][A-Za-z0-9]*)\s*}?\s+from/g
-  
+
   // Track component names from imports
   const importedComponents = new Set()
   let jsxMatch
@@ -156,8 +156,8 @@ const findUnusedTsxFiles = () => {
   ]
 
   allTsxFiles.forEach((file) => {
-    const isSpecialFile = specialPaths.some(path => file.includes(path))
-    
+    const isSpecialFile = specialPaths.some((path) => file.includes(path))
+
     if (!referencedFiles.has(file) && !isSpecialFile) {
       unusedFiles.add(file)
     }
@@ -184,13 +184,15 @@ const generateReport = () => {
       filesByDir[dir].push(path.basename(file))
     })
 
-    Object.keys(filesByDir).sort().forEach((dir) => {
-      report += `### ${dir}/\n\n`
-      filesByDir[dir].sort().forEach((file) => {
-        report += `- \`${file}\`\n`
+    Object.keys(filesByDir)
+      .sort()
+      .forEach((dir) => {
+        report += `### ${dir}/\n\n`
+        filesByDir[dir].sort().forEach((file) => {
+          report += `- \`${file}\`\n`
+        })
+        report += `\n`
       })
-      report += `\n`
-    })
   }
 
   report += `## Important Notes\n\n`
@@ -220,4 +222,3 @@ fs.writeFileSync(path.join(rootDir, "unused-tsx-analysis.md"), report)
 console.log(`Report generated at: ${path.join(rootDir, "unused-tsx-analysis.md")}`)
 
 return report
-

@@ -16,4 +16,3 @@ try {
 } catch (error) {
   console.error("Error running analysis:", error)
 }
-

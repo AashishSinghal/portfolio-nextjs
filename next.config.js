@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require("path")
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -7,12 +7,14 @@ const nextConfig = {
 
   // Add metadata configuration
   env: {
-    NEXT_PUBLIC_BASE_URL: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://aashishsinghal.com/",
+    NEXT_PUBLIC_BASE_URL: process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "https://aashishsinghal.com/",
   },
 
   webpack: (config) => {
-    config.resolve.alias['@'] = path.resolve(__dirname);
-    return config;
+    config.resolve.alias["@"] = path.resolve(__dirname)
+    return config
   },
 
   // Configure image domains for next/image
@@ -79,4 +81,3 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
-

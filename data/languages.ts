@@ -32,4 +32,3 @@ const languagesList: Language[] = [
 ]
 
 export default languagesList
-
