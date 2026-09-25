@@ -39,8 +39,26 @@ function vercelApiInDev(): Plugin {
   }
 }
 
+// Draft posts (frontmatter `draft: true`) are shown in `vite dev` only. The runtime filter in
+// src/data/writing.ts hides them, and this keeps their text out of production bundles too.
+function stripDraftPostsInBuild(): Plugin {
+  return {
+    name: "strip-draft-posts-in-build",
+    apply: "build",
+    enforce: "pre",
+    load(id) {
+      const [file, query] = id.split("?")
+      if (query !== "raw" || !/[\\/]content[\\/]writing[\\/][^\\/]+\.md$/.test(file)) return
+      const source = fs.readFileSync(file, "utf8")
+      if (!/^draft:\s*true\s*$/m.test(source.split(/\r?\n---/)[0])) return
+      const stub = "---\ntitle: draft\ndate: 1970-01-01\nsummary: draft\ndraft: true\n---\n"
+      return `export default ${JSON.stringify(stub)}`
+    },
+  }
+}
+
 export default defineConfig({
-  plugins: [react(), tailwindcss(), vercelApiInDev()],
+  plugins: [react(), tailwindcss(), vercelApiInDev(), stripDraftPostsInBuild()],
   resolve: {
     alias: { "@": path.resolve(import.meta.dirname, "src") },
   },

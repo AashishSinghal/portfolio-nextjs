@@ -1,7 +1,7 @@
 # aashishsinghal.com: Project Directives
 
 Aashish Singhal's personal portfolio: a short, text-first site with work history, projects
-(with case-study pages) and contact. It is deliberately simple. Games live in a separate app,
+(with case-study pages), writing and contact. It is deliberately simple. Games live in a separate app,
 [arcade.aashishsinghal.com](https://arcade.aashishsinghal.com)
 ([repo](https://github.com/AashishSinghal/arcade)).
 
@@ -38,18 +38,20 @@ Stack: Vite 8, React 19, React Router 8, Tailwind CSS 4, TypeScript 6. Hosted on
 index.html            meta/SEO/OG tags (shared by every route; it's a client-rendered SPA), fonts
 src/
   main.tsx            entry; loads GA from VITE_GA_MEASUREMENT_ID
-  app.tsx             routes: / · /projects · /projects/:slug · 404
+  app.tsx             routes: / · /projects · /projects/:slug · /writing · /writing/:slug · 404
   styles/globals.css  Tailwind 4 @theme tokens (colours, fonts) + base styles. No JS config.
   data/               ALL content lives here; edit these to update the site
     profile.ts        name, role, intro, links (github, linkedin, resume, arcade…), skills, Formspark id
     work.ts           jobs with 2–3 measurable highlights each (from the resume)
     projects.ts       projects; `featured: true` = has a case-study page; `caseStudy` sections
+    writing.ts        loads content/writing/*.md, parses frontmatter, drafts, reading time
   components/         layout (nav, footer, scroll handling), section, project-row,
                       contact-form, external-link, visitor-count
-  pages/              home, projects, project (case study), not-found
+  pages/              home, projects, project (case study), writing, post, not-found
   lib/                utils (cn), analytics, use-document-title
+content/writing/      blog posts as Markdown (filename = URL slug)
 api/visitor-count.ts  Vercel function: Upstash Redis visit counter (hidden until configured)
-vite.config.ts        also runs api/*.ts in `vite dev` via a small middleware
+vite.config.ts        runs api/*.ts in `vite dev`; strips draft posts from production builds
 vercel.json           Vite preset, SPA rewrite, redirects /arcade, /arcade/:path*, /games → arcade
 public/               logo.png, favicon.ico, meta-ss.png, resume.pdf, images/projects/*.webp
 ```
@@ -60,6 +62,13 @@ public/               logo.png, favicon.ico, meta-ss.png, resume.pdf, images/pro
 - **Case studies** have three optional sections, `problem`, `built` and `challenges`, rendered
   as "The problem" / "What I built" / "Hard parts". Separate paragraphs with a blank line (`\n\n`).
   Write them from the project's own README/source; don't embellish.
+- **Writing** (blog): each post is `content/writing/<slug>.md` with frontmatter `title`,
+  `date` (YYYY-MM-DD), `summary`, and optional `draft: true`. Rendered with `marked` (GFM) and
+  styled by the `.prose` rules in `globals.css`. **Drafts show only in `pnpm dev`**: the
+  runtime filter hides them, and a build plugin in `vite.config.ts` keeps their text out of
+  the production bundle. The nav item and home section appear only when a visible post
+  exists. To publish, delete the `draft` line. The first post, `next-to-vite.md`, is about
+  this site's migration; its numbers were measured during the migration.
 - **Cover images**: capture the live app at 1440×900 @2x, crop empty space, save as ~1600px
   wide WebP (quality ~82) in `public/images/projects/`. Older covers are on Vercel Blob URLs.
 
@@ -121,7 +130,5 @@ On failure it shows an honest error with a LinkedIn fallback, never a fake "than
 
 - Connect `arcade.aashishsinghal.com` in Vercel. Until then the Arcade links don't resolve.
 - Port the remaining five games to the arcade repo.
-- Writing/blog: intentionally absent until there's a first real post. When added, planned
-  as Markdown files in the repo under `/writing`, with the nav item shown only once a post
-  exists.
+- Writing: live since Sep 2026 with one post (`content/writing/next-to-vite.md`).
 - Other repos the owner might list: `render-diff-react`, `watch2gather`.

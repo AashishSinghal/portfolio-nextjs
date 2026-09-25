@@ -1,6 +1,7 @@
 import { Suspense, useEffect } from "react"
 import { Link, NavLink, Outlet, useLocation } from "react-router"
 import { profile } from "@/data/profile"
+import { posts } from "@/data/writing"
 import { cn } from "@/lib/utils"
 import VisitorCount from "@/components/visitor-count"
 
@@ -8,6 +9,8 @@ import VisitorCount from "@/components/visitor-count"
 const navItems: Array<{ label: string; to?: string; href?: string }> = [
   { label: "Work", to: "/#work" },
   { label: "Projects", to: "/projects" },
+  // Writing appears only once there's at least one (visible) post
+  ...(posts.length > 0 ? [{ label: "Writing", to: "/writing" }] : []),
   { label: "Arcade", href: profile.links.arcade },
   { label: "Contact", to: "/#contact" },
 ]
@@ -31,29 +34,33 @@ function Nav() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-bg/85 backdrop-blur">
-      <nav className="mx-auto flex h-16 max-w-3xl items-center justify-between gap-6 px-5">
-        <Link to="/" className="group flex items-center gap-3" aria-label={`${profile.name}, home`}>
+      <nav className="mx-auto flex h-16 max-w-3xl items-center justify-between gap-2 px-4 min-[360px]:gap-3 sm:gap-6 sm:px-5">
+        <Link
+          to="/"
+          className="group flex shrink-0 items-center gap-3"
+          aria-label={`${profile.name}, home`}
+        >
           {/* The logo sits in greyscale and fills with its gold on hover */}
           <img
             src="/logo.png"
             alt=""
             width={32}
             height={32}
-            className="size-8 grayscale transition-[filter] duration-300 group-hover:grayscale-0"
+            className="size-7 grayscale min-[360px]:size-8 transition-[filter] duration-300 group-hover:grayscale-0"
           />
           <span className="hidden font-medium tracking-tight transition-colors group-hover:text-gold sm:inline">
             {profile.name}
           </span>
         </Link>
 
-        <ul className="flex items-center gap-1 text-sm sm:gap-2">
+        <ul className="flex items-center text-[13px] sm:gap-2 sm:text-sm">
           {navItems.map((item) => {
             if (item.href) {
               return (
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="rounded-md px-2 py-1.5 text-muted transition-colors hover:text-fg sm:px-3"
+                    className="rounded-md px-1 py-1.5 min-[360px]:px-1.5 text-muted transition-colors hover:text-fg sm:px-3"
                   >
                     {item.label}
                   </a>
@@ -70,7 +77,7 @@ function Nav() {
                 <NavLink
                   to={item.to!}
                   className={cn(
-                    "rounded-md px-2 py-1.5 transition-colors sm:px-3",
+                    "rounded-md px-1 py-1.5 min-[360px]:px-1.5 transition-colors sm:px-3",
                     active ? "text-gold" : "text-muted hover:text-fg"
                   )}
                 >

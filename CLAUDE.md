@@ -11,6 +11,7 @@ repo. The short version:
   (`../aashish-resume`); `public/resume.pdf` is its fullstack build.
 - **No placeholder or invented content**, ever. Leave fields empty and say so.
 - Images appear only as case-study covers, never on the home or projects list.
+- Blog posts are Markdown in `content/writing/`; `draft: true` posts show in dev only.
 - Games are not here: they live at arcade.aashishsinghal.com (`../arcade`).
 - Verify with `pnpm build` and `pnpm lint`. Pushing `main` deploys to production.
 - Stop any dev server you start.

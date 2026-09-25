@@ -4,6 +4,8 @@ import { featuredProjects } from "@/data/projects"
 import Section from "@/components/section"
 import ProjectRow from "@/components/project-row"
 import ContactForm from "@/components/contact-form"
+import PostRow from "@/components/post-row"
+import { posts } from "@/data/writing"
 import ExternalLink from "@/components/external-link"
 import { useDocumentTitle } from "@/lib/use-document-title"
 
@@ -65,6 +67,18 @@ export default function Home() {
           ))}
         </div>
       </Section>
+
+      {posts.length > 0 && (
+        <Section title="Writing" more={{ label: "All posts", to: "/writing" }}>
+          <ul className="grid gap-1">
+            {posts.slice(0, 3).map((post) => (
+              <li key={post.slug}>
+                <PostRow post={post} />
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
 
       <Section title="Arcade">
         <p className="text-muted">
