@@ -1,16 +1,19 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node"
 import { Redis } from "@upstash/redis"
 
-// One counter per site, all in one Redis database. The arcade (a static site on its own
-// subdomain) calls this endpoint cross-origin with ?site=arcade.
-const SITES = ["portfolio", "arcade"] as const
-type Site = (typeof SITES)[number]
+// One counter per site, all in one Redis database (key `<site>:visits`). Sites on their own
+// subdomain call this endpoint cross-origin with ?site=<name>.
+//
+// To count a new project: add one line here (site name → the origins it's served from), then
+// add the client component to the project. See the `site-visit-counter` skill in
+// github.com/AashishSinghal/agent-skills.
+const SITES: Record<string, string[]> = {
+  portfolio: ["https://aashishsinghal.com", "https://www.aashishsinghal.com"],
+  arcade: ["https://arcade.aashishsinghal.com"],
+  "coupon-press": ["https://coupon-press.aashishsinghal.com"],
+}
 
-const ALLOWED_ORIGINS = new Set([
-  "https://aashishsinghal.com",
-  "https://www.aashishsinghal.com",
-  "https://arcade.aashishsinghal.com",
-])
+const ALLOWED_ORIGINS = new Set(Object.values(SITES).flat())
 
 // The Vercel Marketplace Upstash integration injects KV_REST_API_*, a direct Upstash
 // setup uses UPSTASH_REDIS_REST_*; accept either
@@ -37,7 +40,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
 
   const site =
     new URL(request.url ?? "/", "http://localhost").searchParams.get("site") ?? "portfolio"
-  if (!SITES.includes(site as Site)) return response.status(400).json({ error: "Unknown site" })
+  if (!Object.hasOwn(SITES, site)) return response.status(400).json({ error: "Unknown site" })
 
   const redis = getRedis()
   if (!redis) return response.status(503).json({ error: "Counter not configured" })

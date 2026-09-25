@@ -87,8 +87,10 @@ A husky pre-commit hook runs `eslint --fix` on staged files (lint-staged).
 
 - **Analytics:** Vercel Web Analytics via `inject()` in `src/main.tsx`, enabled per project in
   the Vercel dashboard. No keys. It replaced Google Analytics (removed; too much boilerplate).
-- **Visit counters:** `api/visitor-count.ts` serves both sites from one Upstash Redis database,
-  keys `portfolio:visits` and `arcade:visits`. `GET ?site=<site>` reads, `POST` increments.
+- **Visit counters:** `api/visitor-count.ts` serves every site from one Upstash Redis database
+  (key `<site>:visits`); sites and their origins are listed in the `SITES` map (portfolio,
+  arcade, coupon-press). To add a project, follow the `site-visit-counter` skill in
+  `../agent-skills`. `GET ?site=<site>` reads, `POST` increments.
   The arcade calls it cross-origin (`https://aashishsinghal.com/api/visitor-count?site=arcade`),
   so `ALLOWED_ORIGINS` must include its origin. Browsers dedupe themselves: the client stores
   today's date in localStorage (`visit-counted-on`) and only POSTs once a day. It's a vanity
