@@ -42,6 +42,26 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "coupon-press",
+    name: "Coupon Press",
+    summary: "Print-ready, numbered coupon books generated as a PDF, entirely in your browser.",
+    stack: ["Next.js", "TypeScript", "pdf-lib", "Canvas", "Tailwind CSS"],
+    image: "/images/projects/coupon-press.webp",
+    links: {
+      live: "https://coupon-press.aashishsinghal.com",
+      code: "https://github.com/AashishSinghal/coupon-generator",
+    },
+    featured: true,
+    caseStudy: {
+      problem:
+        "Printing a book of uniquely numbered coupons meant running a Python notebook: edit the code, run reportlab, hope the layout came out right. Fine for one person with Python installed, useless for anyone else.",
+      built:
+        "A web port of that notebook. Upload a coupon design, pick a numbering pattern like A{number:04d} or PROMO-{number:05d}, choose how many coupons fit on an A4 page, and drag the number where it should sit. A live preview shows page one exactly as it will print, and one click downloads the whole book as a PDF, up to 5,000 coupons.\n\nNothing leaves the browser: no backend, no upload. Your last settings and recently used images are remembered for the next visit.",
+      challenges:
+        "The notebook stays the source of truth for page geometry, so the port had to match its margins, gutters, aspect-fit sizing and bottom-left-origin placement exactly, and reproduce Python's str.format for the numbering. The preview and the final PDF share one framework-free rendering path, so what you see is what prints. Large jobs run in a non-blocking loop with a progress bar, so a 5,000-coupon book doesn't freeze the tab.",
+    },
+  },
+  {
     slug: "videostil",
     name: "Videostil",
     summary:
