@@ -23,12 +23,14 @@ pnpm lint
 
 Projects marked `featured: true` in `src/data/projects.ts` get a page at `/projects/<slug>`. Fill in `caseStudy.problem`, `caseStudy.built` and `caseStudy.challenges`; each section only shows once it has text.
 
-## Environment variables
+## Analytics and environment variables
+
+Page analytics use Vercel Web Analytics (`inject()` in `src/main.tsx`); enable it in the Vercel project. No keys needed.
+
 
 | Name                                   | Used for                                                                                                               |
 | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `VITE_GA_MEASUREMENT_ID`               | Google Analytics (optional)                                                                                            |
-| `KV_REST_API_URL`, `KV_REST_API_TOKEN` | Visit counter; added automatically by the Upstash integration on Vercel. The counter stays hidden until these are set. |
+| `KV_REST_API_URL`, `KV_REST_API_TOKEN` | Visit counters for the portfolio and the arcade (one Upstash Redis database, added by the Upstash integration). Hidden until set. |
 
 ## License
 

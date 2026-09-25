@@ -37,7 +37,7 @@ Stack: Vite 8, React 19, React Router 8, Tailwind CSS 4, TypeScript 6. Hosted on
 ```
 index.html            meta/SEO/OG tags (shared by every route; it's a client-rendered SPA), fonts
 src/
-  main.tsx            entry; loads GA from VITE_GA_MEASUREMENT_ID
+  main.tsx            entry; starts Vercel Web Analytics (inject())
   app.tsx             routes: / · /projects · /projects/:slug · /writing · /writing/:slug · 404
   styles/globals.css  Tailwind 4 @theme tokens (colours, fonts) + base styles. No JS config.
   data/               ALL content lives here; edit these to update the site
@@ -48,9 +48,9 @@ src/
   components/         layout (nav, footer, scroll handling), section, project-row,
                       contact-form, external-link, visitor-count
   pages/              home, projects, project (case study), writing, post, not-found
-  lib/                utils (cn), analytics, use-document-title
+  lib/                utils (cn), use-document-title
 content/writing/      blog posts as Markdown (filename = URL slug)
-api/visitor-count.ts  Vercel function: Upstash Redis visit counter (hidden until configured)
+api/visitor-count.ts  Vercel function: visit counters for the portfolio and the arcade (?site=)
 vite.config.ts        runs api/*.ts in `vite dev`; strips draft posts from production builds
 vercel.json           Vite preset, SPA rewrite, redirects /arcade, /arcade/:path*, /games → arcade
 public/               logo.png, favicon.ico, meta-ss.png, resume.pdf, images/projects/*.webp
@@ -83,15 +83,20 @@ pnpm lint       # eslint (flat config)
 
 A husky pre-commit hook runs `eslint --fix` on staged files (lint-staged).
 
-## Environment variables (Vercel)
+## Analytics, visit counters, contact form
 
-| Name | Purpose |
-| --- | --- |
-| `VITE_GA_MEASUREMENT_ID` | Google Analytics. Renamed from `NEXT_PUBLIC_GA_MEASUREMENT_ID` in the Vite move; the Vercel value must use the new name. |
-| `KV_REST_API_URL`, `KV_REST_API_TOKEN` (or `UPSTASH_REDIS_REST_*`) | Visit counter. Added by the Upstash integration. Without them the API returns 503 and the counter stays hidden. |
-
-The contact form posts to Formspark (`profile.formsparkId`, forwards to the owner's inbox).
-On failure it shows an honest error with a LinkedIn fallback, never a fake "thanks".
+- **Analytics:** Vercel Web Analytics via `inject()` in `src/main.tsx`, enabled per project in
+  the Vercel dashboard. No keys. It replaced Google Analytics (removed; too much boilerplate).
+- **Visit counters:** `api/visitor-count.ts` serves both sites from one Upstash Redis database,
+  keys `portfolio:visits` and `arcade:visits`. `GET ?site=<site>` reads, `POST` increments.
+  The arcade calls it cross-origin (`https://aashishsinghal.com/api/visitor-count?site=arcade`),
+  so `ALLOWED_ORIGINS` must include its origin. Browsers dedupe themselves: the client stores
+  today's date in localStorage (`visit-counted-on`) and only POSTs once a day. It's a vanity
+  counter, not tamper-proof. Env vars: `KV_REST_API_URL` and `KV_REST_API_TOKEN` (or
+  `UPSTASH_REDIS_REST_*`), added by the Upstash integration on the **portfolio** project.
+  Without them the API returns 503 and both counters stay hidden.
+- **Contact form:** posts to Formspark (`profile.formsparkId`), which forwards to the owner's
+  inbox. On failure it shows an honest error with a LinkedIn fallback, never a fake "thanks".
 
 ## Conventions and gotchas
 

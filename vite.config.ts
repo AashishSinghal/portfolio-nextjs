@@ -1,6 +1,6 @@
 import path from "node:path"
 import fs from "node:fs"
-import { defineConfig, type Plugin } from "vite"
+import { defineConfig, loadEnv, type Plugin } from "vite"
 import react from "@vitejs/plugin-react"
 import tailwindcss from "@tailwindcss/vite"
 
@@ -11,6 +11,11 @@ function vercelApiInDev(): Plugin {
     name: "vercel-api-in-dev",
     apply: "serve",
     configureServer(server) {
+      // Vercel gives functions every env var; mirror that locally by loading .env (all keys,
+      // not just VITE_ ones) into process.env, without overriding what's already set
+      const env = loadEnv(server.config.mode, import.meta.dirname, "")
+      for (const [key, value] of Object.entries(env)) process.env[key] ??= value
+
       server.middlewares.use(async (req, res, next) => {
         const { pathname } = new URL(req.url ?? "/", "http://localhost")
         const match = /^\/api\/([\w-]+)$/.exec(pathname)
