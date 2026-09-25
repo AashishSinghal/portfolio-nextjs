@@ -1,12 +1,15 @@
 import { Link } from "react-router"
+import { useDocumentTitle } from "@/lib/use-document-title"
 
 export default function NotFound() {
+  useDocumentTitle("Not found")
+
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-4 p-24 text-center">
-      <h1 className="text-2xl font-bold">Page not found</h1>
-      <p className="text-muted-foreground">The page you&apos;re looking for doesn&apos;t exist.</p>
-      <Link to="/" className="underline hover:text-teal-400">
-        Back to home
+    <div className="grid min-h-[60vh] place-content-center gap-4 text-center">
+      <p className="font-mono text-sm text-gold">404</p>
+      <h1 className="text-2xl font-semibold tracking-tight">This page doesn&apos;t exist</h1>
+      <Link to="/" className="link justify-self-center text-sm">
+        Back home
       </Link>
     </div>
   )

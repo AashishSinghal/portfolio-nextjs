@@ -1,35 +1,26 @@
-import { lazy, Suspense } from "react"
+import { lazy } from "react"
 import { Route, Routes } from "react-router"
-import SlimNavigation from "@/components/navigation/slim-navigation"
-import AnimatedBackground from "@/components/animated-background"
-import ErrorBoundary from "@/pages/error"
-import Loading from "@/pages/loading"
+import Layout from "@/components/layout"
 import Home from "@/pages/home"
 
 // Secondary routes are split out so the home page loads only what it needs
 const Projects = lazy(() => import("@/pages/projects"))
-const Blog = lazy(() => import("@/pages/blog"))
-const BlogPost = lazy(() => import("@/pages/blog-post"))
-const Games = lazy(() => import("@/pages/games"))
+const Project = lazy(() => import("@/pages/project"))
+const Arcade = lazy(() => import("@/pages/arcade"))
+const ArcadeGame = lazy(() => import("@/pages/arcade-game"))
 const NotFound = lazy(() => import("@/pages/not-found"))
 
 export default function App() {
   return (
-    <>
-      <AnimatedBackground />
-      <SlimNavigation />
-      <ErrorBoundary>
-        <Suspense fallback={<Loading />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/games" element={<Games />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </ErrorBoundary>
-    </>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="projects" element={<Projects />} />
+        <Route path="projects/:slug" element={<Project />} />
+        <Route path="arcade" element={<Arcade />} />
+        <Route path="arcade/:slug" element={<ArcadeGame />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   )
 }
