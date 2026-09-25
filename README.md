@@ -1,6 +1,6 @@
 # aashishsinghal.com
 
-My portfolio: work, projects, and a small arcade of browser games.
+My portfolio: work and projects. The games live separately at [arcade.aashishsinghal.com](https://arcade.aashishsinghal.com) ([repo](https://github.com/AashishSinghal/arcade)).
 
 Built with Vite, React 19, React Router and Tailwind CSS 4. Hosted on Vercel.
 
@@ -16,8 +16,7 @@ pnpm lint
 ## Where things live
 
 - `src/data/` – all content: profile and links, work history, projects. Edit these to update the site.
-- `src/pages/` – routes: home, projects, project case study, arcade, game.
-- `src/arcade/` – the games. Each is a self-contained file with a default game component and a `Preview` thumbnail, so they can move to their own app later.
+- `src/pages/` – routes: home, projects, project case study.
 - `api/visitor-count.ts` – Vercel function for the visit counter, backed by Upstash Redis.
 
 ### Case studies

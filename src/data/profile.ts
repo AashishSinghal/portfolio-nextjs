@@ -12,6 +12,7 @@ export const profile = {
     instagram: "https://www.instagram.com/i.am.as.is/",
     resume: "/resume.pdf",
     repository: "https://github.com/AashishSinghal/portfolio-nextjs",
+    arcade: "https://arcade.aashishsinghal.com",
   },
   // Formspark form that forwards contact messages to my inbox
   formsparkId: "Nvmai2DF",

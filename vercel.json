@@ -1,5 +1,27 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
-  "rewrites": [{ "source": "/((?!api/).*)", "destination": "/index.html" }]
+  "redirects": [
+    {
+      "source": "/arcade",
+      "destination": "https://arcade.aashishsinghal.com",
+      "permanent": true
+    },
+    {
+      "source": "/arcade/:path*",
+      "destination": "https://arcade.aashishsinghal.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/games",
+      "destination": "https://arcade.aashishsinghal.com",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ]
 }

@@ -4,10 +4,11 @@ import { profile } from "@/data/profile"
 import { cn } from "@/lib/utils"
 import VisitorCount from "@/components/visitor-count"
 
-const navItems = [
+// `href` items leave the site (the arcade lives on its own subdomain)
+const navItems: Array<{ label: string; to?: string; href?: string }> = [
   { label: "Work", to: "/#work" },
   { label: "Projects", to: "/projects" },
-  { label: "Arcade", to: "/arcade" },
+  { label: "Arcade", href: profile.links.arcade },
   { label: "Contact", to: "/#contact" },
 ]
 
@@ -47,14 +48,27 @@ function Nav() {
 
         <ul className="flex items-center gap-1 text-sm sm:gap-2">
           {navItems.map((item) => {
-            const [path, anchor] = item.to.split("#")
+            if (item.href) {
+              return (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    className="rounded-md px-2 py-1.5 text-muted transition-colors hover:text-fg sm:px-3"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              )
+            }
+
+            const [path, anchor] = item.to!.split("#")
             const active = anchor
               ? pathname === path && hash === `#${anchor}`
               : pathname.startsWith(path)
             return (
               <li key={item.label}>
                 <NavLink
-                  to={item.to}
+                  to={item.to!}
                   className={cn(
                     "rounded-md px-2 py-1.5 transition-colors sm:px-3",
                     active ? "text-gold" : "text-muted hover:text-fg"

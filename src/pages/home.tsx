@@ -1,8 +1,6 @@
-import { Link } from "react-router"
 import { profile, skills } from "@/data/profile"
 import { work } from "@/data/work"
 import { featuredProjects } from "@/data/projects"
-import { games } from "@/arcade/registry"
 import Section from "@/components/section"
 import ProjectRow from "@/components/project-row"
 import ContactForm from "@/components/contact-form"
@@ -68,17 +66,12 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section title="Arcade" more={{ label: "Play", to: "/arcade" }}>
+      <Section title="Arcade">
         <p className="text-muted">
-          Small browser games I built for fun:{" "}
-          {games.map((game, index) => (
-            <span key={game.slug}>
-              <Link to={`/arcade/${game.slug}`} className="link">
-                {game.title}
-              </Link>
-              {index < games.length - 1 ? ", " : "."}
-            </span>
-          ))}
+          Small browser games I build for fun live in their own arcade.{" "}
+          <a href={profile.links.arcade} className="link">
+            Play at arcade.aashishsinghal.com
+          </a>
         </p>
       </Section>
 
