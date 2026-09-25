@@ -8,7 +8,7 @@
 
 @layer base {
   :root {
-    --font-sans: var(--font-albert-sans), system-ui, sans-serif;
+    --font-sans: var(--font-retro), monospace;
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
@@ -28,7 +28,9 @@
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
     --ring: 240 5.9% 10%;
-    --radius: 0.5rem;
+    --radius: 0rem;
+    --pixel-accent: 174 72% 45%;
+    --pixel-shadow: 240 10% 10%;
   }
 
   .dark {
@@ -51,22 +53,94 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
+    --pixel-accent: 172 66% 50%;
+    --pixel-shadow: 172 66% 30%;
   }
 
   body {
     font-family: var(--font-sans);
     @apply text-neutral-900 bg-neutral-50 dark:text-neutral-50 dark:bg-neutral-900;
-    @apply text-xs sm:text-sm;
+    /* VT323 renders small, so body copy runs a size larger than usual */
+    @apply text-lg sm:text-xl leading-snug;
     @apply border-border;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+    /* VT323 has a tiny x-height; this scales it up wherever it's used, so existing
+       text-sm / text-xs utilities stay readable without per-component changes */
+    font-size-adjust: 0.62;
+  }
+
+  /* 8-bit: display font for headings and interactive chrome */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  button,
+  label,
+  nav,
+  .font-pixel {
+    font-family: var(--font-pixel), monospace;
+    font-size-adjust: none;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+  }
+
+  /* 8-bit: nothing is round */
+  *,
+  *::before,
+  *::after {
+    border-radius: 0 !important;
+  }
+
+  ::selection {
+    background: hsl(var(--pixel-accent));
+    color: hsl(240 10% 4%);
+  }
+
+  code,
+  pre,
+  kbd,
+  .font-retro {
+    font-family: var(--font-retro), monospace;
+    font-size-adjust: 0.62;
   }
 }
 
-/* Global Styles */
-body {
-  font-family: "Albert Sans", sans-serif;
-  @apply text-neutral-900 bg-neutral-50 dark:text-neutral-50 dark:bg-neutral-900;
-  @apply text-xs sm:text-sm;
-  @apply border-border;
+@layer components {
+  /* Chunky stepped frame used for cards and panels */
+  .pixel-box {
+    @apply relative bg-neutral-50 dark:bg-neutral-900 border-4 border-neutral-900 dark:border-neutral-100 shadow-pixel-sm;
+  }
+
+  .pixel-box-hover {
+    @apply transition-transform duration-75 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pixel-md;
+  }
+
+  /* Blinking block cursor */
+  .pixel-cursor::after {
+    content: "";
+    display: inline-block;
+    width: 0.6em;
+    height: 1em;
+    margin-left: 0.2em;
+    vertical-align: -0.1em;
+    background: currentColor;
+    animation: pixel-blink 1s steps(1) infinite;
+  }
+}
+
+@keyframes pixel-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-cursor::after {
+    animation: none;
+  }
 }
 
 /* Custom animations */
@@ -123,17 +197,6 @@ body {
   .photo-item:hover {
     width: calc(var(--size, 512px) / 2) !important;
   }
-}
-
-/* Background patterns */
-.bg-grid-pattern-light,
-.bg-grid-pattern-dark {
-  background-size: 50px 50px;
-}
-
-.bg-dot-pattern-light,
-.bg-dot-pattern-dark {
-  background-size: 30px 30px;
 }
 
 /* Hide scrollbar for elements with hide-scrollbar class */

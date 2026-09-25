@@ -17,9 +17,13 @@ type Props = {
  * This component is used for section headings throughout the portfolio.
  */
 const Heading = ({ icon: Icon, children }: Props) => (
-  <div className="flex items-center gap-2 mb-8 hover:text-teal-600 hover:dark:text-teal-400 transition-colors">
-    {Icon && <Icon className="h-5 w-5 text-teal-500 dark:text-teal-400" />}
-    <h2 className="uppercase text-xl font-bold relative -bottom-px">{children}</h2>
+  <div className="flex items-center gap-3 mb-8 pb-3 border-b-4 border-dashed border-neutral-300 dark:border-neutral-700">
+    {Icon && (
+      <span className="grid place-items-center w-8 h-8 bg-pixel-accent text-neutral-900 shadow-pixel-sm">
+        <Icon className="h-4 w-4" />
+      </span>
+    )}
+    <h2 className="uppercase text-sm sm:text-base">{children}</h2>
   </div>
 )
 

@@ -1,101 +1,56 @@
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import Image from "next/image"
+import type { Metadata } from "next"
+import Link from "next/link"
+import { games } from "@/components/games/registry"
+import { GamePreview } from "@/components/games/components"
+import { cn } from "@/lib/utils"
 
-// Placeholder games data
-const games = [
-  {
-    id: "1",
-    title: "Tic Tac Toe",
-    description: "The classic game of X's and O's. Play against a friend on the same device.",
-    image: "/placeholder.svg?height=300&width=500",
-    difficulty: "easy",
-  },
-  {
-    id: "2",
-    title: "Memory Match",
-    description:
-      "Test your memory by matching pairs of cards. Find all pairs in the fewest moves possible.",
-    image: "/placeholder.svg?height=300&width=500",
-    difficulty: "medium",
-  },
-  {
-    id: "3",
-    title: "Snake Game",
-    description:
-      "Control a snake to eat food and grow longer without hitting the walls or yourself.",
-    image: "/placeholder.svg?height=300&width=500",
-    difficulty: "medium",
-  },
-  {
-    id: "4",
-    title: "Puzzle Slider",
-    description: "Rearrange the tiles to complete the image. A classic sliding puzzle game.",
-    image: "/placeholder.svg?height=300&width=500",
-    difficulty: "hard",
-  },
-  {
-    id: "5",
-    title: "Word Scramble",
-    description:
-      "Unscramble the letters to form words. Test your vocabulary and word recognition skills.",
-    image: "/placeholder.svg?height=300&width=500",
-    difficulty: "medium",
-  },
-  {
-    id: "6",
-    title: "Breakout",
-    description:
-      "Break all the bricks with a bouncing ball. A classic arcade game reimagined for the web.",
-    image: "/placeholder.svg?height=300&width=500",
-    difficulty: "hard",
-  },
-]
+export const metadata: Metadata = {
+  title: "Arcade - Aashish Singhal",
+  description: "Six small 8-bit games you can play right in the browser.",
+}
+
+const difficultyColor = {
+  easy: "bg-emerald-400 text-neutral-900",
+  medium: "bg-amber-400 text-neutral-900",
+  hard: "bg-rose-500 text-neutral-50",
+} as const
 
 export default function GamesPage() {
   return (
-    <div className="container mx-auto py-12">
-      <h1 className="text-3xl font-bold mb-8">Games</h1>
-      <p className="text-muted-foreground mb-8">
-        Take a break and enjoy some fun web-based games. Click on any game to play.
+    <div className="container mx-auto px-4 pt-24 pb-16">
+      <h1 className="text-lg sm:text-2xl mb-4 text-pixel-accent">ARCADE</h1>
+      <p className="mb-10 max-w-2xl">
+        Take a break. Everything here runs in your browser, and your best scores are saved on this
+        device. <span className="pixel-cursor">Insert coin</span>
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {games.map((game) => (
-          <div key={game.id}>
-            <Card className="overflow-hidden h-full cursor-pointer hover:shadow-md transition-shadow">
-              <div className="relative h-48 w-full">
-                <Image
-                  src={game.image || "/placeholder.svg"}
-                  alt={game.title}
-                  fill
-                  className="object-cover"
-                />
-                <Badge
-                  className="absolute top-2 right-2"
-                  variant={
-                    game.difficulty === "easy"
-                      ? "default"
-                      : game.difficulty === "medium"
-                        ? "secondary"
-                        : "destructive"
-                  }
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {games.map((game) => {
+          return (
+            <Link
+              key={game.slug}
+              href={`/games/${game.slug}`}
+              className="pixel-box pixel-box-hover flex flex-col focus-visible:outline focus-visible:outline-4 focus-visible:outline-pixel-accent"
+            >
+              <div className="relative aspect-video border-b-4 border-neutral-900 dark:border-neutral-100 bg-neutral-900">
+                <GamePreview slug={game.slug} />
+                <span
+                  className={cn(
+                    "absolute top-2 right-2 font-pixel text-[8px] px-2 py-1 uppercase",
+                    difficultyColor[game.difficulty]
+                  )}
                 >
                   {game.difficulty}
-                </Badge>
+                </span>
               </div>
-              <CardHeader className="p-4">
-                <CardTitle>{game.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="p-4 pt-0">
-                <p className="text-muted-foreground">{game.description}</p>
-              </CardContent>
-              <CardFooter className="p-4 pt-0">
-                <Badge variant="outline">Play Now</Badge>
-              </CardFooter>
-            </Card>
-          </div>
-        ))}
+              <div className="p-4 flex flex-col gap-3 flex-1">
+                <h2 className="text-xs sm:text-sm">{game.title}</h2>
+                <p className="leading-tight flex-1">{game.description}</p>
+                <span className="font-pixel text-[10px] text-pixel-accent">▶ PLAY</span>
+              </div>
+            </Link>
+          )
+        })}
       </div>
     </div>
   )

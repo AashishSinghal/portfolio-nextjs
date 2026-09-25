@@ -6,7 +6,7 @@ import { sectionsArray } from "@/data/sections"
 import { animateScroll, scroller } from "react-scroll"
 import type { Section } from "@/types/sections"
 import Image from "next/image"
-import { FaMoon, FaSun } from "react-icons/fa"
+import { FaBars, FaMoon, FaSun, FaTimes } from "react-icons/fa"
 import { cn } from "@/lib/utils"
 import useWindowDimensions, { Breakpoints } from "@/hooks/use-window-dimensions"
 import Link from "next/link"
@@ -14,7 +14,7 @@ import { usePathname } from "next/navigation"
 import VisitorCounter from "@/components/visitor-counter"
 
 // Define a type for the navigation items
-type NavItemType = Section | "logo" | "theme" | "projects" | "blog" | "games"
+type NavItemType = Section | "logo" | "theme"
 
 export default function SlimNavigation() {
   const { width } = useWindowDimensions()
@@ -22,6 +22,7 @@ export default function SlimNavigation() {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext)
   const [activeSection, setActiveSection] = useState<Section | null>(null)
   const [hoveredItem, setHoveredItem] = useState<NavItemType | null>(null)
+  const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
 
   // Handle scrolling to section
@@ -33,6 +34,7 @@ export default function SlimNavigation() {
     }
 
     setActiveSection(section)
+    setMenuOpen(false)
     scroller.scrollTo(section, {
       duration: 500,
       smooth: true,
@@ -83,6 +85,9 @@ export default function SlimNavigation() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [pathname])
 
+  // Close the mobile menu on route change or when leaving mobile width
+  useEffect(() => setMenuOpen(false), [pathname, isMobile])
+
   // Separate hover handlers for each type of item
   const handleMouseEnter = (item: NavItemType) => {
     setHoveredItem(item)
@@ -96,128 +101,180 @@ export default function SlimNavigation() {
   const appRoutes = [
     { id: "projects" as const, title: "Projects", path: "/projects" },
     { id: "blog" as const, title: "Blog", path: "/blog" },
-    { id: "games" as const, title: "Games", path: "/games" },
+    { id: "games" as const, title: "Arcade", path: "/games" },
   ]
 
+  const tooltipClass =
+    "absolute top-full mt-2 px-2 py-1.5 bg-neutral-900 text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900 font-pixel text-[8px] whitespace-nowrap z-10 -translate-x-1/2 left-1/2 pointer-events-none"
+
+  const iconButtonClass = (active: boolean) =>
+    cn(
+      "relative flex items-center justify-center w-9 h-9 transition-colors",
+      active
+        ? "bg-pixel-accent text-neutral-900 shadow-pixel-sm"
+        : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-800"
+    )
+
   return (
-    <div className="fixed top-0 left-0 right-0 h-12 bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md z-50 transition-all duration-300 border-b border-neutral-200 dark:border-neutral-800">
-      <div className="max-w-screen-xl mx-auto h-full flex items-center px-4">
+    <div className="fixed top-0 left-0 right-0 z-50 bg-neutral-50/95 dark:bg-neutral-900/95 border-b-4 border-neutral-900 dark:border-neutral-700">
+      <div className="max-w-screen-xl mx-auto h-14 flex items-center px-4 gap-2">
         {/* Logo */}
-        <div
-          className="flex items-center justify-center w-9 h-9 hover:opacity-80 transition-opacity mr-4 relative cursor-pointer"
-          onMouseEnter={() => setHoveredItem("logo")}
-          onMouseLeave={() => setHoveredItem(null)}
+        <button
+          type="button"
+          aria-label="Home"
+          className="flex items-center justify-center w-9 h-9 hover:opacity-80 transition-opacity mr-2 relative"
+          onMouseEnter={() => handleMouseEnter("logo")}
+          onMouseLeave={handleMouseLeave}
           onClick={handleScrollToTop}
         >
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icon-yQdkdJanIm6s6Ycm8pFnKxBf5WoIvG.png"
-            alt="Aashish Singhal"
+            alt=""
             width={24}
             height={24}
             className="object-contain grayscale hover:grayscale-0 transition-[filter]"
-            onError={(e) => {
-              // Fallback to a simple text logo if image fails to load
-              e.currentTarget.style.display = "none"
-              if (e.currentTarget.parentElement) {
-                e.currentTarget.parentElement.innerHTML =
-                  '<span class="text-lg font-bold">AS</span>'
-              }
-            }}
+            style={{ imageRendering: "pixelated" }}
           />
-          {hoveredItem === "logo" && (
-            <div className="absolute top-full mt-1 px-2 py-1 bg-white dark:bg-neutral-900 rounded shadow-md text-sm whitespace-nowrap z-10 transform -translate-x-1/2 left-1/2">
-              Home
-            </div>
-          )}
-        </div>
+          {!isMobile && hoveredItem === "logo" && <span className={tooltipClass}>HOME</span>}
+        </button>
 
-        {/* App Routes - always visible */}
-        <div className="flex items-center mr-4 space-x-1">
-          {appRoutes.map((route) => (
-            <Link
-              key={route.id}
-              href={route.path}
-              className={cn(
-                "relative flex items-center justify-center rounded-md transition-all duration-300",
-                "w-9 h-9",
-                pathname === route.path
-                  ? "text-white bg-teal-500 dark:bg-teal-600"
-                  : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800"
-              )}
-              onMouseEnter={() => handleMouseEnter(route.id)}
-              onMouseLeave={handleMouseLeave}
-            >
-              <span className="text-xs font-medium">{route.id.charAt(0).toUpperCase()}</span>
-              {hoveredItem === route.id && (
-                <div className="absolute top-full mt-1 px-2 py-1 bg-white dark:bg-neutral-900 rounded shadow-md text-sm whitespace-nowrap z-10 transform -translate-x-1/2 left-1/2">
-                  {route.title}
-                </div>
-              )}
-            </Link>
-          ))}
-        </div>
+        {/* App routes: text labels on desktop, inside the menu on mobile */}
+        {!isMobile && (
+          <div className="flex items-center gap-1 mr-2">
+            {appRoutes.map((route) => (
+              <Link
+                key={route.id}
+                href={route.path}
+                className={cn(
+                  "font-pixel text-[9px] px-2.5 py-2 transition-colors",
+                  pathname.startsWith(route.path)
+                    ? "bg-pixel-accent text-neutral-900 shadow-pixel-sm"
+                    : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-800"
+                )}
+              >
+                {route.title.toUpperCase()}
+              </Link>
+            ))}
+          </div>
+        )}
 
-        {/* Navigation items - hidden on mobile */}
-        {!isMobile && pathname === "/" && (
-          <nav className="flex-1 flex items-center justify-center overflow-x-auto hide-scrollbar">
-            <div className="flex items-center space-x-1 md:space-x-2">
+        {/* Section shortcuts - desktop home page only */}
+        {!isMobile && pathname === "/" ? (
+          <nav
+            aria-label="Sections"
+            className="flex-1 flex items-center justify-center overflow-x-auto hide-scrollbar"
+          >
+            <div className="flex items-center gap-1">
               {sectionsArray.map((section) => (
                 <button
                   key={section.id}
+                  type="button"
+                  aria-label={section.title}
                   onClick={() => goToSection(section.id)}
-                  className={cn(
-                    "relative flex items-center justify-center rounded-md transition-all duration-300",
-                    "w-9 h-9",
-                    activeSection === section.id
-                      ? "text-white bg-teal-500 dark:bg-teal-600"
-                      : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800"
-                  )}
-                  title={section.title}
+                  className={iconButtonClass(activeSection === section.id)}
                   onMouseEnter={() => handleMouseEnter(section.id)}
                   onMouseLeave={handleMouseLeave}
                 >
                   <section.icon size={16} className="flex-shrink-0" />
                   {hoveredItem === section.id && (
-                    <div className="absolute top-full mt-1 px-2 py-1 bg-white dark:bg-neutral-900 rounded shadow-md text-sm whitespace-nowrap z-10 transform -translate-x-1/2 left-1/2">
-                      {section.title}
-                    </div>
+                    <span className={tooltipClass}>{section.title.toUpperCase()}</span>
                   )}
                 </button>
               ))}
             </div>
           </nav>
+        ) : (
+          <div className="flex-1" />
         )}
 
-        {/* Spacer for mobile */}
-        {(isMobile || pathname !== "/") && <div className="flex-1"></div>}
-
-        {/* Visitor Counter - Only show on desktop */}
         {!isMobile && (
-          <div className="mr-4">
+          <div className="mr-2">
             <VisitorCounter />
           </div>
         )}
 
         {/* Theme toggle */}
         <button
+          type="button"
           onClick={toggleTheme}
-          className={cn(
-            "relative flex items-center justify-center rounded-md transition-all duration-300",
-            "w-9 h-9", // Fixed width and height to match navigation items
-            "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800"
-          )}
-          title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-          onMouseEnter={() => setHoveredItem("theme")}
-          onMouseLeave={() => setHoveredItem(null)}
+          className={iconButtonClass(false)}
+          aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+          onMouseEnter={() => handleMouseEnter("theme")}
+          onMouseLeave={handleMouseLeave}
         >
           {isDarkMode ? <FaSun size={16} /> : <FaMoon size={16} />}
           {!isMobile && hoveredItem === "theme" && (
-            <div className="absolute top-full mt-1 px-2 py-1 bg-white dark:bg-neutral-900 rounded shadow-md text-sm whitespace-nowrap z-10 transform -translate-x-1/2 left-1/2">
-              {isDarkMode ? "Light Mode" : "Dark Mode"}
-            </div>
+            <span className={tooltipClass}>{isDarkMode ? "LIGHT MODE" : "DARK MODE"}</span>
           )}
         </button>
+
+        {/* Mobile menu toggle */}
+        {isMobile && (
+          <button
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            className={iconButtonClass(menuOpen)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+          >
+            {menuOpen ? <FaTimes size={16} /> : <FaBars size={16} />}
+          </button>
+        )}
       </div>
+
+      {/* Mobile menu panel */}
+      {isMobile && menuOpen && (
+        <nav
+          id="mobile-menu"
+          aria-label="Site"
+          className="border-t-4 border-neutral-900 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 max-h-[calc(100vh-3.5rem)] overflow-y-auto"
+        >
+          <div className="grid grid-cols-3 gap-2 p-4">
+            {appRoutes.map((route) => (
+              <Link
+                key={route.id}
+                href={route.path}
+                className={cn(
+                  "font-pixel text-[9px] text-center py-3 border-4 border-neutral-900 dark:border-neutral-600",
+                  pathname.startsWith(route.path) && "bg-pixel-accent text-neutral-900"
+                )}
+              >
+                {route.title.toUpperCase()}
+              </Link>
+            ))}
+          </div>
+
+          {pathname === "/" && (
+            <ul className="px-4 pb-2">
+              {sectionsArray.map((section) => (
+                <li key={section.id}>
+                  <button
+                    type="button"
+                    onClick={() => goToSection(section.id)}
+                    className={cn(
+                      "w-full flex items-center gap-3 py-3 text-left font-pixel text-[10px]",
+                      activeSection === section.id
+                        ? "text-pixel-accent"
+                        : "text-neutral-700 dark:text-neutral-300"
+                    )}
+                  >
+                    <span aria-hidden="true" className="w-3">
+                      {activeSection === section.id ? "▶" : ""}
+                    </span>
+                    <section.icon size={14} />
+                    {section.title.toUpperCase()}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <div className="px-4 py-4 border-t-4 border-neutral-900 dark:border-neutral-700">
+            <VisitorCounter />
+          </div>
+        </nav>
+      )}
     </div>
   )
 }

@@ -8,6 +8,8 @@ import { FaPaperPlane } from "react-icons/fa"
 import { Section } from "@/types/sections"
 import { getSectionHeading } from "@/lib/utils/heading"
 
+const FORMSPARK_FORM_ID = "Nvmai2DF"
+
 type FormData = {
   name: string
   email: string
@@ -23,19 +25,26 @@ const Contact = () => {
 
   const [isSubmitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
-
-  // Simulating form submission since we don't have @formspark/use-formspark
-  const submit = async (data: FormData) => {
-    setSubmitting(true)
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setSubmitting(false)
-    return data
-  }
+  const [submitError, setSubmitError] = useState(false)
 
   const onSubmit = handleSubmit(async (data) => {
-    await submit(data)
-    setSubmitted(true)
+    setSubmitting(true)
+    setSubmitError(false)
+    try {
+      // Formspark forwards submissions to my inbox
+      const response = await fetch(`https://submit-form.com/${FORMSPARK_FORM_ID}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(data),
+      })
+      if (!response.ok) throw new Error(`Formspark responded ${response.status}`)
+      setSubmitted(true)
+    } catch (error) {
+      console.error("Error sending message:", error)
+      setSubmitError(true)
+    } finally {
+      setSubmitting(false)
+    }
   })
 
   if (isSubmitted) {
@@ -98,8 +107,14 @@ const Contact = () => {
       </form>
 
       <Button icon={FaPaperPlane} className="mt-8" onClick={onSubmit} disabled={submitting}>
-        Send Message
+        {submitting ? "Sending..." : "Send Message"}
       </Button>
+
+      {submitError && (
+        <p role="alert" className="mt-4 text-rose-600 dark:text-rose-400">
+          That didn&apos;t go through. Please try again, or reach me on LinkedIn.
+        </p>
+      )}
     </div>
   )
 }

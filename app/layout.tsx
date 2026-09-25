@@ -6,12 +6,21 @@ import SlimNavigation from "@/components/navigation/slim-navigation"
 import ThemeProvider from "@/contexts/theme-provider"
 import AnimatedBackground from "@/components/animated-background"
 import GoogleAnalytics from "@/components/google-analytics"
-import { Albert_Sans } from "next/font/google"
+import { Press_Start_2P, VT323 } from "next/font/google"
 
-const albertSans = Albert_Sans({
+// Pixel display font for headings, nav, buttons and labels
+const pressStart = Press_Start_2P({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-albert-sans",
+  weight: "400",
+  variable: "--font-pixel",
+  display: "swap",
+})
+
+// Pixel terminal font for body copy, which stays readable at paragraph length
+const vt323 = VT323({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-retro",
   display: "swap",
 })
 
@@ -59,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={albertSans.variable}>
+    <html lang="en" suppressHydrationWarning className={`${pressStart.variable} ${vt323.variable}`}>
       <head>
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>

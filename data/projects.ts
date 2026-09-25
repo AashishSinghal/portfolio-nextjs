@@ -7,7 +7,7 @@ const projectsList: Project[] = [
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/aiDetect.png-zU5TcaxBUCAgbHi8zJviaOATHUk60u.jpeg",
     name: "AI Detect",
     summary:
-      "An AI platform which can detect what's on the video feed and let's user record video clips or screenshots, made with TensorFlowJS",
+      "An AI platform which can detect what's on the video feed and lets users record video clips or screenshots, made with TensorFlowJS",
     tags: ["tensorflowjs", "ai", "ml", "opensource", "fullstack", "react", "nextjs", "tailwindcss"],
     link: {
       web: "https://ai-detect.aashishsinghal.com",
@@ -55,7 +55,7 @@ const projectsList: Project[] = [
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/blog-4Kl5pfuF3VXL2p19Lq6WvJAVj2kcyu.png",
     name: "Blog Website (POC)",
     summary:
-      "A Next.JS, Tailwind, TypeScript GraphQL and GraphCMS based Blogging application prototype POC, which i will modify thorougly and further add into my NextJS Portfolio website..",
+      "A Next.JS, Tailwind, TypeScript GraphQL and GraphCMS based Blogging application prototype POC, which i will modify thoroughly and further add into my NextJS Portfolio website..",
     tags: ["opensource", "nextjs", "typescript", "tailwindcss", "graph", "cms"],
     link: {
       web: "https://cms-blog-seven.vercel.app",
@@ -68,7 +68,7 @@ const projectsList: Project[] = [
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/devResources-nCe372TY1dOs7n0VGkDWUTUJgLPmyK.png",
     name: "Dev Resources",
     summary:
-      "A Next.JS, Tailwind, TypeScript, Sanity and SanityCMS based Blogging application, which i will modify thorougly and further add into my NextJS Portfolio website..",
+      "A Next.JS, Tailwind, TypeScript, Sanity and SanityCMS based Blogging application, which i will modify thoroughly and further add into my NextJS Portfolio website..",
     tags: ["opensource", "nextjs", "typescript", "tailwindcss", "sanity", "sanitycms"],
     link: {
       web: "https://taxlawadvisers.vercel.app",
@@ -94,7 +94,7 @@ const projectsList: Project[] = [
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fileEncryptor-3dkRFqpqBxKse9LejFm7ufZstTA2xg.png",
     name: "File Encryptor - ElectronJS",
     summary:
-      "An ElectronJS, Desktop app for File Encryption Using AES Encryption. You can test it out by downloading the executable fro demo link.",
+      "An ElectronJS, Desktop app for File Encryption Using AES Encryption. You can test it out by downloading the executable from the demo link.",
     tags: ["opensource", "AES", "javascript", "electronjs", "react"],
     link: {
       web: "https://drive.google.com/file/d/1gwp8YrGQ85HXnRWJfP1RHAGB7qmzmyXT/view?usp=sharing",
@@ -119,7 +119,7 @@ const projectsList: Project[] = [
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/adminPanel-bX4dEKEBcsKr7CfWf39duCuj6k3vbY.png",
     name: "Admin Panel",
     summary:
-      "A ElectronJS, Desktop app for Screen recording, it uses react as the front-end . You can test it out by downloading the executable fro demo link.",
+      "A ElectronJS, Desktop app for Screen recording, it uses react as the front-end . You can test it out by downloading the executable from the demo link.",
     tags: ["opensource", "webdev", "electron", "react", "desktop-application"],
     link: {
       web: "https://drive.google.com/file/d/1LmrsgOv_B_xUf2GCGE7ZHf6OSDjZzP60/view?usp=sharing",
@@ -131,7 +131,7 @@ const projectsList: Project[] = [
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FlappyBird-7lFXc5iGfUPhKym0Eu0EwPd4MJoolt.png",
     name: "Flappy Bird Game",
-    summary: "Flppy Bird game on web using Vanilla JavaScript.",
+    summary: "Flappy Bird game on web using Vanilla JavaScript.",
     tags: ["opensource", "html", "css", "javascript", "games"],
     link: {
       web: "https://flabby-bird-using-js.netlify.app/",

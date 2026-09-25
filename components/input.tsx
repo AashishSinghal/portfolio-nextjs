@@ -31,7 +31,7 @@ const Input = React.forwardRef<RefProps, Props>(
     ref
   ) => {
     const inputClassName = cn(
-      "text-base bg-transparent border-2 border-slate-300 dark:border-slate-700 px-5 py-3 rounded focus:outline-none focus:border-slate-700 dark:focus:border-slate-300 transition-[border]",
+      "text-xl bg-neutral-50 dark:bg-neutral-950 border-4 border-neutral-900 dark:border-neutral-500 px-4 py-2 shadow-pixel-sm focus:outline-none focus:border-pixel-accent dark:focus:border-pixel-accent transition-[border]",
       {
         "animate__animated animate__shakeX border-red-300 dark:border-red-700 focus:border-red-700 dark:focus:border-red-300":
           hasError,
@@ -40,7 +40,7 @@ const Input = React.forwardRef<RefProps, Props>(
 
     return (
       <label className={cn("flex flex-col gap-2", className)}>
-        <span className="font-bold">{label}</span>
+        <span className="text-[10px]">{label}</span>
 
         {type === "textarea" ? (
           <textarea
@@ -60,7 +60,7 @@ const Input = React.forwardRef<RefProps, Props>(
           />
         )}
 
-        <span className={cn("text-xs", { "text-red-500": hasError })}>{description}</span>
+        <span className={cn("text-base opacity-80", { "text-red-500 opacity-100": hasError })}>{description}</span>
       </label>
     )
   }

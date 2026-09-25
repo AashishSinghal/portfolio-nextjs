@@ -5,7 +5,6 @@ import PhotoWall from "@/components/header/photo-wall"
 import Profiles from "@/components/header/profiles"
 import NoSSR from "@/components/no-ssr"
 import useWindowDimensions, { Breakpoints } from "@/hooks/use-window-dimensions"
-import Image from "next/image"
 
 const Header = () => {
   const { width } = useWindowDimensions()
@@ -17,15 +16,14 @@ const Header = () => {
         <PhotoWall size={width > Breakpoints.sm ? 384 : 256} />
       </NoSSR>
 
-      {/* Logo */}
-      <Image
-        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-T6mU9etqpR8S8mYW80UHVwxsbYabGW.png"
-        width={485}
-        height={128}
-        alt="Aashish Singhal"
-        priority
-        className="object-contain"
-      />
+      {/* Name, set in pixel type with a hard offset shadow */}
+      <p
+        aria-hidden="true"
+        className="font-pixel text-center text-2xl sm:text-4xl lg:text-5xl leading-tight mt-4 text-pixel-accent [text-shadow:4px_4px_0_hsl(var(--pixel-shadow))] sm:[text-shadow:6px_6px_0_hsl(var(--pixel-shadow))]"
+      >
+        AASHISH
+        <br className="sm:hidden" /> SINGHAL
+      </p>
 
       {/* Text Version */}
       <h1 className="sr-only">
@@ -33,7 +31,7 @@ const Header = () => {
         <br />
         Designer, Developer, Photographer-ish, Wonderer
         <br />
-        Bangalor, Jaipur &amp; Kota, India
+        Bangalore, Jaipur &amp; Kota, India
       </h1>
 
       {/* Ingredients */}

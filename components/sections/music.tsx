@@ -19,13 +19,13 @@ const Music = () => {
         <div className="max-w-full prose prose-sm md:prose-base prose-neutral dark:prose-invert">
           <p>
             If you&apos;ve read about my profile so far and you found it interesting, studies show
-            that knowing what type of music a person listens to would say a lot about them. A fare
+            that knowing what type of music a person listens to would say a lot about them. A fair
             warning my playlist is as diverse as it can be.
           </p>
 
           <p>
             Also, I&apos;ve been known for my good taste in music and I&apos;ve always wanted to
-            share the music i like through an easy medium, so here&apos;s a Spotify Playlist
+            share the music I like through an easy medium, so here&apos;s a Spotify Playlist
             I&apos;ve created...
           </p>
 

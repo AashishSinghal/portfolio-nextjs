@@ -1,52 +1,37 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Users } from "lucide-react"
 
+// Retro hit counter: records this visit once, then shows the running total
 export default function VisitorCounter() {
   const [visitorCount, setVisitorCount] = useState<number | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const fetchVisitorCount = async () => {
-      try {
-        const response = await fetch("/api/visitor-count")
-        if (!response.ok) {
-          throw new Error("Failed to fetch visitor count")
-        }
-        const data = await response.json()
-        setVisitorCount(data.count)
-      } catch (error) {
-        console.error("Error fetching visitor count:", error)
-      } finally {
-        setIsLoading(false)
-      }
-    }
+    const controller = new AbortController()
 
-    fetchVisitorCount()
+    fetch("/api/visitor-count", { method: "POST", signal: controller.signal })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (typeof data?.count === "number") setVisitorCount(data.count)
+      })
+      .catch(() => {
+        // Counter is decorative: if it fails, it just stays hidden
+      })
 
-    // Refresh count every 5 minutes
-    const interval = setInterval(fetchVisitorCount, 5 * 60 * 1000)
-    return () => clearInterval(interval)
+    return () => controller.abort()
   }, [])
 
-  if (isLoading) {
-    return (
-      <div className="flex items-center gap-1 text-sm text-muted-foreground">
-        <Users className="h-4 w-4" />
-        <span>Loading...</span>
-      </div>
-    )
-  }
-
-  if (visitorCount === null) {
-    return null
-  }
+  if (visitorCount === null) return null
 
   return (
-    <div className="flex items-center gap-1 text-sm text-muted-foreground">
-      <Users className="h-4 w-4" />
-      <span>{visitorCount.toLocaleString()} visitors</span>
+    <div
+      className="flex items-center gap-2 font-pixel text-[8px] sm:text-[10px]"
+      title="Visits to this site"
+    >
+      <span className="hidden lg:inline opacity-70">VISITS</span>
+      <span className="bg-neutral-900 text-pixel-accent dark:bg-black px-1.5 py-1 tracking-widest border-2 border-neutral-900 dark:border-neutral-600">
+        {visitorCount.toString().padStart(6, "0")}
+      </span>
     </div>
   )
 }

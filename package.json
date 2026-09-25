@@ -24,6 +24,7 @@
     "@radix-ui/react-slot": "^1.1.2",
     "@radix-ui/react-switch": "^1.0.3",
     "@tippyjs/react": "^4.2.6",
+    "@upstash/redis": "^1.39.0",
     "animate.css": "^4.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",

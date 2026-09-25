@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { cn } from "@/lib/utils"
-import links from "@/lib/links"
+import links from "@/data/links"
 import { FaGithubAlt, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa"
 
 type Profile = {
@@ -41,15 +41,23 @@ const profiles: Profile[] = [
 ]
 
 const Profiles = () => (
-  <div className="h-[22px] mt-5 flex gap-8">
+  <div className="mt-5 flex gap-5">
     {profiles.map(({ title, link, icon: Icon, className }, index) => (
       <div
         key={title}
-        className={cn("p-1 text-sm text-white rounded-full", "animate-fade-in", className)}
-        style={{ animationDelay: `${index * 0.5 + 6}s` }}
-        title={title} // Native HTML tooltip instead of Tippy
+        className="animate-fade-in"
+        style={{ animationDelay: `${index * 0.2 + 3}s` }}
+        title={title}
       >
-        <a href={link} target="_blank" rel="noreferrer">
+        <a
+          href={link}
+          target="_blank"
+          rel="noreferrer"
+          className={cn(
+            "grid place-items-center w-9 h-9 text-base text-white border-2 border-neutral-900 dark:border-neutral-100 shadow-pixel-sm transition-transform hover:-translate-y-0.5",
+            className
+          )}
+        >
           <Icon />
           <span className="sr-only">{title}</span>
         </a>

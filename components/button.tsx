@@ -36,19 +36,21 @@ const Button = ({
     <div className={cn("flex", className)}>
       <div
         className={cn("relative cursor-pointer", { "cursor-not-allowed opacity-75": disabled })}
-        onClick={disabled ? () => {} : onClick}
       >
-        <div
+        <button
+          type="button"
+          disabled={disabled}
+          onClick={onClick}
           className={cn(
-            "relative rounded-sm z-10 px-8 py-2.5 flex gap-2.5 items-center justify-center bg-neutral-900 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-900 top-0 left-0 transition-[top_left] hover:top-0.5 hover:left-0.5 active:top-1 active:left-1",
-            { "hover:top-0 hover:left-0 active:top-0 active:left-0": disabled }
+            "relative z-10 px-6 py-3 flex gap-3 items-center justify-center font-pixel text-[10px] uppercase bg-pixel-accent text-neutral-900 border-4 border-neutral-900 dark:border-neutral-100 top-0 left-0 transition-[top_left] duration-75 hover:top-0.5 hover:left-0.5 active:top-1 active:left-1 focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-pixel-accent",
+            { "hover:top-0 hover:left-0 active:top-0 active:left-0 cursor-not-allowed": disabled }
           )}
         >
-          {Icon && <Icon fontSize={16} />}
-          <span className="font-bold">{children}</span>
-        </div>
+          {Icon && <Icon fontSize={14} />}
+          <span>{children}</span>
+        </button>
 
-        <div className="w-full h-full rounded-sm absolute top-1 left-1 border-2 border-neutral-900 dark:border-neutral-50" />
+        <div className="w-full h-full absolute top-1.5 left-1.5 bg-neutral-900 dark:bg-neutral-100" />
       </div>
     </div>
   )

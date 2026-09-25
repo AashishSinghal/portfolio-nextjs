@@ -12,11 +12,9 @@ export const Breakpoints = {
 }
 
 export default function useWindowDimensions() {
-  // Initialize with reasonable defaults for SSR
-  const [windowDimensions, setWindowDimensions] = useState({
-    width: typeof window !== "undefined" ? window.innerWidth : 1200,
-    height: typeof window !== "undefined" ? window.innerHeight : 800,
-  })
+  // Start from the same defaults on server and client so hydration matches;
+  // the effect below swaps in the real size right after mount
+  const [windowDimensions, setWindowDimensions] = useState({ width: 1200, height: 800 })
 
   useEffect(() => {
     // Handler to call on window resize

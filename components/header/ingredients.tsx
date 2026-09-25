@@ -36,7 +36,7 @@ const Ingredients = () => {
     )
 
   return (
-    <code className="h-[115px] text-center leading-loose block">
+    <code className="h-[130px] text-center text-lg sm:text-2xl leading-tight block">
       <pre dangerouslySetInnerHTML={{ __html: highlightedText }} />
     </code>
   )

@@ -16,7 +16,21 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        pixel: ["var(--font-pixel)", "monospace"],
+        retro: ["var(--font-retro)", "monospace"],
+      },
+      boxShadow: {
+        // Stepped "pixel" borders drawn with hard shadows instead of rounded borders
+        pixel: "0 -4px 0 0 currentColor, 0 4px 0 0 currentColor, -4px 0 0 0 currentColor, 4px 0 0 0 currentColor",
+        "pixel-sm": "4px 4px 0 0 hsl(var(--pixel-shadow))",
+        "pixel-md": "6px 6px 0 0 hsl(var(--pixel-shadow))",
+      },
       colors: {
+        pixel: {
+          accent: "hsl(var(--pixel-accent))",
+          shadow: "hsl(var(--pixel-shadow))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -65,64 +79,10 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
-        "slide-diagonal": {
-          "0%": { backgroundPosition: "0px 0px" },
-          "100%": { backgroundPosition: "60px 60px" },
-        },
-        "slide-vertical": {
-          "0%": { backgroundPosition: "0px 0px" },
-          "100%": { backgroundPosition: "0px 50px" },
-        },
-        "slide-horizontal": {
-          "0%": { backgroundPosition: "0px 0px" },
-          "100%": { backgroundPosition: "50px 0px" },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-20px)" },
-        },
-        "rotate-slow": {
-          "0%": { transform: "rotate(0deg)" },
-          "100%": { transform: "rotate(360deg)" },
-        },
-        "float-rotate": {
-          "0%": { transform: "translateY(0) rotate(0deg)" },
-          "50%": { transform: "translateY(-10px) rotate(180deg)" },
-          "100%": { transform: "translateY(0) rotate(360deg)" },
-        },
-        wave: {
-          "0%": { backgroundPosition: "0px 0px" },
-          "100%": { backgroundPosition: "200px 0px" },
-        },
-        "pulse-slow": {
-          "0%, 100%": { opacity: 0.03 },
-          "50%": { opacity: 0.06 },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "slide-diagonal": "slide-diagonal 20s linear infinite",
-        "slide-vertical": "slide-vertical 15s linear infinite",
-        "slide-horizontal": "slide-horizontal 15s linear infinite",
-        float: "float 8s ease-in-out infinite",
-        "rotate-slow": "rotate-slow 30s linear infinite",
-        "float-rotate": "float-rotate 10s ease-in-out infinite",
-        wave: "wave 20s linear infinite",
-        "pulse-slow": "pulse-slow 5s ease-in-out infinite",
-      },
-      backgroundImage: {
-        "grid-pattern-light":
-          "linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px)",
-        "grid-pattern-dark":
-          "linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)",
-        "dot-pattern-light": "radial-gradient(rgba(0, 0, 0, 0.2) 2px, transparent 2px)",
-        "dot-pattern-dark": "radial-gradient(rgba(255, 255, 255, 0.2) 2px, transparent 2px)",
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-      },
-      backgroundSize: {
-        "grid-pattern": "50px 50px",
-        "dot-pattern": "30px 30px",
       },
     },
   },

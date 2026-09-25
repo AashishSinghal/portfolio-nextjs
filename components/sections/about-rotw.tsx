@@ -19,7 +19,7 @@ const AboutRotW = () => (
     <div className="w-full lg:w-3/4 max-w-full prose prose-sm md:prose-base prose-neutral dark:prose-invert">
       <p>
         <strong>My Portfolio Website</strong> has been a project that I&apos;ve been focused on
-        since the early 2019s. I didn&apos;t want my information to be displayed on just a sheet of
+        since early 2019. I didn&apos;t want my information to be displayed on just a sheet of
         paper that only HRs or Talent Scouts had the privilege of reading, I wanted it to showcase
         and make it accessible to everyone. And that&apos;s how this project was conceptualized.
       </p>
@@ -33,7 +33,7 @@ const AboutRotW = () => (
 
       <p>
         This version of the project was built using NextJS (React), Tailwind CSS for their
-        utility-first classes and Vercel to host the site. I am turning this webiste into a PWA as
+        utility-first classes and Vercel to host the site. I am turning this website into a PWA as
         well.
       </p>
 

@@ -1,271 +1,170 @@
 "use client"
 
-import { useContext, useEffect, useState, useRef } from "react"
+import { useContext, useEffect, useRef } from "react"
 import { ThemeContext } from "@/contexts/theme-provider"
-import { cn } from "@/lib/utils"
+
+// Size of one "pixel" in CSS px. The canvas is drawn at viewport / PIXEL and scaled
+// back up with `image-rendering: pixelated`, which gives the hard 8-bit edges.
+const PIXEL = 4
+// Stepped, low frame rate on purpose: it reads as retro and keeps CPU use tiny
+const FPS = 12
+
+type Star = { x: number; y: number; depth: number; phase: number; color: string }
+type Cloud = { x: number; y: number; w: number; speed: number }
+type Meteor = { x: number; y: number; life: number }
+
+const STAR_COLORS = ["#ffffff", "#9ff6ea", "#fde68a", "#c4b5fd"]
+
+// Cloud silhouette as rows of [startColumn, length], scaled by the cloud width
+const CLOUD_ROWS: Array<[number, number]> = [
+  [4, 4],
+  [2, 9],
+  [0, 14],
+  [1, 12],
+]
+
+function makeStars(w: number, h: number): Star[] {
+  const count = Math.round((w * h) / 180)
+  return Array.from({ length: count }, () => ({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    depth: Math.random() < 0.8 ? 1 : 2,
+    phase: Math.random() * Math.PI * 2,
+    color: STAR_COLORS[Math.floor(Math.random() * STAR_COLORS.length)],
+  }))
+}
+
+function makeClouds(w: number, h: number): Cloud[] {
+  const count = Math.max(3, Math.round(w / 60))
+  return Array.from({ length: count }, () => ({
+    x: Math.random() * w,
+    y: Math.random() * h * 0.9,
+    w: 1 + Math.floor(Math.random() * 3),
+    speed: 0.05 + Math.random() * 0.1,
+  }))
+}
 
 export default function AnimatedBackground() {
   const { isDarkMode } = useContext(ThemeContext)
-  const [mounted, setMounted] = useState(false)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const canvasRef = useRef<HTMLCanvasElement>(null)
 
-  // Only show the background after component is mounted to avoid hydration issues
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    const canvas = canvasRef.current
+    const ctx = canvas?.getContext("2d")
+    if (!canvas || !ctx) return
 
-  // Add subtle mouse movement effect
-  useEffect(() => {
-    if (!mounted) return
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    let w = 0
+    let h = 0
+    let stars: Star[] = []
+    let clouds: Cloud[] = []
+    let meteor: Meteor | null = null
+    let frame = 0
+    let raf = 0
+    let last = 0
 
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return
-
-      // Calculate mouse position relative to the window
-      const x = e.clientX / window.innerWidth
-      const y = e.clientY / window.innerHeight
-
-      setMousePosition({ x, y })
+    const resize = () => {
+      w = Math.ceil(window.innerWidth / PIXEL)
+      h = Math.ceil(window.innerHeight / PIXEL)
+      canvas.width = w
+      canvas.height = h
+      stars = makeStars(w, h)
+      clouds = makeClouds(w, h)
+      draw()
     }
 
-    window.addEventListener("mousemove", handleMouseMove)
+    const drawNight = () => {
+      ctx.fillStyle = "#171717"
+      ctx.fillRect(0, 0, w, h)
+
+      // Faint pixel grid every 8 cells, like graph paper on a CRT
+      ctx.fillStyle = "rgba(255,255,255,0.025)"
+      for (let x = 0; x < w; x += 8) ctx.fillRect(x, 0, 1, h)
+      for (let y = 0; y < h; y += 8) ctx.fillRect(0, y, w, 1)
+
+      for (const star of stars) {
+        // Stars drift left slowly, the near layer twice as fast
+        const x = Math.floor((star.x - frame * 0.04 * star.depth + w) % w)
+        const y = Math.floor(star.y)
+        const twinkle = Math.sin(frame * 0.15 + star.phase)
+        ctx.globalAlpha = twinkle > 0.6 ? 0.7 : twinkle > -0.2 ? 0.35 : 0.1
+        ctx.fillStyle = star.color
+        ctx.fillRect(x, y, 1, 1)
+        // Bright near stars get a little plus-shaped sparkle
+        if (star.depth === 2 && twinkle > 0.85) {
+          ctx.globalAlpha = 0.35
+          ctx.fillRect(x - 1, y, 1, 1)
+          ctx.fillRect(x + 1, y, 1, 1)
+          ctx.fillRect(x, y - 1, 1, 1)
+          ctx.fillRect(x, y + 1, 1, 1)
+        }
+      }
+      ctx.globalAlpha = 1
+
+      // Occasional shooting star
+      if (!meteor && Math.random() < 0.008) {
+        meteor = { x: Math.random() * w * 0.8 + w * 0.2, y: Math.random() * h * 0.4, life: 14 }
+      }
+      if (meteor) {
+        for (let i = 0; i < 6; i++) {
+          ctx.globalAlpha = (1 - i / 6) * (meteor.life / 14)
+          ctx.fillStyle = "#9ff6ea"
+          ctx.fillRect(Math.floor(meteor.x + i), Math.floor(meteor.y - i), 1, 1)
+        }
+        ctx.globalAlpha = 1
+        meteor.x -= 3
+        meteor.y += 3
+        meteor.life -= 1
+        if (meteor.life <= 0) meteor = null
+      }
+    }
+
+    const drawDay = () => {
+      ctx.fillStyle = "#fafafa"
+      ctx.fillRect(0, 0, w, h)
+
+      // Dithered dots in a checker pattern
+      ctx.fillStyle = "rgba(20,184,166,0.10)"
+      for (let y = 0; y < h; y += 6) {
+        for (let x = (y / 6) % 2 ? 3 : 0; x < w; x += 6) ctx.fillRect(x, y, 1, 1)
+      }
+
+      for (const cloud of clouds) {
+        const x = Math.floor((cloud.x + frame * cloud.speed) % (w + 40)) - 40
+        const y = Math.floor(cloud.y)
+        ctx.fillStyle = "rgba(20,184,166,0.07)"
+        CLOUD_ROWS.forEach(([start, length], row) => {
+          ctx.fillRect(x + start * cloud.w, y + row * cloud.w, length * cloud.w, cloud.w)
+        })
+      }
+    }
+
+    const draw = () => (isDarkMode ? drawNight() : drawDay())
+
+    const loop = (time: number) => {
+      raf = requestAnimationFrame(loop)
+      if (document.hidden || time - last < 1000 / FPS) return
+      last = time
+      frame += 1
+      draw()
+    }
+
+    resize()
+    window.addEventListener("resize", resize)
+    if (!reduceMotion) raf = requestAnimationFrame(loop)
+
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
+      cancelAnimationFrame(raf)
+      window.removeEventListener("resize", resize)
     }
-  }, [mounted])
-
-  if (!mounted) return null
-
-  const isDark = isDarkMode
+  }, [isDarkMode])
 
   return (
-    <div ref={containerRef} className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      {/* Base grid pattern */}
-      <div
-        className={cn(
-          "absolute inset-0 opacity-[0.03]",
-          isDark ? "bg-grid-pattern-dark" : "bg-grid-pattern-light"
-        )}
-      />
-
-      {/* Gradient overlay */}
-      <div
-        className={cn(
-          "absolute inset-0 transition-opacity duration-300",
-          isDark
-            ? "bg-transparent" // No gradient in dark mode
-            : "bg-gradient-radial from-transparent to-background" // Keep gradient only in light mode
-        )}
-        style={{
-          // Subtle shift based on mouse position
-          transform: `translate(${(mousePosition.x - 0.5) * -10}px, ${(mousePosition.y - 0.5) * -10}px)`,
-          transition: "transform 1s ease-out",
-        }}
-      />
-
-      {/* Dynamic geometric patterns */}
-      <div className="absolute inset-0">
-        {/* Diagonal lines that move slowly */}
-        <div
-          className={cn(
-            "absolute inset-0 animate-slide-diagonal",
-            isDark ? "opacity-[0.07]" : "opacity-[0.04]" // Increased opacity in dark mode
-          )}
-          style={{
-            backgroundImage: `repeating-linear-gradient(
-              45deg,
-              ${isDark ? "#ffffff" : "#000000"} 0px,
-              ${isDark ? "#ffffff" : "#000000"} 1px,
-              transparent 1px,
-              transparent 30px
-            )`,
-            // Subtle shift based on mouse position
-            transform: `translate(${(mousePosition.x - 0.5) * 5}px, ${(mousePosition.y - 0.5) * 5}px)`,
-            transition: "transform 0.5s ease-out",
-          }}
-        />
-
-        {/* Horizontal lines that move vertically */}
-        <div
-          className={cn(
-            "absolute inset-0 animate-slide-vertical",
-            isDark ? "opacity-[0.06]" : "opacity-[0.03]" // Increased opacity in dark mode
-          )}
-          style={{
-            backgroundImage: `repeating-linear-gradient(
-              0deg,
-              ${isDark ? "#ffffff" : "#000000"} 0px,
-              ${isDark ? "#ffffff" : "#000000"} 1px,
-              transparent 1px,
-              transparent 50px
-            )`,
-            // Subtle shift based on mouse position
-            transform: `translateY(${(mousePosition.y - 0.5) * 8}px)`,
-            transition: "transform 0.8s ease-out",
-          }}
-        />
-
-        {/* Vertical lines that move horizontally */}
-        <div
-          className={cn(
-            "absolute inset-0 animate-slide-horizontal",
-            isDark ? "opacity-[0.06]" : "opacity-[0.03]" // Increased opacity in dark mode
-          )}
-          style={{
-            backgroundImage: `repeating-linear-gradient(
-              90deg,
-              ${isDark ? "#ffffff" : "#000000"} 0px,
-              ${isDark ? "#ffffff" : "#000000"} 1px,
-              transparent 1px,
-              transparent 50px
-            )`,
-            // Subtle shift based on mouse position
-            transform: `translateX(${(mousePosition.x - 0.5) * 8}px)`,
-            transition: "transform 0.8s ease-out",
-          }}
-        />
-      </div>
-
-      {/* Animated geometric shapes */}
-      <div className="absolute inset-0">
-        {/* Triangles */}
-        {Array.from({ length: 3 }).map((_, i) => {
-          const size = Math.random() * 100 + 50
-          return (
-            <div
-              key={`triangle-${i}`}
-              className={cn(
-                "absolute opacity-[0.04] animate-float",
-                isDark ? "border-white" : "border-black"
-              )}
-              style={{
-                width: 0,
-                height: 0,
-                borderLeft: `${size / 2}px solid transparent`,
-                borderRight: `${size / 2}px solid transparent`,
-                borderBottom: `${size}px solid ${isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"}`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${i * 3}s`,
-                animationDuration: `${Math.random() * 20 + 30}s`,
-                // Subtle shift based on mouse position
-                transform: `translate(${(mousePosition.x - 0.5) * 15}px, ${(mousePosition.y - 0.5) * 15}px)`,
-                transition: "transform 1s ease-out",
-              }}
-            />
-          )
-        })}
-
-        {/* Squares that rotate slowly */}
-        {Array.from({ length: 3 }).map((_, i) => {
-          const size = Math.random() * 100 + 50
-          return (
-            <div
-              key={`square-${i}`}
-              className={cn(
-                "absolute opacity-[0.03] animate-rotate-slow",
-                isDark ? "border-white" : "border-black"
-              )}
-              style={{
-                width: `${size}px`,
-                height: `${size}px`,
-                border: `1px solid ${isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"}`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${i * 4}s`,
-                animationDuration: `${Math.random() * 40 + 60}s`,
-                // Subtle shift based on mouse position
-                transform: `translate(${(mousePosition.x - 0.5) * -20}px, ${(mousePosition.y - 0.5) * -20}px) rotate(${i * 45}deg)`,
-                transition: "transform 1.2s ease-out",
-              }}
-            />
-          )
-        })}
-
-        {/* Hexagons */}
-        {Array.from({ length: 3 }).map((_, i) => (
-          <div
-            key={`hexagon-${i}`}
-            className={cn(
-              "absolute opacity-[0.04] animate-float-rotate",
-              isDark ? "bg-white/5" : "bg-black/5"
-            )}
-            style={{
-              width: `${Math.random() * 80 + 40}px`,
-              height: `${Math.random() * 80 + 40}px`,
-              clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${i * 5}s`,
-              animationDuration: `${Math.random() * 30 + 40}s`,
-              // Subtle shift based on mouse position
-              transform: `translate(${(mousePosition.x - 0.5) * 25}px, ${(mousePosition.y - 0.5) * 25}px) rotate(${i * 30}deg)`,
-              transition: "transform 1.5s ease-out",
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Subtle wave pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.02] animate-wave"
-        style={{
-          // Subtle shift based on mouse position
-          transform: `translate(${(mousePosition.x - 0.5) * -15}px, ${(mousePosition.y - 0.5) * -15}px)`,
-          transition: "transform 1.2s ease-out",
-        }}
-      >
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern
-              id="wave-pattern"
-              x="0"
-              y="0"
-              width="200"
-              height="200"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M0,100 C40,80 60,120 100,100 C140,80 160,120 200,100 C240,80 260,120 300,100 C340,80 360,120 400,100"
-                fill="none"
-                stroke={isDark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)"}
-                strokeWidth="1"
-              />
-              <path
-                d="M0,150 C40,130 60,170 100,150 C140,130 160,170 200,150 C240,130 260,170 300,150 C340,130 360,170 400,150"
-                fill="none"
-                stroke={isDark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)"}
-                strokeWidth="1"
-              />
-              <path
-                d="M0,50 C40,30 60,70 100,50 C140,30 160,70 200,50 C240,30 260,70 300,50 C340,30 360,70 400,50"
-                fill="none"
-                stroke={isDark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)"}
-                strokeWidth="1"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#wave-pattern)" />
-        </svg>
-      </div>
-
-      {/* Subtle dot grid that pulses */}
-      <div
-        className={cn(
-          "absolute inset-0 animate-pulse-slow",
-          isDark ? "opacity-[0.05]" : "opacity-[0.03]" // Increased opacity in dark mode
-        )}
-        style={{
-          // Subtle shift based on mouse position
-          transform: `translate(${(mousePosition.x - 0.5) * 10}px, ${(mousePosition.y - 0.5) * 10}px)`,
-          transition: "transform 1s ease-out",
-        }}
-      >
-        <div
-          className={cn("h-full w-full", isDark ? "bg-dot-pattern-dark" : "bg-dot-pattern-light")}
-        />
-      </div>
-    </div>
+    <canvas
+      ref={canvasRef}
+      aria-hidden="true"
+      className="fixed inset-0 -z-10 h-full w-full pointer-events-none"
+      style={{ imageRendering: "pixelated" }}
+    />
   )
 }
