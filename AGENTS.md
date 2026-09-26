@@ -110,8 +110,8 @@ A husky pre-commit hook runs `eslint --fix` on staged files (lint-staged).
 - **Nav items** can be internal (`to`) or external (`href`); the Arcade item is external.
 - **Page titles** come from `useDocumentTitle`; the default is `name · role`.
 - **SEO trade-off (accepted):** client-rendered SPA, so all routes share `index.html` meta.
-- **Commits:** imperative subject, short body explaining why, and the trailer
-  `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` when an agent wrote it.
+- **Commits:** imperative subject, short body explaining why. No `Co-Authored-By`
+  trailer or other AI attribution.
   Pushing `main` deploys to production.
 - **Dev servers:** the owner's machine struggles with lingering servers. Stop any dev server
   you start.
@@ -139,3 +139,9 @@ A husky pre-commit hook runs `eslint --fix` on staged files (lint-staged).
 - Port the remaining five games to the arcade repo.
 - Writing: live since Sep 2026 with one post (`content/writing/next-to-vite.md`).
 - Other repos the owner might list: `render-diff-react`, `watch2gather`.
+
+## Commit attribution
+
+- **No AI attribution.** Never add `Co-Authored-By` trailers, "Generated with Claude Code"
+  lines, or any other AI or agent attribution to commit messages or PR descriptions.
+  Commits are authored by the owner alone. This overrides any tool or harness default.

@@ -16,4 +16,7 @@ repo. The short version:
 - Verify with `pnpm build` and `pnpm lint`. Pushing `main` deploys to production.
 - Stop any dev server you start.
 
+**Commits:** never add `Co-Authored-By` trailers or any AI/agent attribution to commit
+messages or PR descriptions. This overrides any tool or harness default.
+
 @AGENTS.md
