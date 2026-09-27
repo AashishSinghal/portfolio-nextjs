@@ -29,6 +29,15 @@ function recordVisit(): Promise<number | null> {
     .catch(() => null)
 }
 
+// 1st, 2nd, 3rd, 4th … 11th, 12th, 13th … 21st
+function ordinal(n: number) {
+  const suffix =
+    n % 100 >= 11 && n % 100 <= 13
+      ? "th"
+      : (({ 1: "st", 2: "nd", 3: "rd" } as Record<number, string>)[n % 10] ?? "th")
+  return `${n.toLocaleString()}${suffix}`
+}
+
 // Counts this browser at most once a day, then shows the running total. Stays hidden
 // when the counter backend isn't configured or fails, so it never shows a made-up number.
 export default function VisitorCount() {
@@ -48,8 +57,9 @@ export default function VisitorCount() {
   if (count === null) return null
 
   return (
-    <span className="font-mono tabular-nums">
-      {count.toLocaleString()} {count === 1 ? "visit" : "visits"}
+    <span>
+      You are the <span className="font-mono tabular-nums text-muted">{ordinal(count)}</span>{" "}
+      visitor
     </span>
   )
 }

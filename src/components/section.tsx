@@ -9,12 +9,14 @@ type Props = {
   children: ReactNode
 }
 
+// Each section opens with a full-width hatched band, then its title between hairlines
 export default function Section({ id, title, more, children }: Props) {
   return (
-    <section id={id} className="scroll-mt-20 border-t border-line py-14">
-      <div className="mb-8 flex items-baseline justify-between gap-4">
-        <h2 className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-faint">
-          <span aria-hidden="true" className="h-px w-6 bg-gold" />
+    <section id={id} className="scroll-mt-16">
+      <div aria-hidden="true" className="bleed hatch h-6 border-y border-line" />
+      <div className="flex items-baseline justify-between gap-4 py-4">
+        <h2 className="flex items-center gap-3 text-xl font-medium tracking-tight">
+          <span aria-hidden="true" className="h-px w-5 bg-gold" />
           {title}
         </h2>
         {more && (
@@ -23,7 +25,8 @@ export default function Section({ id, title, more, children }: Props) {
           </Link>
         )}
       </div>
-      {children}
+      <div aria-hidden="true" className="bleed border-t border-line" />
+      <div className="py-10">{children}</div>
     </section>
   )
 }

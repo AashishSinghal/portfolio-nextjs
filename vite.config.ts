@@ -63,6 +63,8 @@ function stripDraftPostsInBuild(): Plugin {
 }
 
 export default defineConfig({
+  // The 3D hero (three.js, ~900 kB) is its own lazy chunk, loaded after the page renders
+  build: { chunkSizeWarningLimit: 1000 },
   plugins: [react(), tailwindcss(), vercelApiInDev(), stripDraftPostsInBuild()],
   resolve: {
     alias: { "@": path.resolve(import.meta.dirname, "src") },
