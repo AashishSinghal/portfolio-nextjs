@@ -10,6 +10,7 @@ import GitHubActivity from "@/components/github-activity"
 import TechStack from "@/components/tech-stack"
 import Connect from "@/components/connect"
 import { useDocumentTitle } from "@/lib/use-document-title"
+import { cn } from "@/lib/utils"
 
 // three.js is big, so the 3D hero loads in its own chunk after the page
 const LogoFloor = lazy(() => import("@/components/logo-floor"))
@@ -61,6 +62,19 @@ function ConstructionLines() {
   )
 }
 
+// The availability line, with a softly pulsing teal dot
+function Availability({ className }: { className?: string }) {
+  return (
+    <p className={cn("flex items-center gap-2 text-muted", className)}>
+      <span className="relative flex size-2 shrink-0">
+        <span className="absolute inset-0 animate-ping rounded-full bg-teal/60 motion-reduce:hidden" />
+        <span className="relative size-2 rounded-full bg-teal" />
+      </span>
+      {profile.availability}
+    </p>
+  )
+}
+
 // Laid out like a drawing sheet: the 3D figure in a frame, then my photo overlapping its
 // bottom-left corner next to the name and role in ruled rows
 function Hero() {
@@ -89,9 +103,17 @@ function Hero() {
           <h1 className="border-b border-line px-4 pt-2 pb-1 text-3xl font-semibold tracking-tight sm:text-4xl">
             {profile.name}
           </h1>
-          <p className="px-4 py-2 font-mono text-sm text-muted">{profile.role}.</p>
+          <div className="flex items-center justify-between gap-4 px-4 py-2 font-mono text-sm">
+            <p className="text-muted">{profile.role}.</p>
+            {profile.availability && <Availability className="hidden sm:flex" />}
+          </div>
         </div>
       </div>
+      {profile.availability && (
+        <div className="border-t border-line px-4 py-2 font-mono text-sm sm:hidden">
+          <Availability />
+        </div>
+      )}
       <div aria-hidden="true" className="bleed border-t border-line" />
     </header>
   )
@@ -105,16 +127,7 @@ export default function Home() {
       <Hero />
 
       <section className="pt-8 pb-12">
-        {profile.availability && (
-          <p className="inline-flex items-center gap-2 rounded-full border border-line px-3 py-1 text-sm text-muted">
-            <span className="relative flex size-2">
-              <span className="absolute inset-0 animate-ping rounded-full bg-teal/60 motion-reduce:hidden" />
-              <span className="relative size-2 rounded-full bg-teal" />
-            </span>
-            {profile.availability}
-          </p>
-        )}
-        <p className="mt-6 max-w-xl text-lg text-muted">{profile.intro}</p>
+        <p className="max-w-xl text-lg text-muted">{profile.intro}</p>
       </section>
 
       <Section id="github" title="GitHub">
