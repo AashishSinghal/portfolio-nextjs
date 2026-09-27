@@ -38,7 +38,7 @@ function Nav() {
       <nav className="mx-auto flex h-16 max-w-3xl items-center justify-between gap-2 px-4 min-[360px]:gap-3 sm:gap-6 sm:px-5">
         <Link
           to="/"
-          className="group flex shrink-0 items-center gap-3"
+          className="group flex shrink-0 items-center"
           aria-label={`${profile.name}, home`}
         >
           {/* The logo sits in greyscale and fills with its gold on hover */}
@@ -49,9 +49,6 @@ function Nav() {
             height={32}
             className="size-7 grayscale min-[360px]:size-8 transition-[filter] duration-300 group-hover:grayscale-0"
           />
-          <span className="hidden font-medium tracking-tight transition-colors group-hover:text-gold sm:inline">
-            {profile.name}
-          </span>
         </Link>
 
         <ul className="flex items-center text-[13px] sm:gap-2 sm:text-sm">
