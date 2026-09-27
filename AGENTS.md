@@ -1,7 +1,8 @@
 # aashishsinghal.com: Project Directives
 
-Aashish Singhal's personal portfolio: a short, text-first site with work history, projects
-(with case-study pages), writing and contact. It is deliberately simple. Games live in a separate app,
+Aashish Singhal's personal portfolio: a short, text-first site with work history, a live
+GitHub graph, tech stack, projects (with case-study pages), writing and ways to connect. Calm,
+with a few deliberate touches of personality. Games live in a separate app,
 [arcade.aashishsinghal.com](https://arcade.aashishsinghal.com)
 ([repo](https://github.com/AashishSinghal/arcade)).
 
@@ -10,18 +11,23 @@ Stack: Vite 8, React 19, React Router 8, Tailwind CSS 4, TypeScript 6. Hosted on
 
 ## Prime directives
 
-1. **Keep it simple.** The owner explicitly rejected busy designs: an 8-bit/pixel theme, the
-   animated line/starfield background, photo walls, icon-bar navigation. Don't reintroduce
-   decorative effects, extra sections or theme machinery without being asked. When unsure,
-   propose the layout as an ASCII mockup first; that's how design decisions get made here.
+1. **Calm, with personality. The owner experiments; there are no strict rules.** The current
+   look (Sep 2026) is a "technical drawing": vertical rails either side of the column,
+   full-width hatched bands between sections, a hero laid out like a drawing sheet (the logo as
+   3D gold bricks lying on the floor, three.js, each brick shakes on hover; dashed construction
+   lines; the owner's photo overlapping the frame beside the name), and a title-block footer with an interactive pixel barbarian
+   at a laptop ("BarbarianO_o" was the owner's gamer tag). References the owner liked: animeshh.me,
+   chanhdai.com, jdhruv.dev (research and screenshots in `drafts/`, untracked). Rejected in the
+   past: a full 8-bit/pixel theme, an animated starfield background, photo walls, icon-bar nav.
+   Propose layout changes as ASCII mockups first; that's how design decisions get made here.
 2. **Dark mode only.** There is no theme switch and no light palette. Don't add `dark:` variants.
 3. **Two accent colours, everything else black and grey:**
    - `gold` `#C49D71`, taken from the logo: brand accent (active nav item, section markers,
      primary buttons, hover on titles).
    - `teal` `#2DD4BF`: secondary accent (link hover, focus rings, bullets).
    - One font: Albert Sans (loaded in `index.html`). Mono only for numbers and dates.
-4. **Images only on dedicated pages.** Home and the projects list are text-only. A project's
-   `image` is shown only as the Medium-style cover at the top of its case-study page.
+4. **Images mostly on dedicated pages.** A project's `image` is shown only as the Medium-style
+   cover at the top of its case-study page; home and the projects list use no photos.
 5. **Content must be real.** Everything here was once full of placeholders: fake blog posts,
    fake projects, a hardcoded visitor count, a contact form that sent nothing. Never add
    placeholder or invented content. If data is missing, leave the field empty (case-study
@@ -41,19 +47,23 @@ src/
   app.tsx             routes: / · /projects · /projects/:slug · /writing · /writing/:slug · 404
   styles/globals.css  Tailwind 4 @theme tokens (colours, fonts) + base styles. No JS config.
   data/               ALL content lives here; edit these to update the site
-    profile.ts        name, role, intro, links (github, linkedin, resume, arcade…), skills, Formspark id
+    profile.ts        name, role, intro, availability, email, links, socials, skills (with groups)
     work.ts           jobs with 2–3 measurable highlights each (from the resume)
     projects.ts       projects; `featured: true` = has a case-study page; `caseStudy` sections
     writing.ts        loads content/writing/*.md, parses frontmatter, drafts, reading time
-  components/         layout (nav, footer, scroll handling), section, project-row,
-                      contact-form, external-link, visitor-count
+  components/         layout (nav, rails, title-block footer, scroll handling), section,
+                      logo-floor (three.js hero, lazy-loaded), barbarian (footer),
+                      github-activity, tech-stack, connect, local-time, brand-icon,
+                      project-row, post-row, external-link, visitor-count
   pages/              home, projects, project (case study), writing, post, not-found
-  lib/                utils (cn), use-document-title
+  lib/                utils (cn), use-document-title, logo-bricks (the logo sampled into 178 bricks)
 content/writing/      blog posts as Markdown (filename = URL slug)
 api/visitor-count.ts  Vercel function: visit counters for the portfolio and the arcade (?site=)
+api/github.ts         Vercel function: contribution calendar, CDN-cached 1h
 vite.config.ts        runs api/*.ts in `vite dev`; strips draft posts from production builds
 vercel.json           Vite preset, SPA rewrite, redirects /arcade, /arcade/:path*, /games → arcade
-public/               logo.png, favicon.ico, meta-ss.png, resume.pdf, images/projects/*.webp
+public/               logo.png, favicon.ico, meta-ss.png, resume.pdf, avatar.webp (hero photo),
+                      images/projects/*.webp
 ```
 
 - **Home** shows the first 4 featured projects (`featuredProjects.slice(0, 4)`), so order in
@@ -83,7 +93,7 @@ pnpm lint       # eslint (flat config)
 
 A husky pre-commit hook runs `eslint --fix` on staged files (lint-staged).
 
-## Analytics, visit counters, contact form
+## Analytics, visit counters, GitHub graph, contact
 
 - **Analytics:** Vercel Web Analytics via `inject()` in `src/main.tsx`, enabled per project in
   the Vercel dashboard. No keys. It replaced Google Analytics (removed; too much boilerplate).
@@ -97,8 +107,17 @@ A husky pre-commit hook runs `eslint --fix` on staged files (lint-staged).
   counter, not tamper-proof. Env vars: `KV_REST_API_URL` and `KV_REST_API_TOKEN` (or
   `UPSTASH_REDIS_REST_*`), added by the Upstash integration on the **portfolio** project.
   Without them the API returns 503 and both counters stay hidden.
-- **Contact form:** posts to Formspark (`profile.formsparkId`), which forwards to the owner's
-  inbox. On failure it shows an honest error with a LinkedIn fallback, never a fake "thanks".
+- **GitHub graph:** `api/github.ts` reads daily counts from github-contributions-api.jogruber.de
+  (public calendar, no token). The component hides itself if the API fails. The username lives
+  in both `profile.ts` (`githubUser`) and `api/github.ts`.
+- **3D hero:** `components/logo-floor.tsx` (three.js + @react-three/fiber) is lazy-loaded in its
+  own ~900 kB chunk and renders on demand (no frames while idle). Brick positions come from
+  `lib/logo-bricks.ts`, generated from `public/logo.png`; regenerate it if the logo changes.
+  Without WebGL the hero falls back to the flat logo.
+- **Contact:** no form (the Formspark form was removed in Sep 2026). The Connect section lists
+  email and every social in `socials` in `profile.ts`.
+- **Footer build info:** `__BUILD_SHA__` / `__BUILD_DATE__` are defined in `vite.config.ts`
+  (Vercel's `VERCEL_GIT_COMMIT_SHA`, or `git rev-parse` locally).
 
 ## Conventions and gotchas
 

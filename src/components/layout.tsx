@@ -1,9 +1,11 @@
-import { Suspense, useEffect } from "react"
+import { Suspense, useEffect, type ReactNode } from "react"
 import { Link, NavLink, Outlet, useLocation } from "react-router"
 import { profile } from "@/data/profile"
 import { posts } from "@/data/writing"
 import { cn } from "@/lib/utils"
 import VisitorCount from "@/components/visitor-count"
+import LocalTime from "@/components/local-time"
+import Barbarian from "@/components/barbarian"
 
 // `href` items leave the site (the arcade lives on its own subdomain)
 const navItems: Array<{ label: string; to?: string; href?: string }> = [
@@ -92,24 +94,80 @@ function Nav() {
   )
 }
 
+// Build facts shown in the footer's title block (set in vite.config.ts)
+const build = { sha: __BUILD_SHA__, date: __BUILD_DATE__ }
+
+function FooterCell({
+  label,
+  children,
+  wide,
+}: {
+  label: string
+  children: ReactNode
+  wide?: boolean
+}) {
+  return (
+    <div className={cn("bg-bg px-5 py-4", wide && "col-span-2")}>
+      <dt className="font-mono text-[10px] tracking-[0.15em] text-faint uppercase">{label}</dt>
+      <dd className="mt-1.5 font-mono text-sm text-muted">{children}</dd>
+    </div>
+  )
+}
+
+// Styled like the title block on a technical drawing, with the barbarian underneath
 function Footer() {
   return (
-    <footer className="border-t border-line">
-      <div className="mx-auto flex max-w-3xl flex-col gap-3 px-5 py-10 text-sm text-faint sm:flex-row sm:items-center sm:justify-between">
-        <p>
-          © {new Date().getFullYear()} {profile.name}
-        </p>
-        <div className="flex items-center gap-5">
-          <VisitorCount />
-          <a
-            href={profile.links.repository}
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-teal"
-          >
-            Source on GitHub
-          </a>
+    <footer className="relative border-t border-line">
+      <div className="mx-auto max-w-3xl">
+        <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line px-5 py-4 text-sm">
+          <span className="font-mono text-fg">aashishsinghal.com</span>
+          <span className="text-faint">
+            {profile.role}, {profile.location}
+          </span>
         </div>
+        <dl className="grid grid-cols-2 gap-px border-b border-line bg-line sm:grid-cols-4">
+          <FooterCell label="Crafted by">
+            <a href={profile.links.github} target="_blank" rel="noreferrer" className="link">
+              @AashishSinghal
+            </a>
+          </FooterCell>
+          <FooterCell label="Build">
+            {build.sha ? (
+              <a
+                href={`${profile.links.repository}/commit/${build.sha}`}
+                target="_blank"
+                rel="noreferrer"
+                className="link"
+              >
+                {build.sha}
+              </a>
+            ) : (
+              "local"
+            )}
+          </FooterCell>
+          <FooterCell label="Date">{build.date}</FooterCell>
+          <FooterCell label="Source">
+            <a href={profile.links.repository} target="_blank" rel="noreferrer" className="link">
+              GitHub
+            </a>
+          </FooterCell>
+          <FooterCell label="Stack" wide>
+            vite · react · tailwind
+          </FooterCell>
+          <FooterCell label="Hosted on">vercel</FooterCell>
+          <FooterCell label="Local time">
+            <LocalTime />
+          </FooterCell>
+        </dl>
+        <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 text-sm text-faint">
+          <p>
+            © {new Date().getFullYear()} {profile.name}
+          </p>
+          <VisitorCount />
+        </div>
+      </div>
+      <div className="mx-auto max-w-3xl px-5 pt-14 pb-10">
+        <Barbarian />
       </div>
     </footer>
   )
@@ -119,7 +177,12 @@ export default function Layout() {
   useScrollOnNavigate()
 
   return (
-    <div className="flex min-h-dvh flex-col">
+    <div className="relative flex min-h-dvh flex-col">
+      {/* The column's vertical rails, full height behind everything */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-y-0 left-1/2 hidden w-full max-w-3xl -translate-x-1/2 border-x border-line md:block"
+      />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-gold focus:px-3 focus:py-2 focus:text-bg"

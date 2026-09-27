@@ -1,5 +1,6 @@
 import path from "node:path"
 import fs from "node:fs"
+import { execSync } from "node:child_process"
 import { defineConfig, loadEnv, type Plugin } from "vite"
 import react from "@vitejs/plugin-react"
 import tailwindcss from "@tailwindcss/vite"
@@ -62,7 +63,25 @@ function stripDraftPostsInBuild(): Plugin {
   }
 }
 
+// Short commit hash for the footer: Vercel provides it; locally ask git
+function buildSha() {
+  if (process.env.VERCEL_GIT_COMMIT_SHA) return process.env.VERCEL_GIT_COMMIT_SHA.slice(0, 7)
+  try {
+    return execSync("git rev-parse --short=7 HEAD", { stdio: ["ignore", "pipe", "ignore"] })
+      .toString()
+      .trim()
+  } catch {
+    return ""
+  }
+}
+
 export default defineConfig({
+  define: {
+    __BUILD_SHA__: JSON.stringify(buildSha()),
+    __BUILD_DATE__: JSON.stringify(new Date().toISOString().slice(0, 10)),
+  },
+  // The 3D hero (three.js, ~900 kB) is its own lazy chunk, loaded after the page renders
+  build: { chunkSizeWarningLimit: 1000 },
   plugins: [react(), tailwindcss(), vercelApiInDev(), stripDraftPostsInBuild()],
   resolve: {
     alias: { "@": path.resolve(import.meta.dirname, "src") },
