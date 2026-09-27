@@ -15,7 +15,8 @@ Stack: Vite 8, React 19, React Router 8, Tailwind CSS 4, TypeScript 6. Hosted on
    look (Sep 2026) is a "technical drawing": vertical rails either side of the column,
    full-width hatched bands between sections, a hero laid out like a drawing sheet (the logo as
    3D gold bricks lying on the floor, three.js, each brick shakes on hover; dashed construction
-   lines; the owner's photo overlapping the frame beside the name), and a title-block footer with an interactive pixel barbarian
+   lines; the owner's photo overlapping the frame beside the name), and a footer (stack, local
+   time, "Made with love by Aashish", "You are the Nth visitor") with an interactive pixel barbarian
    at a laptop ("BarbarianO_o" was the owner's gamer tag). References the owner liked: animeshh.me,
    chanhdai.com, jdhruv.dev (research and screenshots in `drafts/`, untracked). Rejected in the
    past: a full 8-bit/pixel theme, an animated starfield background, photo walls, icon-bar nav.
@@ -51,7 +52,7 @@ src/
     work.ts           jobs with 2–3 measurable highlights each (from the resume)
     projects.ts       projects; `featured: true` = has a case-study page; `caseStudy` sections
     writing.ts        loads content/writing/*.md, parses frontmatter, drafts, reading time
-  components/         layout (nav, rails, title-block footer, scroll handling), section,
+  components/         layout (nav, rails, footer, scroll handling), section,
                       logo-floor (three.js hero, lazy-loaded), barbarian (footer),
                       github-activity, tech-stack, connect, local-time, brand-icon,
                       project-row, post-row, external-link, visitor-count
@@ -116,8 +117,6 @@ A husky pre-commit hook runs `eslint --fix` on staged files (lint-staged).
   Without WebGL the hero falls back to the flat logo.
 - **Contact:** no form (the Formspark form was removed in Sep 2026). The Connect section lists
   email and every social in `socials` in `profile.ts`.
-- **Footer build info:** `__BUILD_SHA__` / `__BUILD_DATE__` are defined in `vite.config.ts`
-  (Vercel's `VERCEL_GIT_COMMIT_SHA`, or `git rev-parse` locally).
 
 ## Conventions and gotchas
 

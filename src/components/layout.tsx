@@ -94,20 +94,9 @@ function Nav() {
   )
 }
 
-// Build facts shown in the footer's title block (set in vite.config.ts)
-const build = { sha: __BUILD_SHA__, date: __BUILD_DATE__ }
-
-function FooterCell({
-  label,
-  children,
-  wide,
-}: {
-  label: string
-  children: ReactNode
-  wide?: boolean
-}) {
+function FooterCell({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div className={cn("bg-bg px-5 py-4", wide && "col-span-2")}>
+    <div className="bg-bg px-5 py-4">
       <dt className="font-mono text-[10px] tracking-[0.15em] text-faint uppercase">{label}</dt>
       <dd className="mt-1.5 font-mono text-sm text-muted">{children}</dd>
     </div>
@@ -119,50 +108,14 @@ function Footer() {
   return (
     <footer className="relative border-t border-line">
       <div className="mx-auto max-w-3xl">
-        <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line px-5 py-4 text-sm">
-          <span className="font-mono text-fg">aashishsinghal.com</span>
-          <span className="text-faint">
-            {profile.role}, {profile.location}
-          </span>
-        </div>
-        <dl className="grid grid-cols-2 gap-px border-b border-line bg-line sm:grid-cols-4">
-          <FooterCell label="Crafted by">
-            <a href={profile.links.github} target="_blank" rel="noreferrer" className="link">
-              @AashishSinghal
-            </a>
-          </FooterCell>
-          <FooterCell label="Build">
-            {build.sha ? (
-              <a
-                href={`${profile.links.repository}/commit/${build.sha}`}
-                target="_blank"
-                rel="noreferrer"
-                className="link"
-              >
-                {build.sha}
-              </a>
-            ) : (
-              "local"
-            )}
-          </FooterCell>
-          <FooterCell label="Date">{build.date}</FooterCell>
-          <FooterCell label="Source">
-            <a href={profile.links.repository} target="_blank" rel="noreferrer" className="link">
-              GitHub
-            </a>
-          </FooterCell>
-          <FooterCell label="Stack" wide>
-            vite · react · tailwind
-          </FooterCell>
-          <FooterCell label="Hosted on">vercel</FooterCell>
+        <dl className="grid grid-cols-2 gap-px border-b border-line bg-line">
+          <FooterCell label="Stack">vite · react · tailwind</FooterCell>
           <FooterCell label="Local time">
             <LocalTime />
           </FooterCell>
         </dl>
         <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 text-sm text-faint">
-          <p>
-            © {new Date().getFullYear()} {profile.name}
-          </p>
+          <p>Made with love by Aashish</p>
           <VisitorCount />
         </div>
       </div>
