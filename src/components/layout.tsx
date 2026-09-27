@@ -5,6 +5,7 @@ import { posts } from "@/data/writing"
 import { cn } from "@/lib/utils"
 import VisitorCount from "@/components/visitor-count"
 import Barbarian from "@/components/barbarian"
+import AnimeQuote from "@/components/anime-quote"
 
 // `href` items leave the site (the arcade lives on its own subdomain)
 const navItems: Array<{ label: string; to?: string; href?: string }> = [
@@ -90,25 +91,40 @@ function Nav() {
   )
 }
 
-// A note and the visitor number, with the barbarian underneath
+// An anime quote, then the note and visitor number, with the barbarian in the corner
 function Footer() {
   return (
     <footer className="relative border-t border-line">
-      <div className="mx-auto max-w-3xl">
-        <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 text-sm text-faint">
-          {/* The whole line turns gold on hover, heart included */}
-          <p className="flex items-center gap-1.5 transition-colors hover:text-gold">
-            Made with
-            <svg viewBox="0 0 24 24" aria-label="love" role="img" className="size-3.5 fill-current">
-              <path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 5.3 3 1.7-1.9 3.2-3 5.3-3 3.7 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21Z" />
-            </svg>
-            by Aashish
-          </p>
-          <VisitorCount />
+      <div className="mx-auto max-w-3xl px-5">
+        <div className="py-20 sm:py-28">
+          <AnimeQuote />
         </div>
-      </div>
-      <div className="mx-auto max-w-3xl px-5 pt-14 pb-10">
-        <Barbarian />
+        <div className="flex items-end justify-between gap-6 pb-6">
+          <div className="grid gap-1 font-mono text-sm text-faint">
+            {/* The whole line turns gold on hover, heart included */}
+            <p className="flex items-center gap-1.5 transition-colors hover:text-gold">
+              Made with
+              <svg
+                viewBox="0 0 24 24"
+                aria-label="love"
+                role="img"
+                className="size-3.5 fill-current"
+              >
+                <path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 5.3 3 1.7-1.9 3.2-3 5.3-3 3.7 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21Z" />
+              </svg>
+              by Aashish
+            </p>
+            <VisitorCount />
+          </div>
+          {/* The barbarian at his laptop in the corner, in a soft pool of light */}
+          <div className="relative shrink-0">
+            <div
+              aria-hidden="true"
+              className="absolute -inset-4 rounded-full bg-[radial-gradient(closest-side,rgb(255_255_255/0.06),transparent)]"
+            />
+            <Barbarian className="relative w-28 sm:w-40" />
+          </div>
+        </div>
       </div>
     </footer>
   )

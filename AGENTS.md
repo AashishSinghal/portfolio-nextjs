@@ -15,9 +15,10 @@ Stack: Vite 8, React 19, React Router 8, Tailwind CSS 4, TypeScript 6. Hosted on
    look (Sep 2026) is a "technical drawing": vertical rails either side of the column,
    full-width hatched bands between sections, a hero laid out like a drawing sheet (the logo as
    3D gold bricks lying on the floor, three.js, each brick shakes on hover; dashed construction
-   lines; the owner's photo overlapping the frame beside the name), and a footer ("Made with ♥
-   by Aashish", "You are the Nth visitor") with an interactive pixel barbarian
-   at a laptop ("BarbarianO_o" was the owner's gamer tag). References the owner liked: animeshh.me,
+   lines; the owner's photo overlapping the frame beside the name), and a footer: a big anime
+   quote (random per visit, click for another; `src/data/quotes.ts`), "Made with ♥ by Aashish",
+   "You are the Nth visitor", and an interactive pixel barbarian at a laptop in the corner
+   ("BarbarianO_o" was the owner's gamer tag). References the owner liked: animeshh.me,
    chanhdai.com, jdhruv.dev (research and screenshots in `drafts/`, untracked). Rejected in the
    past: a full 8-bit/pixel theme, an animated starfield background, photo walls, icon-bar nav.
    Propose layout changes as ASCII mockups first; that's how design decisions get made here.
@@ -51,9 +52,10 @@ src/
     profile.ts        name, role, intro, availability, email, links, socials, skills (with groups)
     work.ts           jobs with 2–3 measurable highlights each (from the resume)
     projects.ts       projects; `featured: true` = has a case-study page; `caseStudy` sections
+    quotes.ts         anime quotes shown in the footer
     writing.ts        loads content/writing/*.md, parses frontmatter, drafts, reading time
   components/         layout (nav, rails, footer, scroll handling), section,
-                      logo-floor (three.js hero, lazy-loaded), barbarian (footer),
+                      logo-floor (three.js hero, lazy-loaded), barbarian + anime-quote (footer),
                       github-activity, tech-stack, connect, brand-icon,
                       project-row, post-row, external-link, visitor-count
   pages/              home, projects, project (case study), writing, post, not-found

@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from "react"
-import { profile } from "@/data/profile"
 
 // The footer's pixel barbarian (BarbarianO_o was my gamer tag), hard at work on a laptop.
 // Idle: types, blinks, the coffee steams and the screen light flickers on his face.
@@ -144,6 +143,7 @@ const STEAM: Pixel[][] = [
 ]
 
 const LINES = [
+  "BarbarianO_o, at your service.",
   "O_o",
   "ship it.",
   "one more commit…",
@@ -152,7 +152,7 @@ const LINES = [
   "it works on my machine",
 ]
 
-export default function Barbarian() {
+export default function Barbarian({ className }: { className?: string }) {
   const [tick, setTick] = useState(0)
   const [blink, setBlink] = useState(false)
   const [hover, setHover] = useState(false)
@@ -218,7 +218,7 @@ export default function Barbarian() {
   const bubble = line ?? (hover ? "hm?" : null)
 
   return (
-    <figure className="flex flex-col items-center">
+    <figure className={className}>
       <button
         type="button"
         onClick={poke}
@@ -228,13 +228,13 @@ export default function Barbarian() {
           setLook(0)
         }}
         onPointerMove={onMove}
-        aria-label="Poke the barbarian"
-        className="relative cursor-pointer rounded-md"
+        aria-label="Poke the barbarian (BarbarianO_o, my old gamer tag)"
+        className="relative block w-full cursor-pointer rounded-md"
       >
         {bubble && (
           <span
             aria-live="polite"
-            className="absolute -top-2 left-1/2 z-10 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-md border border-line bg-surface px-2.5 py-1 font-mono text-xs text-fg"
+            className="absolute -top-2 right-0 z-10 -translate-y-full whitespace-nowrap rounded-md border border-line bg-surface px-2.5 py-1 font-mono text-xs text-fg"
           >
             {bubble}
           </span>
@@ -242,7 +242,7 @@ export default function Barbarian() {
         <svg
           ref={ref}
           viewBox="0 0 40 30"
-          className="h-auto w-60 sm:w-72"
+          className="h-auto w-full"
           shapeRendering="crispEdges"
           role="img"
           aria-label="A pixel-art barbarian in a horned helmet, typing on a laptop"
@@ -273,17 +273,6 @@ export default function Barbarian() {
           <Pixels pixels={STEAM[tick % STEAM.length]} className="opacity-60" />
         </svg>
       </button>
-      <figcaption className="mt-3 font-mono text-xs text-faint">
-        <a
-          href={profile.links.twitter}
-          target="_blank"
-          rel="noreferrer"
-          className="hover:text-teal"
-        >
-          BarbarianO_o
-        </a>
-        , my old gamer tag. Click him.
-      </figcaption>
     </figure>
   )
 }
