@@ -115,7 +115,14 @@ function Footer() {
           </FooterCell>
         </dl>
         <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 text-sm text-faint">
-          <p>Made with love by Aashish</p>
+          {/* The whole line turns gold on hover, heart included */}
+          <p className="flex items-center gap-1.5 transition-colors hover:text-gold">
+            Made with
+            <svg viewBox="0 0 24 24" aria-label="love" role="img" className="size-3.5 fill-current">
+              <path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 5.3 3 1.7-1.9 3.2-3 5.3-3 3.7 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21Z" />
+            </svg>
+            by Aashish
+          </p>
           <VisitorCount />
         </div>
       </div>
