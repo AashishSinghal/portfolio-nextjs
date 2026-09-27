@@ -15,8 +15,8 @@ Stack: Vite 8, React 19, React Router 8, Tailwind CSS 4, TypeScript 6. Hosted on
    look (Sep 2026) is a "technical drawing": vertical rails either side of the column,
    full-width hatched bands between sections, a hero laid out like a drawing sheet (the logo as
    3D gold bricks lying on the floor, three.js, each brick shakes on hover; dashed construction
-   lines; the owner's photo overlapping the frame beside the name), and a footer (stack, local
-   time, "Made with love by Aashish", "You are the Nth visitor") with an interactive pixel barbarian
+   lines; the owner's photo overlapping the frame beside the name), and a footer ("Made with ♥
+   by Aashish", "You are the Nth visitor") with an interactive pixel barbarian
    at a laptop ("BarbarianO_o" was the owner's gamer tag). References the owner liked: animeshh.me,
    chanhdai.com, jdhruv.dev (research and screenshots in `drafts/`, untracked). Rejected in the
    past: a full 8-bit/pixel theme, an animated starfield background, photo walls, icon-bar nav.
@@ -54,7 +54,7 @@ src/
     writing.ts        loads content/writing/*.md, parses frontmatter, drafts, reading time
   components/         layout (nav, rails, footer, scroll handling), section,
                       logo-floor (three.js hero, lazy-loaded), barbarian (footer),
-                      github-activity, tech-stack, connect, local-time, brand-icon,
+                      github-activity, tech-stack, connect, brand-icon,
                       project-row, post-row, external-link, visitor-count
   pages/              home, projects, project (case study), writing, post, not-found
   lib/                utils (cn), use-document-title, logo-bricks (the logo sampled into 178 bricks)

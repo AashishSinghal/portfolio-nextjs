@@ -1,10 +1,9 @@
-import { Suspense, useEffect, type ReactNode } from "react"
+import { Suspense, useEffect } from "react"
 import { Link, NavLink, Outlet, useLocation } from "react-router"
 import { profile } from "@/data/profile"
 import { posts } from "@/data/writing"
 import { cn } from "@/lib/utils"
 import VisitorCount from "@/components/visitor-count"
-import LocalTime from "@/components/local-time"
 import Barbarian from "@/components/barbarian"
 
 // `href` items leave the site (the arcade lives on its own subdomain)
@@ -94,26 +93,11 @@ function Nav() {
   )
 }
 
-function FooterCell({ label, children }: { label: string; children: ReactNode }) {
-  return (
-    <div className="bg-bg px-5 py-4">
-      <dt className="font-mono text-[10px] tracking-[0.15em] text-faint uppercase">{label}</dt>
-      <dd className="mt-1.5 font-mono text-sm text-muted">{children}</dd>
-    </div>
-  )
-}
-
-// Styled like the title block on a technical drawing, with the barbarian underneath
+// A note and the visitor number, with the barbarian underneath
 function Footer() {
   return (
     <footer className="relative border-t border-line">
       <div className="mx-auto max-w-3xl">
-        <dl className="grid grid-cols-2 gap-px border-b border-line bg-line">
-          <FooterCell label="Stack">vite · react · tailwind</FooterCell>
-          <FooterCell label="Local time">
-            <LocalTime />
-          </FooterCell>
-        </dl>
         <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 text-sm text-faint">
           {/* The whole line turns gold on hover, heart included */}
           <p className="flex items-center gap-1.5 transition-colors hover:text-gold">

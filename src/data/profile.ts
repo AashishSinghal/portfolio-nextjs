@@ -2,8 +2,6 @@ export const profile = {
   name: "Aashish Singhal",
   role: "Senior full-stack engineer",
   location: "Bangalore, India",
-  // IANA zone for the live local-time clock in the footer
-  timeZone: "Asia/Kolkata",
   // One or two sentences: who you are and what you build
   intro:
     "I build AI-powered products end to end, from Go services and data pipelines to React interfaces. I like data-dense product surfaces, and taking features from zero to production.",
