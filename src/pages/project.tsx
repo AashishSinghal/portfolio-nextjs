@@ -40,9 +40,9 @@ export default function ProjectPage() {
         </div>
       </header>
 
-      {/* Cover image, Medium-style: breaks out of the reading column on wide screens */}
+      {/* Cover image, Medium-style, kept inside the column between the rails */}
       {project.image && (
-        <figure className="mt-10 lg:-mx-24">
+        <figure className="mt-10">
           <img
             src={project.image}
             alt={`Screenshot of ${project.name}`}
