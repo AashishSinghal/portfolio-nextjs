@@ -28,7 +28,7 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "Socket.IO", "Node.js", "Groq Whisper", "ffmpeg"],
     image: "/images/projects/voice-agent.webp",
     links: {
-      live: "https://voice-agent-demo-drab.vercel.app",
+      live: "https://ai.aashishsinghal.com",
       code: "https://github.com/AashishSinghal/voice-agent-demo",
     },
     featured: true,
